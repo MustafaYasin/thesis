@@ -102,10 +102,10 @@ mapper(product_table,table_define_dummy)
 #Name of table will be extracted from file name. File name contains product name. 
 #Each table will be identified by product name
 # It will read each excel file in the folder and insert bom into table
-def create_table(folder_of_files):
+def create_table(csv_folder):
     
     #Get list of files in folder
-    files=glob.glob(os.path.join(folder_of_files,"*.csv"))
+    files=glob.glob(os.path.join(csv_folder,"*.csv"))
     
     
     #Loop through all files in list
@@ -116,6 +116,7 @@ def create_table(folder_of_files):
         
         #Convert dataframe to list and store in same variable
         csv_data=csv_data.values.tolist()
+        print(csv_data)
         
         #Get table name from file name. This will be our table name. 
         table_name_from_file=file_name.split('/')[8][:-4]
@@ -135,6 +136,6 @@ def create_table(folder_of_files):
             
 
 #Calling function, argument is path of folder where all CSV files are stored
-create_table("path of folder where csv files are stored")
+create_table("/csv_folder")
 
 

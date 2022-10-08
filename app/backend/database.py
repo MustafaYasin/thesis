@@ -58,10 +58,9 @@ def table_definition(table_name):
     Column('name',String),
     Column('email',String),
     Column('repo_count',String),
-    Column('company',String)
-    Column('avatar_url',String)
-    Column('hireable',String)
-    Column('star_time',String)
+    Column('company',String),
+    Column('avatar_url',String),
+    Column('hireable',String),
 
 
     )
@@ -87,9 +86,9 @@ table_define_dummy=Table('dummy_table',metadata,
     Column('name',String),
     Column('email',String),
     Column('repo_count',String),
-    Column('company',String)
-    Column('avatar_url',String)
-    Column('hireable',String)
+    Column('company',String),
+    Column('avatar_url',String),
+    Column('hireable',String),
     Column('star_time',String)
 )
 

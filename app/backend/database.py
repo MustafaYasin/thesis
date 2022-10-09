@@ -1,5 +1,6 @@
 #Imports
 
+from ctypes.wintypes import INT
 from unicodedata import name
 import pandas as pd
 from sqlalchemy import create_engine
@@ -67,10 +68,10 @@ def table_definition(table_name):
     
     #Create table
     #Note that we used the engine from function
-    metadata.create_all(engine)
+metadata.create_all(engine)
     
     #Use mapper to define components of class as well as table definition together at once
-    mapper(product_table,table_definition.table_define,non_primary=True)
+mapper(product_table,table_definition.table_define,non_primary=True)
 
     
 
@@ -85,7 +86,7 @@ table_define_dummy=Table('dummy_table',metadata,
     Column('username',String),
     Column('name',String),
     Column('email',String),
-    Column('repo_count',String),
+    Column('repo_count',Integer),
     Column('company',String),
     Column('avatar_url',String),
     Column('hireable',String),
@@ -117,7 +118,7 @@ def create_table(csv_folder):
         #Convert dataframe to list and store in same variable
         csv_data=csv_data.values.tolist()
         print(csv_data)
-        
+
         #Get table name from file name. This will be our table name. 
         table_name_from_file=file_name.split('/')[8][:-4]
         
@@ -136,6 +137,6 @@ def create_table(csv_folder):
             
 
 #Calling function, argument is path of folder where all CSV files are stored
-create_table("/csv_folder")
+create_table("./csv_folder")
 
 

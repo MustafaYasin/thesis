@@ -17,33 +17,31 @@ import sqlite3
 #Create engine that will allow us to communicate with database
 engine=create_engine('sqlite:///profiles_dbase.sqlite',echo=False)
 
-#Creating session which is the middle ground to talk to our engine
-Session=sessionmaker(bind=engine)
-session=Session()
 
 #Map which table in database will be related to each class
 Base=declarative_base()
 
-#Create a metadata instance
-#A metadata is an object container that will store attributes and name of table 
-metadata=MetaData(engine)
-
-
 
 #Define structure of table
-class product_table(object):
-    def __init__(self,username,name,email,repo_count,company,avatar_url,hireable,star_time):
-        self.username=username
-        self.name=name
-        self.email=email
-        self.repo_count=repo_count
-        self.company=company
-        self.avatar_url=avatar_url
-        self.hireable=hireable
-        self.star_time=star_time
-    
+class Profiles(object):
+
+    __tabelname__='profiles'
+    __table_args__={'autoload':True}
+
+    profile_id=Column(Integer,primary_key=True)
+    username=Column(String)
+    name=Column(String)
+    email=Column(String)
+    repo_count=Column(Integer)
+    company=Column(String)
+    avatar_url=Column(String)
+    hireable=Column(String)
+    star_time=Column(String)
+
+
     def __repr__(self):
-        return f'{self.username,self.name,self.email,self.repo_count,self.company,self.avatar_url,self.hireable,self.star_time}'
+        return format(self.username,self.name,self.email,self.repo_count,self.company,self.avatar_url,self.hireable,self.star_time)
+
 
     
 #Declaring a table

@@ -3,7 +3,21 @@ import csv
 import datetime
 import requests
 import argparse
+from pymongo import MongoClient
+from flask_restful import Resource, reqparse
+import pandas as pd
+import json
 
+
+################################# connect to DB #################################
+client = MongoClient("mongodb+srv://mustafa:mustafa@cluster0.jzvhgwl.mongodb.net/?retryWrites=true&w=majority")
+db = client['profile']
+
+real_profile_db = db['real_user']
+
+
+
+# Github API token authentication
 parser = argparse.ArgumentParser()
 parser.add_argument('-t','--token',required=True,help="The GitHub Token.")
 parser.add_argument('-r','--repo',required=True,help="The GitHub Repo,in the form like 'user/repo'.")
@@ -14,8 +28,10 @@ repo = args.repo.split('/')[1]
 
 headers = {"Authorization": "token "+args.token}
 
-fields = ["username", "name", "email", "repo_count", "company", "avatar_url", "hireable", "star_time"]
+# crawled user information from github repo
+fields = ["username", "name", "email", "repo_count", "company", "avatar_url", "hireable", "star_time"] 
 
+# get all the stargazers form the repo
 def run_query(query):
     request = requests.post('https://api.github.com/graphql', json={'query': query}, headers=headers)
     if request.status_code == 200:
@@ -23,6 +39,9 @@ def run_query(query):
     else:
         raise Exception("Query failed to run by returning code of {}. {}".format(request.status_code, query))
 
+
+
+################################# get all users #################################
 
 query = """
 {{
@@ -64,11 +83,17 @@ query = """
 }}
 """
 
+
+
+############################### 1. get all stargazers ###############################
+
 star_list = []
 hasNextPage = True
 endCursor = "" # Start from begining
 count = 0
 
+
+############################### Add user data to the database ########################
 user_filename = owner + "__" + repo + ".csv"
 with open(user_filename, 'w') as stars:
     stars_writer = csv.writer(stars)
@@ -96,7 +121,27 @@ with open(user_filename, 'w') as stars:
             star_time = datetime.datetime.strptime(item['starredAt'],'%Y-%m-%dT%H:%M:%SZ')
             star_time = star_time.strftime('%Y-%m-%d %H:%M:%S')
             star_list.append((username,star_time))
+            
+            # write to csv file
             stars_writer.writerow([username,name,email,repo_count,company,avatar_url,hireable,star_time])
+            
+             # write to MongoDB
+            real_profile_db.update_one(
+              {
+                "email": email
+              },
+              {
+                '$set': {
+                  'Username': username, 
+                  'Name': name, 
+                  'Repo Count': repo_count, 
+                  'Avatar URL': avatar_url, 
+                  'Hireable': hireable, 
+                  'Starred Time': star_time
+                }
+              },
+              upsert=True
+          )
 
         count = count + 100
         print(str(count) + " users processed.")

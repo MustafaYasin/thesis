@@ -24,8 +24,8 @@ class RecommendCoFounder(Resource):
             return {'message': 'User not found'}, 404
         print(result)
         self_recommendation_value = result['recommendations']
-        lower_range = self_recommendation_value - 10
-        upper_range = self_recommendation_value + 10
+        lower_range = self_recommendation_value - 0.0
+        upper_range = self_recommendation_value + 30.0
 
         recommended_users = real_profile_db.find({'recommendations': 
                                     {'$gte': lower_range, '$lte': upper_range}

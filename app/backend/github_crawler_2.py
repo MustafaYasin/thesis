@@ -10,6 +10,7 @@ import json
 
 
 ################################# connect to DB #################################
+
 client = MongoClient("mongodb+srv://mustafa:mustafa@cluster0.jzvhgwl.mongodb.net/?retryWrites=true&w=majority")
 db = client['profile']
 

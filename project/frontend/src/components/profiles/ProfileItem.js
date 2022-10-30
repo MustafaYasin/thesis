@@ -13,12 +13,12 @@ function ProfileItem(props) {
     } else {
       favoritesCtx.addFavorite({
         email: props.email,
-        avatar: props.image,
-        Hireable: props.hireable,
-        Name: props.fullName,
-        repos: props.repos,
-        starredTime: props.starredTime,
-        Username: props.username,
+        avatar_url: props.avatar_url,
+        hireable: props.hireable,
+        fullName: props.fullName,
+        repo_count: props.repo_count,
+        star_time: props.star_time,
+        username: props.username,
         recommendations: props.recommendations,
       });
     }
@@ -28,14 +28,14 @@ function ProfileItem(props) {
     <li className={classes.item}>
       <Card>
         <div className={classes.image}>
-          <img src={props.image} alt={props.fullName} />
+          <img src={props.avatar_url} alt={props.fullName} />
         </div>
         <div className={classes.content}>
           <h3>{props.fullName}</h3>
           <address>{props.email}</address>
-          <p>Hireable: {props.Hireable?"yes":"no"}</p>
-          <p>Repos: {props.repos}</p>
-          <p>starredTime: {props.starredTime}</p>
+          <p>Hireable: {props.hireable?"yes":"no"}</p>
+          <p>Repos: {props.repo_count}</p>
+          <p>starredTime: {props.star_time}</p>
           <p>username: {props.username}</p>
           <p>recommendations: {props.recommendations}</p>
           <p>END OF CARD</p>

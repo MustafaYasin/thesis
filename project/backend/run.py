@@ -31,7 +31,7 @@ class RecommendCoFounder(Resource):
                                     {'$gte': lower_range, '$lte': upper_range}
                             },
                             {'_id': 0}
-                            ).sort('recommendations', -1)
+                            ).sort('recommendations', -1).limit(10)
         recommended_users = list(recommended_users)
         return {'recommended_users': recommended_users}, 200
 

@@ -16,7 +16,7 @@ db = client['profile']
 
 real_profile_db = db['real_user']
 
-
+real_profile_db.delete_many({})
 
 # Github API token authentication
 parser = argparse.ArgumentParser()
@@ -133,12 +133,12 @@ with open(user_filename, 'w') as stars:
               },
               {
                 '$set': {
-                  'Username': username, 
-                  'Name': name, 
-                  'Repo Count': repo_count, 
-                  'Avatar URL': avatar_url, 
-                  'Hireable': hireable, 
-                  'Starred Time': star_time
+                  'username': username, 
+                  'fullName': name, 
+                  'repo_count': repo_count, 
+                  'avatar_url': avatar_url, 
+                  'hireable': hireable, 
+                  'star_time': star_time
                 }
               },
               upsert=True

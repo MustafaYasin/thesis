@@ -1,0 +1,32 @@
+.filter {
+  min-width: 10%;
+  min-height: 40rem;
+}
+.filter button {
+  margin-right: 2rem;
+  min-width: 5rem;
+  padding: 0.5rem 1rem;
+  border: none;
+  background: white;
+  color: rgb(65, 98, 168);
+  border-radius: 1rem;
+  border: 2px solid rgb(28, 36, 53);
+  font-weight: bold;
+  cursor: pointer;
+}
+button.active {
+  background: rgb(65, 98, 168);
+  color: white;
+}
+.filter div {
+  margin: 1rem;
+}
+.filter li {
+  list-style-type: none;
+  font-size: larger;
+}
+
+.largerCheckbox {
+    width: 16px;
+    height: 16px;
+}

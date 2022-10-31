@@ -1,0 +1,15 @@
+.basic {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-around;
+  }
+  
+  .filter {
+      max-width: 30rem;
+  }
+  
+  .profiles{
+      max-width: 40rem;
+      width: 100%;
+      justify-content: right;
+  }

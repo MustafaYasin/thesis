@@ -7,6 +7,7 @@ from pymongo import MongoClient
 from flask_restful import Resource, reqparse
 import pandas as pd
 import json
+import pprint
 
 
 ################################# connect to DB #################################
@@ -67,20 +68,21 @@ query = """
           name
           bio
           company
-          repositories(first: 100, isFork: false) {
+
+          repositories(first:100, isFork: false) {{
             totalCount
-      nodes {
-        primaryLanguage {
-          name
-        }
-        languages(first: 100) {
-          nodes {
-            name
-          }
-        }
-      }
-    }
+            nodes {{
+              primaryLanguage {{
+                name
+              }}
+              languages(first: 100) {{
+                nodes {{
+                 name
+                }}
+              }}
+            }}
           }}
+          
           isHireable
           avatarUrl
           createdAt
@@ -99,6 +101,7 @@ query = """
   }}
 }}
 """
+
 ############################### 1. get all stargazers ###############################
 
 star_list = []
@@ -106,7 +109,7 @@ hasNextPage = True
 endCursor = ""  # Start from begining
 count = 0
 
-
+peinr(data)
 ############################### Add user data to the database ########################
 user_filename = owner + "__" + repo + ".csv"
 with open(user_filename, 'w') as stars:

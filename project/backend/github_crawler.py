@@ -11,7 +11,8 @@ import json
 
 ################################# connect to DB #################################
 
-client = MongoClient("mongodb+srv://mustafa:mustafa@cluster0.jzvhgwl.mongodb.net/?retryWrites=true&w=majority")
+client = MongoClient(
+    "mongodb+srv://mustafa:mustafa@cluster0.jzvhgwl.mongodb.net/?retryWrites=true&w=majority")
 db = client['profile']
 
 real_profile_db = db['real_user']
@@ -20,8 +21,9 @@ real_profile_db.delete_many({})
 
 # Github API token authentication
 parser = argparse.ArgumentParser()
-parser.add_argument('-t','--token',required=True,help="The GitHub Token.")
-parser.add_argument('-r','--repo',required=True,help="The GitHub Repo,in the form like 'user/repo'.")
+parser.add_argument('-t', '--token', required=True, help="The GitHub Token.")
+parser.add_argument('-r', '--repo', required=True,
+                    help="The GitHub Repo,in the form like 'user/repo'.")
 args = parser.parse_args()
 
 owner = args.repo.split('/')[0]
@@ -30,20 +32,23 @@ repo = args.repo.split('/')[1]
 headers = {"Authorization": "token "+args.token}
 
 # crawled user information from github repo
-fields = ["username", "name", "email", "repo_count", "company", "avatar_url", "hireable", "star_time"] 
+fields = ["username", "name", "email", "repo_count", "company",
+          "avatar_url", "hireable", "star_time", "languages"]
 
 # get all the stargazers form the repo
+
+
 def run_query(query):
-    request = requests.post('https://api.github.com/graphql', json={'query': query}, headers=headers)
+    request = requests.post('https://api.github.com/graphql',
+                            json={'query': query}, headers=headers)
     if request.status_code == 200:
         return request.json()
     else:
-        raise Exception("Query failed to run by returning code of {}. {}".format(request.status_code, query))
-
+        raise Exception("Query failed to run by returning code of {}. {}".format(
+            request.status_code, query))
 
 
 ################################# get all users #################################
-
 query = """
 {{
   repository(owner: "{0}", name: "{1}") {{
@@ -62,8 +67,19 @@ query = """
           name
           bio
           company
-          repositories(first:100, isFork: false) {{
+          repositories(first: 100, isFork: false) {
             totalCount
+      nodes {
+        primaryLanguage {
+          name
+        }
+        languages(first: 100) {
+          nodes {
+            name
+          }
+        }
+      }
+    }
           }}
           isHireable
           avatarUrl
@@ -83,14 +99,11 @@ query = """
   }}
 }}
 """
-
-
-
 ############################### 1. get all stargazers ###############################
 
 star_list = []
 hasNextPage = True
-endCursor = "" # Start from begining
+endCursor = ""  # Start from begining
 count = 0
 
 
@@ -100,13 +113,12 @@ with open(user_filename, 'w') as stars:
     stars_writer = csv.writer(stars)
     stars_writer.writerow(fields)
     while hasNextPage:
-        this_query = query.format(owner,repo,endCursor)
-        result = run_query(this_query) # Execute the query
+        this_query = query.format(owner, repo, endCursor)
+        result = run_query(this_query)  # Execute the query
         hasNextPage = result['data']['repository']['stargazers']['pageInfo']['hasNextPage']
         endCursor = result['data']['repository']['stargazers']['pageInfo']['endCursor']
         endCursor = ', after: "' + endCursor + '"'
         data = result['data']['repository']['stargazers']['edges']
-
 
         for item in data:
             username = item['node']['login']
@@ -118,31 +130,35 @@ with open(user_filename, 'w') as stars:
             avatar_url = item['node']['avatarUrl']
 
             repo_count = item['node']['repositories']['totalCount']
+            languages = item['node']['languages']
 
-            star_time = datetime.datetime.strptime(item['starredAt'],'%Y-%m-%dT%H:%M:%SZ')
+            star_time = datetime.datetime.strptime(
+                item['starredAt'], '%Y-%m-%dT%H:%M:%SZ')
             star_time = star_time.strftime('%Y-%m-%d %H:%M:%S')
-            star_list.append((username,star_time))
-            
+            star_list.append((username, star_time))
+
             # write to csv file
-            stars_writer.writerow([username,name,email,repo_count,company,avatar_url,hireable,star_time])
-            
-             # write to MongoDB
+            stars_writer.writerow([username, name, email, repo_count, company,
+                                  avatar_url, hireable, star_time, repo_count, languages])
+
+            # write to MongoDB
             real_profile_db.update_one(
-              {
-                "email": email
-              },
-              {
-                '$set': {
-                  'username': username, 
-                  'fullName': name, 
-                  'repo_count': repo_count, 
-                  'avatar_url': avatar_url, 
-                  'hireable': hireable, 
-                  'star_time': star_time
-                }
-              },
-              upsert=True
-          )
+                {
+                    "email": email
+                },
+                {
+                    '$set': {
+                        'username': username,
+                        'fullName': name,
+                        'repo_count': repo_count,
+                        'avatar_url': avatar_url,
+                        'hireable': hireable,
+                        'star_time': star_time
+                    }
+                },
+                upsert=True
+            )
 
         count = count + 100
         print(str(count) + " users processed.")
+        break

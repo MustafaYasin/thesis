@@ -71,16 +71,7 @@ query = """
 
           repositories(first:100, isFork: false) {{
             totalCount
-            nodes {{
-              primaryLanguage {{
-                name
-              }}
-              languages(first: 100) {{
-                nodes {{
-                 name
-                }}
-              }}
-            }}
+            languages{{totalCount}}
           }}
           
           isHireable
@@ -109,7 +100,7 @@ hasNextPage = True
 endCursor = ""  # Start from begining
 count = 0
 
-peinr(data)
+
 ############################### Add user data to the database ########################
 user_filename = owner + "__" + repo + ".csv"
 with open(user_filename, 'w') as stars:
@@ -133,7 +124,7 @@ with open(user_filename, 'w') as stars:
             avatar_url = item['node']['avatarUrl']
 
             repo_count = item['node']['repositories']['totalCount']
-            languages = item['node']['languages']
+            languages = item['node']['repositories']['languages']['totalCount']
 
             star_time = datetime.datetime.strptime(
                 item['starredAt'], '%Y-%m-%dT%H:%M:%SZ')

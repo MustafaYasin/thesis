@@ -67,7 +67,7 @@ function RecommendedProfilesPage() {
 
   useEffect(() => {
     setIsLoading(true);
-    fetch("http://localhost:5001/recommend?username=alexbw")
+    fetch("http://localhost:5001/recommend?username=deshraj")
       .then((response) => {
         return response.json();
       })

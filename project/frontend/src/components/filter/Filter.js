@@ -7,7 +7,7 @@ function Filter(props) {
 
   function clickHireableHandler() {
     const filtered = props.allProfiles.filter(
-      (profile) => profile.Hireable === true
+      (profile) => profile.hireable === true
     );
     props.setFilteredProfiles(filtered);
     setAllPressed(false);

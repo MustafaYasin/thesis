@@ -8,7 +8,7 @@ from flask_restful import Resource, reqparse
 import pandas as pd
 import json
 import pprint
-
+from collections import Counter
 
 ################################# connect to DB #################################
 
@@ -19,6 +19,7 @@ db = client['profile']
 real_profile_db = db['real_user']
 
 real_profile_db.delete_many({})
+
 
 # Github API token authentication
 parser = argparse.ArgumentParser()
@@ -34,7 +35,7 @@ headers = {"Authorization": "token "+args.token}
 
 # crawled user information from github repo
 fields = ["username", "name", "email", "repo_count", "company",
-          "avatar_url", "hireable", "star_time"]
+          "avatar_url", "hireable", "star_time", "primary_language"]
 
 # get all the stargazers form the repo
 
@@ -70,6 +71,11 @@ query = """
           company
           repositories(first:100, isFork: false) {{
             totalCount
+            nodes {{
+              primaryLanguage {{
+                name
+              }}
+            }}
           }}
           isHireable
           avatarUrl
@@ -121,6 +127,13 @@ with open(user_filename, 'w') as stars:
             avatar_url = item['node']['avatarUrl']
 
             repo_count = item['node']['repositories']['totalCount']
+            nodes = item['node']['repositories']["nodes"]
+            primary_language = [
+                node["primaryLanguage"]["name"] for node in nodes if node["primaryLanguage"] is not None
+            ]
+            primary_language = dict(Counter(primary_language))
+            print(primary_language)
+            #primary_language = item['node']['repositories']['primaryLanguage']
 
             star_time = datetime.datetime.strptime(
                 item['starredAt'], '%Y-%m-%dT%H:%M:%SZ')
@@ -129,7 +142,7 @@ with open(user_filename, 'w') as stars:
 
             # write to csv file
             stars_writer.writerow([username, name, email, repo_count, company,
-                                  avatar_url, hireable, star_time, repo_count])
+                                  avatar_url, hireable, star_time, repo_count, primary_language])
 
             # write to MongoDB
             real_profile_db.update_one(
@@ -143,7 +156,8 @@ with open(user_filename, 'w') as stars:
                         'repo_count': repo_count,
                         'avatar_url': avatar_url,
                         'hireable': hireable,
-                        'star_time': star_time
+                        'star_time': star_time,
+                        'primary_language': primary_language
                     }
                 },
                 upsert=True
@@ -151,4 +165,4 @@ with open(user_filename, 'w') as stars:
 
         count = count + 100
         print(str(count) + " users processed.")
-        break
+      

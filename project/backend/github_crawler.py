@@ -34,7 +34,7 @@ headers = {"Authorization": "token "+args.token}
 
 # crawled user information from github repo
 fields = ["username", "name", "email", "repo_count", "company",
-          "avatar_url", "hireable", "star_time", "languages"]
+          "avatar_url", "hireable", "star_time"]
 
 # get all the stargazers form the repo
 
@@ -68,19 +68,9 @@ query = """
           name
           bio
           company
-
           repositories(first:100, isFork: false) {{
             totalCount
-            languages{{
-              edges{{
-                size
-                node{{
-                  name
-                  }}
-                }}
-            }}
           }}
-          
           isHireable
           avatarUrl
           createdAt
@@ -131,7 +121,6 @@ with open(user_filename, 'w') as stars:
             avatar_url = item['node']['avatarUrl']
 
             repo_count = item['node']['repositories']['totalCount']
-            languages = item['node']['repositories']['languages']['totalCount']
 
             star_time = datetime.datetime.strptime(
                 item['starredAt'], '%Y-%m-%dT%H:%M:%SZ')
@@ -140,7 +129,7 @@ with open(user_filename, 'w') as stars:
 
             # write to csv file
             stars_writer.writerow([username, name, email, repo_count, company,
-                                  avatar_url, hireable, star_time, repo_count, languages])
+                                  avatar_url, hireable, star_time, repo_count])
 
             # write to MongoDB
             real_profile_db.update_one(

@@ -71,7 +71,14 @@ query = """
 
           repositories(first:100, isFork: false) {{
             totalCount
-            languages{{totalCount}}
+            languages{{
+              edges{{
+                size
+                node{{
+                  name
+                  }}
+                }}
+            }}
           }}
           
           isHireable

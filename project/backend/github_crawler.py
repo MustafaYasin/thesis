@@ -127,13 +127,15 @@ with open(user_filename, 'w') as stars:
             avatar_url = item['node']['avatarUrl']
 
             repo_count = item['node']['repositories']['totalCount']
+
+            
             nodes = item['node']['repositories']["nodes"]
             primary_language = [
                 node["primaryLanguage"]["name"] for node in nodes if node["primaryLanguage"] is not None
             ]
             primary_language = dict(Counter(primary_language))
             print(primary_language)
-            #primary_language = item['node']['repositories']['primaryLanguage']
+
 
             star_time = datetime.datetime.strptime(
                 item['starredAt'], '%Y-%m-%dT%H:%M:%SZ')

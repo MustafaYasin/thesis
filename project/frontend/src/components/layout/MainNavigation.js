@@ -8,21 +8,25 @@ function MainNavigation() {
 
   return (
     <header className={classes.header}>
-      <div className={classes.logo}>Profile Recommender</div>
+      <Link to="/">
+        <div className={classes.logo}>Profile Recommender</div>
+      </Link>
       <nav>
         <ul>
           <li>
-            <Link to="/">Recommended Profiles</Link>
+            <Link to="/recommend">Recommended Profiles</Link>
           </li>
           <li>
             <Link to="/favorites" className={classes.link}>
               Favorites{" "}
-              <span className={classes.badge}>{favoriteCtx.totalFavorites}</span>
+              <span className={classes.badge}>
+                {favoriteCtx.totalFavorites}
+              </span>
             </Link>
           </li>
           <li>
             <Link to="/compare">Compare Favorites</Link>
-          </li>  
+          </li>
         </ul>
       </nav>
     </header>

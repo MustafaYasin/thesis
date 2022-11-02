@@ -19,7 +19,7 @@ class RecommendCoFounder(Resource):
         db = client['profile']
         real_profile_db = db['real_user']
 
-        result = real_profile_db.find_one({'Username': username}, {'_id': 0, 'recommendations': 1})
+        result = real_profile_db.find_one({'username': username}, {'_id': 0, 'recommendations': 1})
         if not result:
             return {'message': 'User not found'}, 404
         print(result)

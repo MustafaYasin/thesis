@@ -9,12 +9,12 @@ function ProfileList(props) {
           key={profile.email}
           id={profile.email}
           email={profile.email}
-          image={profile.avatar}
-          hireable={profile.Hireable}
-          fullName={profile.Name}
-          repos={profile.repos}
-          starredTime={profile.starredTime}
-          username={profile.Username}
+          avatar_url={profile.avatar_url}
+          hireable={profile.hireable}
+          fullName={profile.fullName}
+          repo_count={profile.repo_count}
+          star_time={profile.star_time}
+          username={profile.username}
           recommendations={profile.recommendations}
         />
       ))}

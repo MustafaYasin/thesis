@@ -10,6 +10,7 @@ import DetailsContext from "../components/store/details-context.js";
 import Backdrop from "../components/ui/Backdrop";
 import ProfileList from "../components/profiles/ProfileList";
 import Modal from "../components/ui/Modal";
+import { useEffect } from "react";
 
 const DUMMY_DATA = [
   {
@@ -59,41 +60,42 @@ const DUMMY_DATA = [
 
 function RecommendedProfilesPage() {
   const detailsCtx = useContext(DetailsContext);
-  const [recommendedProfiles, setRecommendedProfiles] = useState(DUMMY_DATA);
-  const [filteredProfiles, setFilteredProfiles] = useState(DUMMY_DATA);
+  const [recommendedProfiles, setRecommendedProfiles] = useState([]);
+  const [filteredProfiles, setFilteredProfiles] = useState([]);
 
-  // const [isLoading, setIsLoading] = useState(true);
-  // const [loadedMeetups, setLoadedMeetups] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
-  // useEffect(() => {
-  //   setIsLoading(true);
-  //   fetch(
-  //     "https://react-getting-started-14c0c-default-rtdb.europe-west1.firebasedatabase.app/meetups.json"
-  //   )
-  //     .then((response) => {
-  //       return response.json();
-  //     })
-  //     .then((data) => {
-  //       const meetups = [];
-  //       for (const key in data) {
-  //         const meetup = {
-  //           id: key,
-  //           ...data[key],
-  //         };
-  //         meetups.push(meetup);
-  //       }
-  //       setIsLoading(false);
-  //       setLoadedMeetups(meetups);
-  //     });
-  // }, []);
+  useEffect(() => {
+    setIsLoading(true);
+    fetch("http://localhost:5001/recommend?username=deshraj")
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => {
+        const allUsers = [];
+        const individualUser = data.recommended_users;
+        for (const key in individualUser) {
+          console.log(individualUser[key]);
+          const individualUser2 = {
+            id: key,
+            ...individualUser[key],
+          };
+          allUsers.push(individualUser2);
+        }
+        setIsLoading(false);
+        setRecommendedProfiles(allUsers);
+        console.log("--------------------------");
+        console.log(allUsers);
+      });
+  }, []);
 
-  // if (isLoading) {
-  //   return (
-  //     <section>
-  //       <p>loading...</p>
-  //     </section>
-  //   );
-  // }
+  if (isLoading) {
+    return (
+      <section>
+        <p>loading...</p>
+      </section>
+    );
+  }
 
   return (
     <div className={classes.basic}>

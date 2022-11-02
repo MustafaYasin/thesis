@@ -18,7 +18,7 @@ db = client['profile']
 
 real_profile_db = db['real_user']
 
-real_profile_db.delete_many({})
+#real_profile_db.delete_many({})
 
 # Github API token authentication
 parser = argparse.ArgumentParser()

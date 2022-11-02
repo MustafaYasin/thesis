@@ -7,7 +7,7 @@ function Filter(props) {
 
   function clickHireableHandler() {
     const filtered = props.allProfiles.filter(
-      (profile) => profile.Hireable === true
+      (profile) => profile.hireable === true
     );
     props.setFilteredProfiles(filtered);
     setAllPressed(false);
@@ -25,7 +25,7 @@ function Filter(props) {
       setHirePressed(false);
     } else {
       const filtered = props.allProfiles.filter(
-        (profile) => profile.Hireable === true
+        (profile) => profile.hireable === true
       );
       props.setFilteredProfiles(filtered);
       setAllPressed(false);
@@ -64,26 +64,6 @@ function Filter(props) {
             className={classes.largerCheckbox}
           />
           <label for="hireable"> Hireable</label>
-        </li>
-        <li>
-          <input
-            type="checkbox"
-            id="vehicle2"
-            name="vehicle2"
-            value="Car"
-            className={classes.largerCheckbox}
-          />
-          <label for="vehicle2"> I have a car</label>
-        </li>
-        <li>
-          <input
-            type="checkbox"
-            id="vehicle3"
-            name="vehicle3"
-            value="Boat"
-            className={classes.largerCheckbox}
-          />
-          <label for="vehicle3"> I have a boat</label>
         </li>
       </ul>
     </div>

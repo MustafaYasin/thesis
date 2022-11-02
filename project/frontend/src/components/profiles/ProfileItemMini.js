@@ -20,12 +20,12 @@ function ProfileItemMini(props) {
     } else {
       favoritesCtx.addFavorite({
         email: props.email,
-        avatar: props.image,
-        Hireable: props.hireable,
-        Name: props.fullName,
-        repos: props.repos,
-        starredTime: props.starredTime,
-        Username: props.username,
+        avatar_url: props.avatar_url,
+        hireable: props.hireable,
+        fullName: props.fullName,
+        repo_count: props.repo_count,
+        star_time: props.star_time,
+        username: props.username,
         recommendations: props.recommendations,
       });
     }
@@ -39,12 +39,12 @@ function ProfileItemMini(props) {
     } else {
       detailsCtx.addDetails({
         email: props.email,
-        avatar: props.image,
-        Hireable: props.hireable,
-        Name: props.fullName,
-        repos: props.repos,
-        starredTime: props.starredTime,
-        Username: props.username,
+        avatar_url: props.avatar_url,
+        hireable: props.hireable,
+        fullName: props.fullName,
+        repo_count: props.repo_count,
+        star_time: props.star_time,
+        username: props.username,
         recommendations: props.recommendations,
       });
     }
@@ -62,7 +62,7 @@ function ProfileItemMini(props) {
           <div className={classes.card}>
             <Card>
               <div className={classes.image} onClick={toggleDetailsStatusHandler}>
-                <img src={props.image} alt={props.fullName} />
+                <img src={props.avatar_url} alt={props.fullName} />
               </div>
               <div className={classes.content}>
                 <h3>{props.fullName}</h3>

@@ -40,6 +40,12 @@
   padding-bottom: 0;
 }
 
+.content address {
+  padding: auto;
+  font-size: smaller;
+  text-align: center;
+}
+
 .content h3 {
   margin-top: 0.5em;
   margin-bottom: 0.1em;
@@ -67,3 +73,4 @@
 .actions button:active {
   background-color: #e2e8ff;
 }
+

@@ -18,8 +18,7 @@ db = client['profile']
 
 real_profile_db = db['real_user']
 
-real_profile_db.delete_many({})
-
+#real_profile_db.delete_many({})
 
 # Github API token authentication
 parser = argparse.ArgumentParser()
@@ -35,12 +34,12 @@ headers = {"Authorization": "token "+args.token}
 
 # crawled user information from github repo
 fields = ["username", "name", "email", "repo_count", "company",
-          "avatar_url", "hireable", "star_time", "primary_language"]
+          "avatar_url", "hireable", "star_time", "primary_language", "followers", "following", "starredRepositories", "repositories", "repositoriesContributedTo", "organizations", "organizationsContributedTo", "createdAt", "updatedAt", "twitterUsername", "isGitHubStar", "isCampusExpert", "isDeveloperProgramMember", "isSiteAdmin", "isViewer", "anyPinnableItems", "viewerIsFollowing", "monthlyEstimatedSponsorsIncomeInDollars", "monthlyEstimatedSponsorsIncomeInEuros", "sponsors"]
+
 
 # get all the stargazers form the repo
-
-
 def run_query(query):
+
     request = requests.post('https://api.github.com/graphql',
                             json={'query': query}, headers=headers)
     if request.status_code == 200:
@@ -69,7 +68,43 @@ query = """
           name
           bio
           company
-          repositories(first:100, isFork: false) {{
+          location
+          isEmployee
+          isHireable
+          avatarUrl
+          createdAt
+          updatedAt
+          twitterUsername
+          websiteUrl
+          isGitHubStar
+          isCampusExpert
+          isDeveloperProgramMember
+          isSiteAdmin
+          isViewer
+          anyPinnableItems
+          viewerIsFollowing
+          websiteUrl
+          monthlyEstimatedSponsorsIncomeInCents
+          estimatedNextSponsorsPayoutInCents
+          sponsors{{
+            totalCount
+          }}
+          starredRepositories {{
+            totalCount
+          }}
+          repositories {{
+            totalCount
+          }}
+          repositoriesContributedTo {{
+            totalCount
+          }}
+          organizations {{
+            totalCount
+          }}
+          # organizationsContributedTo {{
+          #   totalCount
+          # }}
+          repositories {{
             totalCount
             nodes {{
               primaryLanguage {{
@@ -77,16 +112,12 @@ query = """
               }}
             }}
           }}
-          isHireable
-          avatarUrl
-          createdAt
-          updatedAt
-          twitterUsername
-          websiteUrl
-          followers(first: 0) {{
+
+          followers {{
             totalCount
           }}
-          following(first: 0) {{
+
+          following {{
             totalCount
           }}
         }}
@@ -111,8 +142,11 @@ with open(user_filename, 'w') as stars:
     stars_writer.writerow(fields)
     while hasNextPage:
         this_query = query.format(owner, repo, endCursor)
+
         result = run_query(this_query)  # Execute the query
+
         hasNextPage = result['data']['repository']['stargazers']['pageInfo']['hasNextPage']
+
         endCursor = result['data']['repository']['stargazers']['pageInfo']['endCursor']
         endCursor = ', after: "' + endCursor + '"'
         data = result['data']['repository']['stargazers']['edges']
@@ -120,22 +154,48 @@ with open(user_filename, 'w') as stars:
         for item in data:
             username = item['node']['login']
             name = item['node']['name']
+            bio = item['node']['bio']
             email = item['node']['email']
+            location = item['node']['location']
 
-            hireable = item['node']['isHireable']
+            isHireable = item['node']['isHireable']
             company = item['node']['company']
+            isEmployee = item['node']['isEmployee']
+
             avatar_url = item['node']['avatarUrl']
 
+            repositories = item['node']['repositories']
             repo_count = item['node']['repositories']['totalCount']
+            createdAt = item['node']['createdAt']
+            updatedAt = item['node']['updatedAt']
+            twitterUsername = item['node']['twitterUsername']
+            isGitHubStar = item['node']['isGitHubStar']
 
-            
+            isCampusExpert = item['node']['isCampusExpert']
+            isDeveloperProgramMember = item['node']['isDeveloperProgramMember']
+            isSiteAdmin = item['node']['isSiteAdmin']
+            isViewer = item['node']['isViewer']
+            anyPinnableItems = item['node']['anyPinnableItems']
+            viewerIsFollowing = item['node']['viewerIsFollowing']
+
+            monthlyEstimatedSponsorsIncomeInDollars = item[
+                'node']['monthlyEstimatedSponsorsIncomeInDollars']
+            monthlyEstimatedSponsorsIncomeInEuros = item['node']['monthlyEstimatedSponsorsIncomeInEuros']
+
+            sponsors = item['node']['sponsors']['totalCount']
+            followers = item['node']['followers']['totalCount']
+            following = item['node']['following']['totalCount']
+            starredRepositories = item['node']['starredRepositories']['totalCount']
+            repositories = item['node']['repositories']['totalCount']
+            repositoriesContributedTo = item['node']['repositoriesContributedTo']['totalCount']
+            organizations = item['node']['organizations']['totalCount']
+            organizationsContributedTo = item['node']['organizationsContributedTo']['totalCount']
+
             nodes = item['node']['repositories']["nodes"]
             primary_language = [
                 node["primaryLanguage"]["name"] for node in nodes if node["primaryLanguage"] is not None
             ]
             primary_language = dict(Counter(primary_language))
-            print(primary_language)
-
 
             star_time = datetime.datetime.strptime(
                 item['starredAt'], '%Y-%m-%dT%H:%M:%SZ')
@@ -143,8 +203,8 @@ with open(user_filename, 'w') as stars:
             star_list.append((username, star_time))
 
             # write to csv file
-            stars_writer.writerow([username, name, email, repo_count, company,
-                                  avatar_url, hireable, star_time, repo_count, primary_language])
+            stars_writer.writerow([username, name, bio, email, repo_count, company,
+                                  avatar_url, isHireable, star_time, repo_count, primary_language, followers, following, starredRepositories, repositories, repositoriesContributedTo, organizations, organizationsContributedTo, createdAt, updatedAt, twitterUsername, isGitHubStar, isCampusExpert, isDeveloperProgramMember, isSiteAdmin, isViewer, anyPinnableItems, viewerIsFollowing, monthlyEstimatedSponsorsIncomeInDollars, monthlyEstimatedSponsorsIncomeInEuros, sponsors])
 
             # write to MongoDB
             real_profile_db.update_one(
@@ -155,11 +215,37 @@ with open(user_filename, 'w') as stars:
                     '$set': {
                         'username': username,
                         'fullName': name,
+                        'bio': bio,
+                        'email': email,
+                        'location': location,
+                        'hireable': isHireable,
+                        'company': company,
+                        'isEmployee': isEmployee,
+                        'avatar_url': avatar_url,
+                        'createdAt': createdAt,
+                        'updatedAt': updatedAt,
+                        'twitterUsername': twitterUsername,
+                        'isGitHubStar': isGitHubStar,
+                        'isCampusExpert': isCampusExpert,
+                        'isDeveloperProgramMember': isDeveloperProgramMember,
+                        'isSiteAdmin': isSiteAdmin,
+                        'isViewer': isViewer,
+                        'anyPinnableItems': anyPinnableItems,
+                        'viewerIsFollowing': viewerIsFollowing,
+                        'monthlyEstimatedSponsorsIncomeInDollars': monthlyEstimatedSponsorsIncomeInDollars,
+                        'monthlyEstimatedSponsorsIncomeInEuros': monthlyEstimatedSponsorsIncomeInEuros,
+                        'sponsors': sponsors,
+                        'followers': followers,
+                        'following': following,
+                        'starredRepositories': starredRepositories,
+                        'repositoriesContributedTo': repositoriesContributedTo,
+                        'organizations': organizations,
+                        'organizationsContributedTo': organizationsContributedTo,
                         'repo_count': repo_count,
                         'avatar_url': avatar_url,
-                        'hireable': hireable,
                         'star_time': star_time,
                         'primary_language': primary_language
+
                     }
                 },
                 upsert=True
@@ -167,4 +253,4 @@ with open(user_filename, 'w') as stars:
 
         count = count + 100
         print(str(count) + " users processed.")
-      
+        break

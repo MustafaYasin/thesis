@@ -11,7 +11,7 @@ import pprint
 from collections import Counter
 
 ################################# connect to DB #################################
-
+"""
 client = MongoClient(
     "mongodb+srv://mustafa:mustafa@cluster0.jzvhgwl.mongodb.net/?retryWrites=true&w=majority")
 db = client['profile']
@@ -19,6 +19,8 @@ db = client['profile']
 real_profile_db = db['real_user']
 
 real_profile_db.delete_many({})
+
+"""
 
 # Github API token authentication
 parser = argparse.ArgumentParser()
@@ -89,28 +91,25 @@ query = """
           anyPinnableItems
           viewerIsFollowing
           websiteUrl
-          sponsors{{
+          repositories (first: 10, isFork: false) {{
+            totalCount
+            nodes {{
+              primaryLanguage {{
+                name
+              }}
+            }}
+          }}
+          
+          sponsors {{
             totalCount
           }}
-          repositories {{
-            totalCount
-          }}
+
           organizations {{
             totalCount
           }}
-          # repositories {{
-          #   totalCount
-          #   nodes {{
-          #     primaryLanguage {{
-          #       name
-          #     }}
-          #   }}
-          # }}
-
           followers {{
             totalCount
           }}
-
           following {{
             totalCount
           }}
@@ -178,11 +177,12 @@ with open(user_filename, 'w') as stars:
             repositories = item['node']['repositories']['totalCount']
             organizations = item['node']['organizations']['totalCount']
 
-            # nodes = item['node']['repositories']["nodes"]
-            # primary_language = [
-            #     node["primaryLanguage"]["name"] for node in nodes if node["primaryLanguage"] is not None
-            # ]
-            # primary_language = dict(Counter(primary_language))
+
+            nodes = item['node']['repositories']["nodes"]
+            primary_language = [
+                node["primaryLanguage"]["name"] for node in nodes if node["primaryLanguage"] is not None
+              ]
+            primary_language = dict(Counter(primary_language))
 
             star_time = datetime.datetime.strptime(
                 item['starredAt'], '%Y-%m-%dT%H:%M:%SZ')
@@ -191,9 +191,9 @@ with open(user_filename, 'w') as stars:
 
             # write to csv file
             stars_writer.writerow([username, name, bio, email, repo_count, company,
-                                  avatar_url, isHireable, star_time, repo_count, primary_language, followers, following,
+                                  avatar_url, isHireable, star_time, repo_count, followers, following,
                                   repositories, organizations, createdAt, updatedAt, twitterUsername, isGitHubStar, isCampusExpert,
-                                  isDeveloperProgramMember, isSiteAdmin, isViewer, anyPinnableItems, viewerIsFollowing, sponsors])
+                                  isDeveloperProgramMember, isSiteAdmin, isViewer, anyPinnableItems, viewerIsFollowing, sponsors, primary_language])
 
             # write to MongoDB
             real_profile_db.update_one(
@@ -221,19 +221,14 @@ with open(user_filename, 'w') as stars:
                         'isViewer': isViewer,
                         'anyPinnableItems': anyPinnableItems,
                         'viewerIsFollowing': viewerIsFollowing,
-                        'monthlyEstimatedSponsorsIncomeInDollars': monthlyEstimatedSponsorsIncomeInDollars,
-                        'monthlyEstimatedSponsorsIncomeInEuros': monthlyEstimatedSponsorsIncomeInEuros,
                         'sponsors': sponsors,
                         'followers': followers,
                         'following': following,
-                        'starredRepositories': starredRepositories,
-                        'repositoriesContributedTo': repositoriesContributedTo,
                         'organizations': organizations,
-                        'organizationsContributedTo': organizationsContributedTo,
                         'repo_count': repo_count,
                         'avatar_url': avatar_url,
                         'star_time': star_time,
-                        'primary_language': primary_language
+                        # 'primary_language': primary_language
 
                     }
                 },

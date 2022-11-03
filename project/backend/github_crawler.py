@@ -92,21 +92,12 @@ query = """
           sponsors{{
             totalCount
           }}
-          # starredRepositories {{ # causing 502 error
-          #   totalCount
-          # }}
           repositories {{
             totalCount
           }}
-          # repositoriesContributedTo {{ # causing 502 error
-          #   totalCount
-          # }}
           organizations {{
             totalCount
           }}
-          # organizationsContributedTo {{ # can't be find in user
-          #   totalCount
-          # }}
           # repositories {{
           #   totalCount
           #   nodes {{
@@ -184,11 +175,8 @@ with open(user_filename, 'w') as stars:
             sponsors = item['node']['sponsors']['totalCount']
             followers = item['node']['followers']['totalCount']
             following = item['node']['following']['totalCount']
-            # starredRepositories = item['node']['starredRepositories']['totalCount'] # causing 502 error
             repositories = item['node']['repositories']['totalCount']
-            # repositoriesContributedTo = item['node']['repositoriesContributedTo']['totalCount'] # causing 502 error
             organizations = item['node']['organizations']['totalCount']
-            # organizationsContributedTo = item['node']['organizationsContributedTo']['totalCount']
 
             # nodes = item['node']['repositories']["nodes"]
             # primary_language = [
@@ -204,10 +192,8 @@ with open(user_filename, 'w') as stars:
             # write to csv file
             stars_writer.writerow([username, name, bio, email, repo_count, company,
                                   avatar_url, isHireable, star_time, repo_count, primary_language, followers, following,
-                                  starredRepositories, repositories, repositoriesContributedTo, organizations, organizationsContributedTo,
-                                  createdAt, updatedAt, twitterUsername, isGitHubStar, isCampusExpert, isDeveloperProgramMember, isSiteAdmin,
-                                  isViewer, anyPinnableItems, viewerIsFollowing, monthlyEstimatedSponsorsIncomeInDollars,
-                                  monthlyEstimatedSponsorsIncomeInEuros, sponsors])
+                                  repositories, organizations, createdAt, updatedAt, twitterUsername, isGitHubStar, isCampusExpert,
+                                  isDeveloperProgramMember, isSiteAdmin, isViewer, anyPinnableItems, viewerIsFollowing, sponsors])
 
             # write to MongoDB
             real_profile_db.update_one(

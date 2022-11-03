@@ -80,7 +80,7 @@ with open(user_filename, 'w') as stars:
         endCursor = result['data']['repository']['stargazers']['pageInfo']['endCursor']
         endCursor = ', after: "' + endCursor + '"'
         data = result['data']['repository']['stargazers']['edges']
-        print(data)
+
 
 
         for item in data:

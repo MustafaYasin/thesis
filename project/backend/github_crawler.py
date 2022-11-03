@@ -18,7 +18,7 @@ db = client['profile']
 
 real_profile_db = db['real_user']
 
-#real_profile_db.delete_many({})
+real_profile_db.delete_many({})
 
 # Github API token authentication
 parser = argparse.ArgumentParser()
@@ -34,7 +34,12 @@ headers = {"Authorization": "token "+args.token}
 
 # crawled user information from github repo
 fields = ["username", "name", "email", "repo_count", "company",
-          "avatar_url", "hireable", "star_time", "primary_language", "followers", "following", "starredRepositories", "repositories", "repositoriesContributedTo", "organizations", "organizationsContributedTo", "createdAt", "updatedAt", "twitterUsername", "isGitHubStar", "isCampusExpert", "isDeveloperProgramMember", "isSiteAdmin", "isViewer", "anyPinnableItems", "viewerIsFollowing", "monthlyEstimatedSponsorsIncomeInDollars", "monthlyEstimatedSponsorsIncomeInEuros", "sponsors"]
+          "avatar_url", "hireable", "star_time", "primary_language",
+          "followers", "following", "starredRepositories", "repositories",
+          "repositoriesContributedTo", "organizations", "organizationsContributedTo",
+          "createdAt", "updatedAt", "twitterUsername", "isGitHubStar", "isCampusExpert",
+          "isDeveloperProgramMember", "isSiteAdmin", "isViewer", "anyPinnableItems", "viewerIsFollowing",
+          "monthlyEstimatedSponsorsIncomeInDollars", "monthlyEstimatedSponsorsIncomeInEuros", "sponsors"]
 
 
 # get all the stargazers form the repo
@@ -84,34 +89,32 @@ query = """
           anyPinnableItems
           viewerIsFollowing
           websiteUrl
-          monthlyEstimatedSponsorsIncomeInCents
-          estimatedNextSponsorsPayoutInCents
           sponsors{{
             totalCount
           }}
-          starredRepositories {{
-            totalCount
-          }}
-          repositories {{
-            totalCount
-          }}
-          repositoriesContributedTo {{
-            totalCount
-          }}
-          organizations {{
-            totalCount
-          }}
-          # organizationsContributedTo {{
+          # starredRepositories {{ # causing 502 error
           #   totalCount
           # }}
           repositories {{
             totalCount
-            nodes {{
-              primaryLanguage {{
-                name
-              }}
-            }}
           }}
+          # repositoriesContributedTo {{ # causing 502 error
+          #   totalCount
+          # }}
+          organizations {{
+            totalCount
+          }}
+          # organizationsContributedTo {{ # can't be find in user
+          #   totalCount
+          # }}
+          # repositories {{
+          #   totalCount
+          #   nodes {{
+          #     primaryLanguage {{
+          #       name
+          #     }}
+          #   }}
+          # }}
 
           followers {{
             totalCount
@@ -142,16 +145,16 @@ with open(user_filename, 'w') as stars:
     stars_writer.writerow(fields)
     while hasNextPage:
         this_query = query.format(owner, repo, endCursor)
-
         result = run_query(this_query)  # Execute the query
-
         hasNextPage = result['data']['repository']['stargazers']['pageInfo']['hasNextPage']
-
         endCursor = result['data']['repository']['stargazers']['pageInfo']['endCursor']
         endCursor = ', after: "' + endCursor + '"'
         data = result['data']['repository']['stargazers']['edges']
+        pp = pprint.PrettyPrinter(indent=4)
+        pp.pprint(data)
 
         for item in data:
+
             username = item['node']['login']
             name = item['node']['name']
             bio = item['node']['bio']
@@ -178,24 +181,20 @@ with open(user_filename, 'w') as stars:
             anyPinnableItems = item['node']['anyPinnableItems']
             viewerIsFollowing = item['node']['viewerIsFollowing']
 
-            monthlyEstimatedSponsorsIncomeInDollars = item[
-                'node']['monthlyEstimatedSponsorsIncomeInDollars']
-            monthlyEstimatedSponsorsIncomeInEuros = item['node']['monthlyEstimatedSponsorsIncomeInEuros']
-
             sponsors = item['node']['sponsors']['totalCount']
             followers = item['node']['followers']['totalCount']
             following = item['node']['following']['totalCount']
-            starredRepositories = item['node']['starredRepositories']['totalCount']
+            # starredRepositories = item['node']['starredRepositories']['totalCount'] # causing 502 error
             repositories = item['node']['repositories']['totalCount']
-            repositoriesContributedTo = item['node']['repositoriesContributedTo']['totalCount']
+            # repositoriesContributedTo = item['node']['repositoriesContributedTo']['totalCount'] # causing 502 error
             organizations = item['node']['organizations']['totalCount']
-            organizationsContributedTo = item['node']['organizationsContributedTo']['totalCount']
+            # organizationsContributedTo = item['node']['organizationsContributedTo']['totalCount']
 
-            nodes = item['node']['repositories']["nodes"]
-            primary_language = [
-                node["primaryLanguage"]["name"] for node in nodes if node["primaryLanguage"] is not None
-            ]
-            primary_language = dict(Counter(primary_language))
+            # nodes = item['node']['repositories']["nodes"]
+            # primary_language = [
+            #     node["primaryLanguage"]["name"] for node in nodes if node["primaryLanguage"] is not None
+            # ]
+            # primary_language = dict(Counter(primary_language))
 
             star_time = datetime.datetime.strptime(
                 item['starredAt'], '%Y-%m-%dT%H:%M:%SZ')
@@ -204,7 +203,11 @@ with open(user_filename, 'w') as stars:
 
             # write to csv file
             stars_writer.writerow([username, name, bio, email, repo_count, company,
-                                  avatar_url, isHireable, star_time, repo_count, primary_language, followers, following, starredRepositories, repositories, repositoriesContributedTo, organizations, organizationsContributedTo, createdAt, updatedAt, twitterUsername, isGitHubStar, isCampusExpert, isDeveloperProgramMember, isSiteAdmin, isViewer, anyPinnableItems, viewerIsFollowing, monthlyEstimatedSponsorsIncomeInDollars, monthlyEstimatedSponsorsIncomeInEuros, sponsors])
+                                  avatar_url, isHireable, star_time, repo_count, primary_language, followers, following,
+                                  starredRepositories, repositories, repositoriesContributedTo, organizations, organizationsContributedTo,
+                                  createdAt, updatedAt, twitterUsername, isGitHubStar, isCampusExpert, isDeveloperProgramMember, isSiteAdmin,
+                                  isViewer, anyPinnableItems, viewerIsFollowing, monthlyEstimatedSponsorsIncomeInDollars,
+                                  monthlyEstimatedSponsorsIncomeInEuros, sponsors])
 
             # write to MongoDB
             real_profile_db.update_one(

@@ -11,7 +11,8 @@ import pprint
 from collections import Counter
 
 ################################# connect to DB #################################
-"""
+
+
 client = MongoClient(
     "mongodb+srv://mustafa:mustafa@cluster0.jzvhgwl.mongodb.net/?retryWrites=true&w=majority")
 db = client['profile']
@@ -20,7 +21,6 @@ real_profile_db = db['real_user']
 
 real_profile_db.delete_many({})
 
-"""
 
 # Github API token authentication
 parser = argparse.ArgumentParser()
@@ -140,8 +140,8 @@ with open(user_filename, 'w') as stars:
         endCursor = result['data']['repository']['stargazers']['pageInfo']['endCursor']
         endCursor = ', after: "' + endCursor + '"'
         data = result['data']['repository']['stargazers']['edges']
-        pp = pprint.PrettyPrinter(indent=4)
-        pp.pprint(data)
+
+
 
         for item in data:
 
@@ -228,7 +228,7 @@ with open(user_filename, 'w') as stars:
                         'repo_count': repo_count,
                         'avatar_url': avatar_url,
                         'star_time': star_time,
-                        # 'primary_language': primary_language
+                        'primary_language': primary_language
 
                     }
                 },
@@ -237,4 +237,3 @@ with open(user_filename, 'w') as stars:
 
         count = count + 100
         print(str(count) + " users processed.")
-        break

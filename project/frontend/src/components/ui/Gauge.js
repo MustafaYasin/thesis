@@ -3,7 +3,7 @@ import "react-circular-progressbar/dist/styles.css";
 
 function Gauge(props) {
   const score = props.recommendations;
-  const value = (score *3.33).toFixed(1);
+  const value = (score *10).toFixed(1);
 
   //function for color calculation
   const calcColor = (percent, start, end) => {

@@ -3,7 +3,7 @@ export const DUMMY_DATA=[{
     "avatar_url": "https://avatars.githubusercontent.com/u/5482320?u=c2d4799ecd5e827076eca00cbd635b2720013685&v=4",
     "hireable": true,
     "fullName": "David R Soller",
-    "repo_count": 36,
+    "repo_count": 28,
     "star_time": "2017-01-20 06:26:19",
     "username": "3ygun",
     "recommendations": 9.89010989010989

@@ -1,66 +1,68 @@
 .header {
-    width: 100%;
-    height: 5rem;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background-color: #f7f5ff;
-    padding: 0 10%;
-    border-style: solid;
-    border-width: 1px;
-    border-color: #c6c6c6;
-    border-bottom-left-radius: 1rem;
-    border-bottom-right-radius: 1rem;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-  }
-  
-  .logo {
-    font-size: 2rem;
-    color: rgb(30, 29, 29);
-    font-weight: bold;
-  }
-  
-  .header ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    align-items: baseline;
-  }
-  
-  .header li {
-    margin-left: 3rem;
-  }
-  
-  .header li:hover {
-    text-decoration: underline;
-  }
-  .header a {
-    text-decoration: none;
-    font-size: 1.5rem;
-    color: #444142;
-  }
-  
-  .header a:hover,
-  .header a:active,
-  .header a.active {
-    color: rgb(75, 73, 73);
-  }
-  
-  .badge {
-    background-color: #201f1f;
-    color: rgb(255, 255, 255);
-    border-radius: 12px;
-    padding: 0 1rem;
-    margin-left: 0.5rem;
-  }
+  width: 100%;
+  height: 5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #f7f5ff;
+  padding: 0 10%;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #c6c6c6;
+  border-bottom-left-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
 
-  .badge:hover {
-    height: 50%;
-    width: 50%;
-    background-color: #4700c1;
-    color: rgb(23, 21, 21);
-    border-radius: 50%;
-    padding: 0 1rem;
-    margin-left: 0.5rem;
-  }
+.logo {
+  font-size: 2rem;
+  color: rgb(30, 29, 29);
+  font-weight: bold;
+}
+.logo:hover {
+  text-decoration: underline;
+}
+.header ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: baseline;
+}
+
+.header li {
+  margin-left: 3rem;
+}
+
+.header li:hover {
+  text-decoration: underline;
+}
+.header a {
+  text-decoration: none;
+  font-size: 1.5rem;
+  color: #444142;
+}
+
+.header a:hover,
+.header a:active,
+.header a.active {
+  color: rgb(75, 73, 73);
+}
+
+.badge {
+  background-color: #201f1f;
+  color: rgb(255, 255, 255);
+  border-radius: 12px;
+  padding: 0 1rem;
+  margin-left: 0.5rem;
+}
+
+.badge:hover {
+  height: 50%;
+  width: 50%;
+  background-color: #4700c1;
+  color: rgb(23, 21, 21);
+  border-radius: 50%;
+  padding: 0 1rem;
+  margin-left: 0.5rem;
+}

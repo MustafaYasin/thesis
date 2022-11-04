@@ -1,0 +1,33 @@
+.dataScientist{
+    width: fit-content;
+}
+
+.dataScientist h3{
+    padding: 1rem;
+}
+.image{
+    margin-left: 4rem;
+}
+.dataScientist img{
+    height: 120px;
+    width: 120px;
+}
+.link{
+    padding-bottom: 1rem;
+    padding-top: 0.5rem;
+}
+.link button{
+    font-size:x-large;
+    font-weight: 600;
+    color: rgb(0, 128, 255);
+    background-color: white;
+    border-color: rgb(0, 128, 255);
+    transition: background-color, 0.15s;
+    transition: color, 0.15s;
+}
+.link button:hover{
+    color: white;
+    background-color: rgb(0, 128, 255);
+    border-color: white;
+    cursor: pointer;
+}

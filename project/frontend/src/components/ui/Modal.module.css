@@ -1,3 +1,6 @@
+.outer {
+  position: relative;
+}
 .modal {
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
   border-radius: 6px;
@@ -11,15 +14,23 @@
   left: calc(50% - 15rem);
 }
 .close {
-  font: inherit;
-  cursor: pointer;
-  color: #77002e;
-  border: 1px solid #77002e;
-  background-color: transparent;
-  padding: 0.5rem 1.5rem;
-  border-radius: 4px;
+  position: absolute;
+  top: -20px;
+  right: -10px;
 }
 
-.close:hover {
-  background-color: #ffe2ed;
+.closeButton {
+  font-size: 20px;
+  border-radius: 20px;
+  background-color: lightgray;
+  border: none;
+  padding: 0.4rem;
+  transition: color 0.15s;
+  transition: background-color 0.15s;
+}
+.closeButton:hover {
+  cursor: pointer;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+  background-color: brown;
+  color: white;
 }

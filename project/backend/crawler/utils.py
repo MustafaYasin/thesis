@@ -12,8 +12,6 @@ def retrieve_fields(item):
     ]
     
     primary_language = dict(Counter(primary_language))
-    from pprint import pprint
-    pprint(node)
     result = {
         'username': node['login'],
         'fullName': node['name'],
@@ -59,9 +57,6 @@ def store_to_mongodb(db, data):
 
 
 def store_to_csv(writer, node):
-    print('-----------------------------------------------------------')
-    from pprint import pprint
-    pprint(node)
     writer.writerow([node['username'], node['fullName'], node['bio'], node['email'], node['repository_count'], node['company'], node['avatar_url'], node['isHireable'], node['star_time'], node['followers'], node['following'], node['organizations'],
                     node['createdAt'], node['updatedAt'], node['twitterUsername'], node['isGitHubStar'], node['isCampusExpert'], node['isDeveloperProgramMember'], node['isSiteAdmin'], node['isViewer'], node['anyPinnableItems'], node['viewerIsFollowing'], node['sponsors'], node['primary_language']])
 

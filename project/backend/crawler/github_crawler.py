@@ -128,8 +128,8 @@ count = 0
 
 
 ############################### Add user data to the database ########################
-user_filename = owner + "__" + repo + ".csv"
-with open(user_filename, 'w') as stars:
+user_filename = "../user_data_csv/" + owner + "_" + repo + ".csv"
+with open( user_filename, 'w') as stars:
     stars_writer = csv.writer(stars)
     stars_writer.writerow(fields)
     while hasNextPage:

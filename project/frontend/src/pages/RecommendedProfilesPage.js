@@ -53,13 +53,10 @@ function RecommendedProfilesPage() {
   return (
     <div className={classes.basic}>
       <div className={classes.filter}>
-        <h1>Filter</h1>
-        <Card>
           <Filter
             setFilteredProfiles={setFilteredProfiles}
             allProfiles={DUMMY_DATA}
           />
-        </Card>
       </div>
       <div className={classes.profiles}>
         <h1>Recommended Profiles for you</h1>

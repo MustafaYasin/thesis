@@ -19,7 +19,6 @@ db = client['profile']
 
 real_profile_db = db['real_user']
 
-real_profile_db.delete_many({})
 
 
 # Github API token authentication
@@ -144,41 +143,41 @@ with open(user_filename, 'w') as stars:
 
 
         for item in data:
+            node = item['node']
+            username = node['login']
+            name = node['name']
+            bio = node['bio']
+            email = node['email']
+            location = node['location']
 
-            username = item['node']['login']
-            name = item['node']['name']
-            bio = item['node']['bio']
-            email = item['node']['email']
-            location = item['node']['location']
+            isHireable = node['isHireable']
+            company = node['company']
+            isEmployee = node['isEmployee']
 
-            isHireable = item['node']['isHireable']
-            company = item['node']['company']
-            isEmployee = item['node']['isEmployee']
+            avatar_url = node['avatarUrl']
 
-            avatar_url = item['node']['avatarUrl']
+            repositories = node['repositories']
+            repo_count = node['repositories']['totalCount']
+            createdAt = node['createdAt']
+            updatedAt = node['updatedAt']
+            twitterUsername = node['twitterUsername']
+            isGitHubStar = node['isGitHubStar']
 
-            repositories = item['node']['repositories']
-            repo_count = item['node']['repositories']['totalCount']
-            createdAt = item['node']['createdAt']
-            updatedAt = item['node']['updatedAt']
-            twitterUsername = item['node']['twitterUsername']
-            isGitHubStar = item['node']['isGitHubStar']
+            isCampusExpert = node['isCampusExpert']
+            isDeveloperProgramMember = node['isDeveloperProgramMember']
+            isSiteAdmin = node['isSiteAdmin']
+            isViewer = node['isViewer']
+            anyPinnableItems = node['anyPinnableItems']
+            viewerIsFollowing = node['viewerIsFollowing']
 
-            isCampusExpert = item['node']['isCampusExpert']
-            isDeveloperProgramMember = item['node']['isDeveloperProgramMember']
-            isSiteAdmin = item['node']['isSiteAdmin']
-            isViewer = item['node']['isViewer']
-            anyPinnableItems = item['node']['anyPinnableItems']
-            viewerIsFollowing = item['node']['viewerIsFollowing']
-
-            sponsors = item['node']['sponsors']['totalCount']
-            followers = item['node']['followers']['totalCount']
-            following = item['node']['following']['totalCount']
-            repositories = item['node']['repositories']['totalCount']
-            organizations = item['node']['organizations']['totalCount']
+            sponsors = node['sponsors']['totalCount']
+            followers = node['followers']['totalCount']
+            following = node['following']['totalCount']
+            repositories = node['repositories']['totalCount']
+            organizations = node['organizations']['totalCount']
 
 
-            nodes = item['node']['repositories']["nodes"]
+            nodes = node['repositories']["nodes"]
             primary_language = [
                 node["primaryLanguage"]["name"] for node in nodes if node["primaryLanguage"] is not None
               ]

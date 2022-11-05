@@ -1,7 +1,9 @@
+
+
 query = """
 {{
   repository(owner: "{0}", name: "{1}") {{
-    stargazers(first: 100 {2}) {{
+    stargazers(first: 100) {{
       pageInfo {{
         endCursor
         hasNextPage
@@ -32,7 +34,7 @@ query = """
           anyPinnableItems
           viewerIsFollowing
           websiteUrl
-          repositories (first: 10, isFork: false) {{
+          repositories (first: 100, isFork: false) {{
             totalCount
             nodes {{
               primaryLanguage {{

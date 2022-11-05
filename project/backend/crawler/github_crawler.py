@@ -6,7 +6,7 @@ import pandas as pd
 from graphql_query import query, fields
 from database import db_connection, run_query
 from utils import retrieve_fields, store_to_mongodb, store_to_csv
-################################# connect to DB #################################
+
 
 
 
@@ -18,25 +18,28 @@ parser.add_argument('-r', '--repo', required=True,
                     help="The GitHub Repo,in the form like 'user/repo'.")
 args = parser.parse_args()
 
+# Arguments given by user whiel running the script
 owner = args.repo.split('/')[0]
 repo = args.repo.split('/')[1]
 token = args.token
-# get all the stargazers form the repo
 
-star_list = []
+
+
+# star_list = []
 hasNextPage = True
-endCursor = ""  # Start from begining
+endCursor = ""  
 count = 0
 
-
+# This function is used to retrieve the current page of the data
 def retrieve_current_cursor(owner, repo, token, endCursor):
     formatted_query = query.format(owner, repo, endCursor)
-    result = run_query(token, formatted_query)  # Execute the query
+    result = run_query(token, formatted_query)  
     hasNextPage = result['data']['repository']['stargazers']['pageInfo']['hasNextPage']
     endCursor = result['data']['repository']['stargazers']['pageInfo']['endCursor']
     endCursor = ', after: "' + endCursor + '"'
     data = result['data']['repository']['stargazers']['edges']
 
+    # Looping through retrieved data and storing it in CSV and MongoDB
     for item in data:
         entry = retrieve_fields(item)
         # write to csv file
@@ -46,7 +49,7 @@ def retrieve_current_cursor(owner, repo, token, endCursor):
     return hasNextPage, endCursor 
 
 
-############################### Add user data to the database ########################
+# Creating a CSV file to store the data
 user_filename = "../user_data_csv/" + owner + "_" + repo + ".csv"
 with open(user_filename, 'w') as stars:
     stars_writer = csv.writer(stars)

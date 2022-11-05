@@ -9,6 +9,7 @@
   background-color: white;
   border-radius: 10px;
   padding: 20px 25px 40px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
 }
 
 .wrapper header h2 {
@@ -43,7 +44,7 @@
     border-radius: 5px;
     text-align: center;
     border: 1px solid #999;
-    -moz-appearance: none;
+    -moz-appearance: textfield;
 }
 
 .field input[type="number"]::-webkit-outer-spin-button,
@@ -72,5 +73,34 @@
     right: 25%;
     position: absolute;
     border-radius: 5px;
+    background-color: #17A2B8;
+}
+.rangeInput{
+    position: relative;
+}
+.rangeInput input{
+    position: absolute;
+    top: -7px;
+    height: 5px;
+    width: 100%;
+    pointer-events: none;
+    background: none;
+    -webkit-appearance: none;
+}
+.rangeInput input[type="range"]::-webkit-slider-thumb{
+    height: 17px;
+    width: 17px;
+    border-radius: 50%;
+    pointer-events: auto;
+    -webkit-appearance: none;
+    background-color: #17A2B8;
+}
+.rangeInput input[type="range"]::-moz-range-thumb{
+    height: 17px;
+    width: 17px;
+    border-radius: 50%;
+    border: none;
+    pointer-events: auto;
+    -moz-appearance: none;
     background-color: #17A2B8;
 }

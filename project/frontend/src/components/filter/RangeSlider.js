@@ -28,14 +28,14 @@ function RangeSlider() {
             className={classes.rangeMin}
             min={0}
             max={100}
-            value={25}
+            defaultValue={25}
           />
           <input
             type="range"
             className={classes.rangeMax}
             min={0}
             max={100}
-            value={75}
+            defaultValue={75}
           />
         </div>
       </div>

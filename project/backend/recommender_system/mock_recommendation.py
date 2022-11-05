@@ -18,7 +18,7 @@ max_repo_count = max(result, key=lambda x: x['repository_count'])['repository_co
 for user in result:
     email = user['email']
     repository_count = user['repository_count']
-    hireable = user['hireable']
+    hireable = user['isHireable']
     recommendation = (repository_count / max_repo_count) * hireable * 100
     real_profile_db.update_one({'email': email}, {'$set': {'recommendations': recommendation}})
 

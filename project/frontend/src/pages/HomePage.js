@@ -1,6 +1,7 @@
 import Card from "../components/ui/Card";
 import { Link } from "react-router-dom";
 import classes from "./HomePage.module.css";
+import RangeSlider from "../components/filter/RangeSlider";
 
 function CompareFavoritesPage() {
   return (
@@ -24,6 +25,7 @@ function CompareFavoritesPage() {
           </div>
         </Card>
       </div>
+      <RangeSlider />
     </>
   );
 }

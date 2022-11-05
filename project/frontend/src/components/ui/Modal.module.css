@@ -15,13 +15,16 @@
 }
 .close {
   position: absolute;
-  top: -20px;
-  right: -10px;
+  top: -24px;
+  right: -12px;
 }
 
 .closeButton {
+  opacity: 0.75;
+  width: 34px;
+  height: 34px;
+  border-radius: 17px;
   font-size: 20px;
-  border-radius: 20px;
   background-color: lightgray;
   border: none;
   padding: 0.4rem;
@@ -29,8 +32,9 @@
   transition: background-color 0.15s;
 }
 .closeButton:hover {
+  opacity: 1;
   cursor: pointer;
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
-  background-color: brown;
+  background-color: darkgray;
   color: white;
 }

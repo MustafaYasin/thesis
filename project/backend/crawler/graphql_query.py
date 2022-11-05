@@ -3,7 +3,7 @@
 query = """
 {{
   repository(owner: "{0}", name: "{1}") {{
-    stargazers(first: 1000) {{
+    stargazers(first: 100 {2}) {{
       pageInfo {{
         endCursor
         hasNextPage

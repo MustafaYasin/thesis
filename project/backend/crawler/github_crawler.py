@@ -5,7 +5,8 @@ from flask_restful import Resource, reqparse
 import pandas as pd
 from graphql_query import query, fields
 from database import db_connection, run_query
-from utils import retrieve_fields, store_to_mongodb, store_to_csv
+from utils import retrieve_fields, store_to_mongodb, store_to_csv, domain
+from graphql_query import domain
 
 
 
@@ -41,7 +42,7 @@ def retrieve_current_cursor(owner, repo, token, endCursor):
 
     # Looping through retrieved data and storing it in CSV and MongoDB
     for item in data:
-        entry = retrieve_fields(item)
+        entry = retrieve_fields(item, domain)
         # write to csv file
         store_to_csv(stars_writer, entry)
         # write to MongoDB

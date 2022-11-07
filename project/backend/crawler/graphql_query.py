@@ -70,12 +70,12 @@ fields = ["username", "fullName", "bio", "email", "repository_count",
           "createdAt", "updatedAt", "twitterUsername", "isGitHubStar",
           "isCampusExpert", "isDeveloperProgramMember", "isSiteAdmin",
           "isViewer", "anyPinnableItems", "viewerIsFollowing", "sponsors",
-          "primary_language", "yearsofExperience", "location", "domainofExpertise"]
+          "primary_language", "yearsofExperience", "location", "domainofExpertise", "activity"]
 
+# Create a CSV file to store the data in utils.py
 domain = ['AI for Medicine', 'Machine Learning', 'Computer Vision', 'Reinfrocement Learning', 'Data Engineering', 'AI for Education', 'Natural Languag',
-          'AI for Healthcare', 'AI for Social Good', 'AI for Manufacturing', 'AI for Finance', 'AI for Cybersecurity', 'AI for Marketing', 'AI for Law',
           'Backend', 'Frontend', 'Fullstack', 'Mobile', 'DevOps', 'Data Science', 'Data Engineering', 'Data Analysis', 'Data Visualization', 'Data Mining', 'Data Management',
-          'Data Security', 'Data Architecture', 'Data Modeling', 'Data Governance', 'Data Quality', 'Data Integration', 'Data Warehousing', 'Data Analytics', 'Data Science',]
+          'Data Security', 'Data Architecture', 'Data Modeling', 'Data Governance', 'Data Quality', 'Data Integration', 'Data Warehousing', 'Data Analytics', 'Data Science']
 
 
 

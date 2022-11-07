@@ -25,7 +25,8 @@ def retrieve_fields(item, domain):
         'location': node['location'],
         'isHireable': node['isHireable'],
         'company': node['company'],
-        'yearsofExperience': randrange(1, 10), # Generate random number between 1 and 10
+        'yearsofExperience': randrange(1, 10),      # Generate random number between 1 and 10
+        'activity': randrange(1, 5),                # Generate random number between 1 and 5 to represent the activity of the user
         'domainofExpertise': random.choice(domain),
         'isEmployee': node['isEmployee'],
         'avatar_url': node['avatarUrl'],
@@ -67,6 +68,6 @@ def store_to_csv(writer, node):
                     node['avatar_url'], node['isHireable'], node['star_time'], node['followers'], node['following'], node['organizations'],
                     node['createdAt'], node['updatedAt'], node['twitterUsername'], node['isGitHubStar'], node['isCampusExpert'], 
                     node['isDeveloperProgramMember'], node['isSiteAdmin'], node['isViewer'], node['anyPinnableItems'], node['viewerIsFollowing'], 
-                    node['sponsors'], node['primary_language'], node['yearsofExperience'], node['location'], node['domainofExpertise']])
+                    node['sponsors'], node['primary_language'], node['yearsofExperience'], node['domainofExpertise'], node['activity'], node['location']])
 
 

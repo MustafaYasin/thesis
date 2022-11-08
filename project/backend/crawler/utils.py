@@ -50,6 +50,8 @@ def retrieve_fields(item, domain):
     }
     return result
 
+
+# Saving the data into the Mongodb database
 def store_to_mongodb(db, data):
     email = data.pop('email')
     db.update_one(
@@ -62,7 +64,7 @@ def store_to_mongodb(db, data):
         upsert=True
     )
 
-
+# Saving the data into the CSV file
 def store_to_csv(writer, node):
     writer.writerow([node['username'], node['fullName'], node['bio'], node['email'], node['repository_count'], node['company'], 
                     node['avatar_url'], node['isHireable'], node['star_time'], node['followers'], node['following'], node['organizations'],

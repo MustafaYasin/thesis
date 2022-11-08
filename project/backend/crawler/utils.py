@@ -25,8 +25,8 @@ def retrieve_fields(item, domain):
         'location': node['location'],
         'isHireable': node['isHireable'],
         'company': node['company'],
-        'yearsofExperience': randrange(1, 10),      # Generate random number between 1 and 10
-        'activity': randrange(1, 5),                # Generate random number between 1 and 5 to represent the activity of the user
+        'yearsofExperience': randrange(0, 1, 0.1),      # Generate random number between 1 and 10
+        'activity': randrange(0, 1, 0.2),                # Generate random number between 1 and 5 to represent the activity of the user
         'domainofExpertise': random.choice(domain),
         'isEmployee': node['isEmployee'],
         'avatar_url': node['avatarUrl'],

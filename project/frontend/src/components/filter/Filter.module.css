@@ -65,7 +65,7 @@ h2 {
   margin-bottom: 2rem;
 }
 
-.programmingLanguageContainer{
+.programmingLanguageContainer {
   border-top: 0;
   border-left: 0;
   border-right: 0;
@@ -75,7 +75,13 @@ h2 {
   padding-bottom: 2rem;
 }
 
-.programmingLanguageHeaderContainer{
+.programmingLanguageHeaderContainer {
   margin-top: 0.5rem;
   margin-left: 1rem;
+}
+
+.rangeSliderContainer {
+  position: fixed;
+  left: 0;
+  bottom: 12rem;
 }

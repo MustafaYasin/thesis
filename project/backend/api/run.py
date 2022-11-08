@@ -36,7 +36,7 @@ class RecommendCoFounder(Resource):
         return {'recommended_users': recommended_users}, 200
 
 
-api.add_resource(RecommendCoFounder, '/recommend')
+api.add_resource(RecommendCoFounder, '/g  uztfdy cfx 1^ ')
         
 
 if __name__ == "__main__":

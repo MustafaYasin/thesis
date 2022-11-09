@@ -3,7 +3,7 @@ import "react-circular-progressbar/dist/styles.css";
 
 function Gauge(props) {
   const score = props.recommendations;
-  const value = (score *10).toFixed(1);
+  const value = (score *100).toFixed(1);
 
   //function for color calculation
   const calcColor = (percent, start, end) => {
@@ -16,7 +16,7 @@ function Gauge(props) {
 
   return (
     <CircularProgressbar
-      value={value}
+      value={(props.recommendations*100).toFixed(1)}
       text={`${value}%`}
       circleRatio={0.7}
       styles={{

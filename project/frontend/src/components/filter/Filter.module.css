@@ -83,5 +83,16 @@ h2 {
 .rangeSliderContainer {
   position: fixed;
   left: 0;
-  bottom: 12rem;
+  bottom: 23rem;
+}
+
+.sliderBox{
+  position: fixed;
+  left: 26rem;
+  top: 6rem;
+  display: flex;
+  flex-direction: column;
+}
+.featureSlider{
+  margin-bottom: 2rem;
 }

@@ -1,10 +1,14 @@
 import classes from "./Filter.module.css";
 import { useState } from "react";
 import RangeSlider from "./RangeSlider";
+import Slider from "./Slider";
 
 function Filter(props) {
   const [allPressed, setAllPressed] = useState(true);
   const [hirePressed, setHirePressed] = useState(false);
+  const [activityFactor, setActivityFactor] = useState(1);
+  const [dataKingFactor, setDataKingFactor] = useState(1);
+  const [feature3Factor, setFeature3Factor] = useState(1);
 
   function hireableHandler() {
     if (hirePressed) {
@@ -18,6 +22,28 @@ function Filter(props) {
       setAllPressed(false);
       setHirePressed(true);
     }
+  }
+  
+  function calcRecommend() {
+    const len = props.allProfiles.length;
+    for (let i = 0; i < len; i++) {
+      props.allProfiles[i].recommendations =
+        (activityFactor * props.allProfiles[i].feature_1 +
+          dataKingFactor * props.allProfiles[i].feature_2 +
+          feature3Factor * props.allProfiles[i].feature_3) /
+        (activityFactor*1.0 + dataKingFactor + feature3Factor);
+    }
+  }
+
+  function handleActivitySlider(event) {
+    setActivityFactor(event.target.value);
+    calcRecommend();
+  }
+  function handleDataKingSlider(event) {
+    setDataKingFactor(event.target.value);
+  }
+  function handleFeature3Slider(event) {
+    setFeature3Factor(event.target.value);
   }
 
   return (
@@ -154,6 +180,32 @@ function Filter(props) {
       </div>
       <div className={classes.rangeSliderContainer}>
         <RangeSlider />
+      </div>
+      <div className={classes.sliderBox}>
+        <div className={classes.featureSlider}>
+          <Slider
+            featureName="Activity"
+            featureValue={activityFactor}
+            setFeatureValue={setActivityFactor}
+            handleSlider={handleActivitySlider}
+          />
+        </div>
+        <div className={classes.featureSlider}>
+          <Slider
+            feature="DataKing"
+            featureValue={dataKingFactor}
+            setFeatureValue={setDataKingFactor}
+            handleSlider={handleDataKingSlider}
+          />
+        </div>
+        <div className={classes.featureSlider}>
+          <Slider
+            feature="Feature 3"
+            featureValue={feature3Factor}
+            setFeatureValue={setFeature3Factor}
+            handleSlider={handleFeature3Slider}
+          />
+        </div>
       </div>
     </>
   );

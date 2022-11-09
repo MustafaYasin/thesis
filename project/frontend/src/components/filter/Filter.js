@@ -23,7 +23,7 @@ function Filter(props) {
       setHirePressed(true);
     }
   }
-  
+
   function calcRecommend() {
     const len = props.allProfiles.length;
     for (let i = 0; i < len; i++) {
@@ -31,19 +31,28 @@ function Filter(props) {
         (activityFactor * props.allProfiles[i].feature_1 +
           dataKingFactor * props.allProfiles[i].feature_2 +
           feature3Factor * props.allProfiles[i].feature_3) /
-        (activityFactor*1.0 + dataKingFactor + feature3Factor);
+        (activityFactor * 1.0 + dataKingFactor*1.0 + feature3Factor*1.0);
     }
   }
 
   function handleActivitySlider(event) {
     setActivityFactor(event.target.value);
     calcRecommend();
+    const sorted = [...props.allProfiles].sort((a, b) => b.recommendations - a.recommendations);
+    props.setFilteredProfiles(sorted);
+
   }
   function handleDataKingSlider(event) {
     setDataKingFactor(event.target.value);
+    calcRecommend();
+    const sorted = [...props.allProfiles].sort((a, b) => b.recommendations - a.recommendations);
+    props.setFilteredProfiles(sorted);
   }
   function handleFeature3Slider(event) {
     setFeature3Factor(event.target.value);
+    calcRecommend();
+    const sorted = [...props.allProfiles].sort((a, b) => b.recommendations - a.recommendations);
+    props.setFilteredProfiles(sorted);
   }
 
   return (
@@ -178,9 +187,9 @@ function Filter(props) {
           </div>
         </div>
       </div>
-      <div className={classes.rangeSliderContainer}>
+      {/* <div className={classes.rangeSliderContainer}>
         <RangeSlider />
-      </div>
+      </div> */}
       <div className={classes.sliderBox}>
         <div className={classes.featureSlider}>
           <Slider

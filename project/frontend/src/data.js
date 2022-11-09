@@ -6,7 +6,10 @@ export const DUMMY_DATA=[{
     "repo_count": 28,
     "star_time": "2017-01-20 06:26:19",
     "username": "3ygun",
-    "recommendations": 9.89010989010989
+    "feature_1": Math.random(),
+    "feature_2": Math.random(),
+    "feature_3": Math.random(),
+    "recommendations": 0.89010989010989
 },
 {
     "email": "linyiyu1992@gmail.com",
@@ -16,7 +19,10 @@ export const DUMMY_DATA=[{
     "repo_count": 36,
     "star_time": "2017-01-22 08:30:39",
     "username": "attila-lin",
-    "recommendations": 9.89010989010989
+    "feature_1": Math.random(),
+    "feature_2": Math.random(),
+    "feature_3": Math.random(),
+    "recommendations": 0.89010989010989
 },
 {
     "email": "_@hideyukisaito.info",
@@ -26,7 +32,10 @@ export const DUMMY_DATA=[{
     "repo_count": 36,
     "star_time": "2017-03-16 18:04:06",
     "username": "hideyukisaito",
-    "recommendations": 9.89010989010989
+    "feature_1": Math.random(),
+    "feature_2": Math.random(),
+    "feature_3": Math.random(),
+    "recommendations": 0.89010989010989
 },
 {
     "email": "lg342@cornell.edu",
@@ -36,7 +45,10 @@ export const DUMMY_DATA=[{
     "repo_count": 35,
     "star_time": "2017-01-18 19:33:19",
     "username": "leegao",
-    "recommendations": 9.615384615384617
+    "feature_1": Math.random(),
+    "feature_2": Math.random(),
+    "feature_3": Math.random(),
+    "recommendations": 0.615384615384617
 },
 {
     "email": "off.chanchana@gmail.com",
@@ -46,7 +58,10 @@ export const DUMMY_DATA=[{
     "repo_count": 35,
     "star_time": "2017-01-19 12:50:54",
     "username": "off99555",
-    "recommendations": 9.615384615384617
+    "feature_1": Math.random(),
+    "feature_2": Math.random(),
+    "feature_3": Math.random(),
+    "recommendations": 0.615384615384617
 },
 {
     "email": "ayushkumarsingh97@gmail.com",
@@ -56,7 +71,10 @@ export const DUMMY_DATA=[{
     "repo_count": 35,
     "star_time": "2017-01-19 17:25:07",
     "username": "ayush1997",
-    "recommendations": 9.615384615384617
+    "feature_1": Math.random(),
+    "feature_2": Math.random(),
+    "feature_3": Math.random(),
+    "recommendations": 0.615384615384617
 },
 {
     "email": "luomingyuan2020@email.szu.edu.cn",
@@ -66,7 +84,10 @@ export const DUMMY_DATA=[{
     "repo_count": 35,
     "star_time": "2017-02-20 02:51:55",
     "username": "Lmy0217",
-    "recommendations": 9.615384615384617
+    "feature_1": Math.random(),
+    "feature_2": Math.random(),
+    "feature_3": Math.random(),
+    "recommendations": 0.615384615384617
 },
 {
     "email": "mdasadul@ualberta.ca",
@@ -76,7 +97,10 @@ export const DUMMY_DATA=[{
     "repo_count": 35,
     "star_time": "2017-03-09 15:44:07",
     "username": "mdasadul",
-    "recommendations": 9.615384615384617
+    "feature_1": Math.random(),
+    "feature_2": Math.random(),
+    "feature_3": Math.random(),
+    "recommendations": 0.615384615384617
 },
 {
     "email": "hata.kosuke@gmail.com",
@@ -86,7 +110,10 @@ export const DUMMY_DATA=[{
     "repo_count": 35,
     "star_time": "2017-04-12 02:45:43",
     "username": "entire",
-    "recommendations": 9.615384615384617
+    "feature_1": Math.random(),
+    "feature_2": Math.random(),
+    "feature_3": Math.random(),
+    "recommendations": 0.615384615384617
 },
 {
     "email": "johannes@sensatus.io",
@@ -96,7 +123,10 @@ export const DUMMY_DATA=[{
     "repo_count": 35,
     "star_time": "2017-04-12 16:33:15",
     "username": "codinguncut",
-    "recommendations": 9.615384615384617
+    "feature_1": Math.random(),
+    "feature_2": Math.random(),
+    "feature_3": Math.random(),
+    "recommendations": 0.615384615384617
 },
 {
     "email": "kiven.mr@gmail.com",
@@ -106,7 +136,10 @@ export const DUMMY_DATA=[{
     "repo_count": 34,
     "star_time": "2017-01-19 02:34:58",
     "username": "MrKiven",
-    "recommendations": 9.340659340659341
+    "feature_1": Math.random(),
+    "feature_2": Math.random(),
+    "feature_3": Math.random(),
+    "recommendations": 0.340659340659341
 },
 {
     "email": "info@moritzklack.com",
@@ -116,7 +149,10 @@ export const DUMMY_DATA=[{
     "repo_count": 34,
     "star_time": "2017-01-19 12:10:18",
     "username": "moklick",
-    "recommendations": 9.340659340659341
+    "feature_1": Math.random(),
+    "feature_2": Math.random(),
+    "feature_3": Math.random(),
+    "recommendations": 0.340659340659341
 },
 {
     "email": "hxianxian@qq.com",
@@ -126,7 +162,10 @@ export const DUMMY_DATA=[{
     "repo_count": 34,
     "star_time": "2017-01-19 12:47:28",
     "username": "Marcnuth",
-    "recommendations": 9.340659340659341
+    "feature_1": Math.random(),
+    "feature_2": Math.random(),
+    "feature_3": Math.random(),
+    "recommendations": 0.340659340659341
 },
 {
     "email": "JasonTam22@gmail.com",
@@ -136,7 +175,10 @@ export const DUMMY_DATA=[{
     "repo_count": 34,
     "star_time": "2017-01-19 17:31:00",
     "username": "JasonTam",
-    "recommendations": 9.340659340659341
+    "feature_1": Math.random(),
+    "feature_2": Math.random(),
+    "feature_3": Math.random(),
+    "recommendations": 0.340659340659341
 },
 {
     "email": "sam1990kumar@gmail.com",
@@ -146,7 +188,10 @@ export const DUMMY_DATA=[{
     "repo_count": 34,
     "star_time": "2017-02-18 12:43:45",
     "username": "msampathkumar",
-    "recommendations": 9.340659340659341
+    "feature_1": Math.random(),
+    "feature_2": Math.random(),
+    "feature_3": Math.random(),
+    "recommendations": 0.340659340659341
 },
 {
     "email": "fabricio.tuosto@gmail.com",
@@ -156,7 +201,10 @@ export const DUMMY_DATA=[{
     "repo_count": 34,
     "star_time": "2017-04-20 15:22:17",
     "username": "fabriciotuosto",
-    "recommendations": 9.340659340659341
+    "feature_1": Math.random(),
+    "feature_2": Math.random(),
+    "feature_3": Math.random(),
+    "recommendations": 0.340659340659341
 },
 {
     "email": "cryptoanthdm@gmail.com",
@@ -166,7 +214,10 @@ export const DUMMY_DATA=[{
     "repo_count": 34,
     "star_time": "2017-05-29 15:29:39",
     "username": "anthdm",
-    "recommendations": 9.340659340659341
+    "feature_1": Math.random(),
+    "feature_2": Math.random(),
+    "feature_3": Math.random(),
+    "recommendations": 0.340659340659341
 },
 {
     "email": "inylove82@gmail.com",
@@ -176,7 +227,10 @@ export const DUMMY_DATA=[{
     "repo_count": 34,
     "star_time": "2017-06-05 07:46:13",
     "username": "kination",
-    "recommendations": 9.340659340659341
+    "feature_1": Math.random(),
+    "feature_2": Math.random(),
+    "feature_3": Math.random(),
+    "recommendations": 0.340659340659341
 },
 {
     "email": "ole6edev@gmail.com",
@@ -186,7 +240,10 @@ export const DUMMY_DATA=[{
     "repo_count": 33,
     "star_time": "2017-01-19 04:41:57",
     "username": "olebedev",
-    "recommendations": 9.065934065934066
+    "feature_1": Math.random(),
+    "feature_2": Math.random(),
+    "feature_3": Math.random(),
+    "recommendations": 0.065934065934066
 },
 {
     "email": "shevaxu@outlook.com",
@@ -196,7 +253,10 @@ export const DUMMY_DATA=[{
     "repo_count": 33,
     "star_time": "2017-01-19 07:58:18",
     "username": "ShevaXu",
-    "recommendations": 9.065934065934066
+    "feature_1": Math.random(),
+    "feature_2": Math.random(),
+    "feature_3": Math.random(),
+    "recommendations": 0.065934065934066
 },
 {
     "email": "devwingcom@gmail.com",
@@ -206,7 +266,10 @@ export const DUMMY_DATA=[{
     "repo_count": 33,
     "star_time": "2017-01-20 02:07:43",
     "username": "zhanghuanchong",
-    "recommendations": 9.065934065934066
+    "feature_1": Math.random(),
+    "feature_2": Math.random(),
+    "feature_3": Math.random(),
+    "recommendations": 0.065934065934066
 },
 {
     "email": "nobking@126.com",
@@ -216,7 +279,10 @@ export const DUMMY_DATA=[{
     "repo_count": 33,
     "star_time": "2017-01-20 06:19:09",
     "username": "applenob",
-    "recommendations": 9.065934065934066
+    "feature_1": Math.random(),
+    "feature_2": Math.random(),
+    "feature_3": Math.random(),
+    "recommendations": 0.065934065934066
 },
 {
     "email": "iaroslav.github@gmail.com",
@@ -226,7 +292,10 @@ export const DUMMY_DATA=[{
     "repo_count": 33,
     "star_time": "2017-02-01 10:56:25",
     "username": "iaroslav-ai",
-    "recommendations": 9.065934065934066
+    "feature_1": Math.random(),
+    "feature_2": Math.random(),
+    "feature_3": Math.random(),
+    "recommendations": 0.065934065934066
 },
 {
     "email": "olavursky@gmail.com",
@@ -236,7 +305,10 @@ export const DUMMY_DATA=[{
     "repo_count": 33,
     "star_time": "2017-02-01 17:12:40",
     "username": "kefirski",
-    "recommendations": 9.065934065934066
+    "feature_1": Math.random(),
+    "feature_2": Math.random(),
+    "feature_3": Math.random(),
+    "recommendations": 0.065934065934066
 },
 {
     "email": "chang_liu@student.uml.edu",
@@ -246,7 +318,10 @@ export const DUMMY_DATA=[{
     "repo_count": 33,
     "star_time": "2017-02-21 20:23:44",
     "username": "deercoder",
-    "recommendations": 9.065934065934066
+    "feature_1": Math.random(),
+    "feature_2": Math.random(),
+    "feature_3": Math.random(),
+    "recommendations": 0.065934065934066
 },
 {
     "email": "649038269@qq.com",
@@ -256,7 +331,10 @@ export const DUMMY_DATA=[{
     "repo_count": 33,
     "star_time": "2017-03-18 08:59:02",
     "username": "zwidny",
-    "recommendations": 9.065934065934066
+    "feature_1": Math.random(),
+    "feature_2": Math.random(),
+    "feature_3": Math.random(),
+    "recommendations": 0.065934065934066
 },
 {
     "email": "danielthank@gmail.com",
@@ -266,7 +344,10 @@ export const DUMMY_DATA=[{
     "repo_count": 32,
     "star_time": "2017-01-19 05:46:14",
     "username": "danielthank",
-    "recommendations": 8.791208791208792
+    "feature_1": Math.random(),
+    "feature_2": Math.random(),
+    "feature_3": Math.random(),
+    "recommendations": 0.791208791208792
 },
 {
     "email": "loumarvincaraig@gmail.com",
@@ -276,7 +357,10 @@ export const DUMMY_DATA=[{
     "repo_count": 32,
     "star_time": "2017-01-19 12:42:20",
     "username": "se7entyse7en",
-    "recommendations": 8.791208791208792
+    "feature_1": Math.random(),
+    "feature_2": Math.random(),
+    "feature_3": Math.random(),
+    "recommendations": 0.791208791208792
 },
 {
     "email": "admix.software@gmail.com",
@@ -286,7 +370,10 @@ export const DUMMY_DATA=[{
     "repo_count": 32,
     "star_time": "2017-01-19 15:15:12",
     "username": "admix",
-    "recommendations": 8.791208791208792
+    "feature_1": Math.random(),
+    "feature_2": Math.random(),
+    "feature_3": Math.random(),
+    "recommendations": 0.791208791208792
 },
 {
     "email": "awittema@usc.edu",
@@ -296,7 +383,10 @@ export const DUMMY_DATA=[{
     "repo_count": 32,
     "star_time": "2017-01-19 16:38:08",
     "username": "anthonywittemann",
-    "recommendations": 8.791208791208792
+    "feature_1": Math.random(),
+    "feature_2": Math.random(),
+    "feature_3": Math.random(),
+    "recommendations": 0.791208791208792
 },
 {
     "email": "purwantoyudi42@gmail.com",
@@ -306,7 +396,10 @@ export const DUMMY_DATA=[{
     "repo_count": 32,
     "star_time": "2017-01-19 18:07:48",
     "username": "zhiephie",
-    "recommendations": 8.791208791208792
+    "feature_1": Math.random(),
+    "feature_2": Math.random(),
+    "feature_3": Math.random(),
+    "recommendations": 0.791208791208792
 },
 {
     "email": "ramonmelo@ramonmelo.com",
@@ -316,7 +409,10 @@ export const DUMMY_DATA=[{
     "repo_count": 32,
     "star_time": "2017-01-19 22:47:16",
     "username": "ramonmelo",
-    "recommendations": 8.791208791208792
+    "feature_1": Math.random(),
+    "feature_2": Math.random(),
+    "feature_3": Math.random(),
+    "recommendations": 0.791208791208792
 },
 {
     "email": "pcyin@cs.cmu.edu",
@@ -326,7 +422,10 @@ export const DUMMY_DATA=[{
     "repo_count": 32,
     "star_time": "2017-02-03 19:57:03",
     "username": "pcyin",
-    "recommendations": 8.791208791208792
+    "feature_1": Math.random(),
+    "feature_2": Math.random(),
+    "feature_3": Math.random(),
+    "recommendations": 0.791208791208792
 },
 {
     "email": "romepeng@outlook.com",
@@ -336,7 +435,10 @@ export const DUMMY_DATA=[{
     "repo_count": 32,
     "star_time": "2017-02-26 01:52:06",
     "username": "romepeng",
-    "recommendations": 8.791208791208792
+    "feature_1": Math.random(),
+    "feature_2": Math.random(),
+    "feature_3": Math.random(),
+    "recommendations": 0.791208791208792
 },
 {
     "email": "qinshuo92@126.com",
@@ -346,7 +448,10 @@ export const DUMMY_DATA=[{
     "repo_count": 32,
     "star_time": "2017-04-27 10:08:10",
     "username": "Beastmaster",
-    "recommendations": 8.791208791208792
+    "feature_1": Math.random(),
+    "feature_2": Math.random(),
+    "feature_3": Math.random(),
+    "recommendations": 0.791208791208792
 },
 {
     "email": "yangyi02@gmail.com",
@@ -356,7 +461,10 @@ export const DUMMY_DATA=[{
     "repo_count": 31,
     "star_time": "2016-11-19 01:23:07",
     "username": "yangyi02",
-    "recommendations": 8.516483516483516
+    "feature_1": Math.random(),
+    "feature_2": Math.random(),
+    "feature_3": Math.random(),
+    "recommendations": 0.516483516483516
 },
 {
     "email": "m.aly.ashour@gmail.com",
@@ -366,7 +474,10 @@ export const DUMMY_DATA=[{
     "repo_count": 31,
     "star_time": "2017-01-18 22:21:47",
     "username": "Mohammed-Ashour",
-    "recommendations": 8.516483516483516
+    "feature_1": Math.random(),
+    "feature_2": Math.random(),
+    "feature_3": Math.random(),
+    "recommendations": 0.516483516483516
 },
 {
     "email": "grayking.w@gmail.com",
@@ -376,7 +487,10 @@ export const DUMMY_DATA=[{
     "repo_count": 31,
     "star_time": "2017-01-19 02:30:15",
     "username": "coldnight",
-    "recommendations": 8.516483516483516
+    "feature_1": Math.random(),
+    "feature_2": Math.random(),
+    "feature_3": Math.random(),
+    "recommendations": 0.516483516483516
 },
 {
     "email": "yatingupta12@gmail.com",
@@ -386,7 +500,10 @@ export const DUMMY_DATA=[{
     "repo_count": 31,
     "star_time": "2017-01-19 04:46:32",
     "username": "yatingupta10",
-    "recommendations": 8.516483516483516
+    "feature_1": Math.random(),
+    "feature_2": Math.random(),
+    "feature_3": Math.random(),
+    "recommendations": 0.516483516483516
 },
 {
     "email": "xindongzhang@Foxmail.com",
@@ -396,7 +513,10 @@ export const DUMMY_DATA=[{
     "repo_count": 31,
     "star_time": "2017-01-19 07:58:14",
     "username": "xindongzhang",
-    "recommendations": 8.516483516483516
+    "feature_1": Math.random(),
+    "feature_2": Math.random(),
+    "feature_3": Math.random(),
+    "recommendations": 0.516483516483516
 },
 {
     "email": "dmitry@kostyaev.me",
@@ -406,7 +526,10 @@ export const DUMMY_DATA=[{
     "repo_count": 31,
     "star_time": "2017-02-10 16:38:17",
     "username": "kostyaev",
-    "recommendations": 8.516483516483516
+    "feature_1": Math.random(),
+    "feature_2": Math.random(),
+    "feature_3": Math.random(),
+    "recommendations": 0.516483516483516
 },
 {
     "email": "yalotfi@outlook.com",
@@ -416,7 +539,10 @@ export const DUMMY_DATA=[{
     "repo_count": 31,
     "star_time": "2017-03-02 03:49:08",
     "username": "yalotfi",
-    "recommendations": 8.516483516483516
+    "feature_1": Math.random(),
+    "feature_2": Math.random(),
+    "feature_3": Math.random(),
+    "recommendations": 0.516483516483516
 },
 {
     "email": "prasanna2431997@gmail.com",
@@ -426,7 +552,10 @@ export const DUMMY_DATA=[{
     "repo_count": 31,
     "star_time": "2017-05-17 18:37:20",
     "username": "PrasannaNatarajan",
-    "recommendations": 8.516483516483516
+    "feature_1": Math.random(),
+    "feature_2": Math.random(),
+    "feature_3": Math.random(),
+    "recommendations": 0.516483516483516
 },
 {
     "email": "bnicemagnolia@gmail.com",
@@ -436,7 +565,10 @@ export const DUMMY_DATA=[{
     "repo_count": 31,
     "star_time": "2017-05-22 08:03:30",
     "username": "Bnic3",
-    "recommendations": 8.516483516483516
+    "feature_1": Math.random(),
+    "feature_2": Math.random(),
+    "feature_3": Math.random(),
+    "recommendations": 0.516483516483516
 },
 {
     "email": "mankitpong@gmail.com",
@@ -446,7 +578,10 @@ export const DUMMY_DATA=[{
     "repo_count": 31,
     "star_time": "2017-06-03 11:59:28",
     "username": "godmoves",
-    "recommendations": 8.516483516483516
+    "feature_1": Math.random(),
+    "feature_2": Math.random(),
+    "feature_3": Math.random(),
+    "recommendations": 0.516483516483516
 },
 {
     "email": "hasibul.amin.hemel@gmail.com",
@@ -456,7 +591,10 @@ export const DUMMY_DATA=[{
     "repo_count": 30,
     "star_time": "2017-01-18 18:39:51",
     "username": "hemel-cse",
-    "recommendations": 8.241758241758241
+    "feature_1": Math.random(),
+    "feature_2": Math.random(),
+    "feature_3": Math.random(),
+    "recommendations": 0.241758241758241
 },
 {
     "email": "hi@cameronbriar.com",
@@ -466,7 +604,10 @@ export const DUMMY_DATA=[{
     "repo_count": 30,
     "star_time": "2017-01-18 19:14:01",
     "username": "cameronbriar",
-    "recommendations": 8.241758241758241
+    "feature_1": Math.random(),
+    "feature_2": Math.random(),
+    "feature_3": Math.random(),
+    "recommendations": 0.241758241758241
 },
 {
     "email": "nikolay.dubina.pub@gmail.com",
@@ -476,7 +617,10 @@ export const DUMMY_DATA=[{
     "repo_count": 30,
     "star_time": "2017-01-18 19:35:20",
     "username": "nikolaydubina",
-    "recommendations": 8.241758241758241
+    "feature_1": Math.random(),
+    "feature_2": Math.random(),
+    "feature_3": Math.random(),
+    "recommendations": 0.241758241758241
 },
 {
     "email": "ethanvictorcaballero@gmail.com",
@@ -486,7 +630,10 @@ export const DUMMY_DATA=[{
     "repo_count": 30,
     "star_time": "2017-01-19 00:17:00",
     "username": "ethancaballero",
-    "recommendations": 8.241758241758241
+    "feature_1": Math.random(),
+    "feature_2": Math.random(),
+    "feature_3": Math.random(),
+    "recommendations": 0.241758241758241
 },
 {
     "email": "johnjullies@gmail.com",
@@ -496,7 +643,10 @@ export const DUMMY_DATA=[{
     "repo_count": 30,
     "star_time": "2017-01-19 08:20:37",
     "username": "johnjullies",
-    "recommendations": 8.241758241758241
+    "feature_1": Math.random(),
+    "feature_2": Math.random(),
+    "feature_3": Math.random(),
+    "recommendations": 0.241758241758241
 },
 {
     "email": "irmowan@gmail.com",
@@ -506,7 +656,10 @@ export const DUMMY_DATA=[{
     "repo_count": 30,
     "star_time": "2017-04-21 03:26:23",
     "username": "irmowan",
-    "recommendations": 8.241758241758241
+    "feature_1": Math.random(),
+    "feature_2": Math.random(),
+    "feature_3": Math.random(),
+    "recommendations": 0.241758241758241
 },
 {
     "email": "faisalhmohd@gmail.com",
@@ -516,7 +669,10 @@ export const DUMMY_DATA=[{
     "repo_count": 30,
     "star_time": "2017-04-26 11:45:09",
     "username": "faisalhmohd",
-    "recommendations": 8.241758241758241
+    "feature_1": Math.random(),
+    "feature_2": Math.random(),
+    "feature_3": Math.random(),
+    "recommendations": 0.241758241758241
 },
 {
     "email": "bordi.lucas@gmail.com",
@@ -526,7 +682,10 @@ export const DUMMY_DATA=[{
     "repo_count": 30,
     "star_time": "2017-06-11 22:23:51",
     "username": "lucaspbordignon",
-    "recommendations": 8.241758241758241
+    "feature_1": Math.random(),
+    "feature_2": Math.random(),
+    "feature_3": Math.random(),
+    "recommendations": 0.241758241758241
 },
 {
     "email": "mail@victorquinn.com",
@@ -536,7 +695,10 @@ export const DUMMY_DATA=[{
     "repo_count": 29,
     "star_time": "2017-01-18 19:48:52",
     "username": "victorquinn",
-    "recommendations": 7.967032967032966
+    "feature_1": Math.random(),
+    "feature_2": Math.random(),
+    "feature_3": Math.random(),
+    "recommendations": 0.967032967032966
 },
 {
     "email": "az.nourian@gmail.com",
@@ -546,7 +708,10 @@ export const DUMMY_DATA=[{
     "repo_count": 29,
     "star_time": "2017-01-19 05:35:35",
     "username": "nournia",
-    "recommendations": 7.967032967032966
+    "feature_1": Math.random(),
+    "feature_2": Math.random(),
+    "feature_3": Math.random(),
+    "recommendations": 0.967032967032966
 },
 {
     "email": "zlht3@mail.missouri.edu",
@@ -556,7 +721,10 @@ export const DUMMY_DATA=[{
     "repo_count": 29,
     "star_time": "2017-01-25 17:52:37",
     "username": "zlmoment",
-    "recommendations": 7.967032967032966
+    "feature_1": Math.random(),
+    "feature_2": Math.random(),
+    "feature_3": Math.random(),
+    "recommendations": 0.967032967032966
 },
 {
     "email": "lawlitewang@gmail.com",
@@ -566,7 +734,10 @@ export const DUMMY_DATA=[{
     "repo_count": 29,
     "star_time": "2017-05-07 03:51:21",
     "username": "lawlite19",
-    "recommendations": 7.967032967032966
+    "feature_1": Math.random(),
+    "feature_2": Math.random(),
+    "feature_3": Math.random(),
+    "recommendations": 0.967032967032966
 },
 {
     "email": "dzungnguyenvn@outlook.com",
@@ -576,5 +747,8 @@ export const DUMMY_DATA=[{
     "repo_count": 29,
     "star_time": "2017-05-13 04:39:39",
     "username": "pexea12",
-    "recommendations": 7.967032967032966
+    "feature_1": Math.random(),
+    "feature_2": Math.random(),
+    "feature_3": Math.random(),
+    "recommendations": 0.967032967032966
 }]

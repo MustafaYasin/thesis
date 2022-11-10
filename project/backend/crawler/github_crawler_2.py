@@ -32,14 +32,15 @@ endCursor = ""
 count = 0
 
 # This function is used to retrieve the current page of the data
-def retrieve_current_cursor(owner, repo, token, endCursor):
-    formatted_query = query.format(owner, repo, endCursor)
-    result = run_query(token, formatted_query)
-    print("these are the results", result)
+def retrieve_current_cursor(owner, repo, token):
+    formatted_query = query.format(owner, repo)
+    result = run_query(token, formatted_query)  
+    from pprint import pprint
+    pprint(result)
     hasNextPage = result['data']['repository']['stargazers']['pageInfo']['hasNextPage']
-    endCursor = result['data']['repository']['stargazers']['pageInfo']['endCursor']
-    endCursor = ', after: "' + endCursor + '"'
-    print("endcorsor", endCursor)
+    print(hasNextPage)
+    #endCursor = result['data']['repository']['stargazers']['pageInfo']['endCursor']
+    #endCursor = ', after: "' + endCursor + '"'
     data = result['data']['repository']['stargazers']['edges']
 
     # Looping through retrieved data and storing it in CSV and MongoDB
@@ -58,6 +59,6 @@ with open(user_filename, 'w') as stars:
     stars_writer = csv.writer(stars)
     stars_writer.writerow(fields)
     while hasNextPage:
-        hasNextPage, endCursor = retrieve_current_cursor(owner, repo, token, endCursor)     
+        hasNextPage = retrieve_current_cursor(owner, repo, token)     
         count = count + 100
         print(str(count) + " users processed.")

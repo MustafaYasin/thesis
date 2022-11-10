@@ -37,12 +37,24 @@ function ProfileItem(props) {
         <div className={classes.content}>
           <h3>{props.fullName}</h3>
           <address>{props.email}</address>
-          <p>Hireable: {props.isHireable?"yes":"no"}</p>
-          <p>Repos: {props.repository_count}</p>
-          <p>starredTime: {props.star_time}</p>
-          <p>username: {props.username}</p>
-          <p>recommendations: {props.recommendations}</p>
-          <p>END OF CARD</p>
+          <p>
+            {props.fullName} arbeitet bei{" "}
+            {props.company ? props.company : "Keine Angabe"},
+          </p>
+          <p>und hat {props.repository_count} Repos auf GitHub</p>
+          <p>
+            kurze Bio: {props.bio ? props.bio : "wurde leider nicht angegeben"}
+          </p>
+          <div className={classes.skills}>
+            <p>Skills:</p>
+            <div className={classes.programmingLanguageContainer}>
+              {Object.keys(props.primary_language).map((language) => (
+                <div key={language} className={classes.programmingLanguage}>
+                  {language}
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
         <div className={classes.actions}>
           <button onClick={toggleFavoriteStatusHandler}>

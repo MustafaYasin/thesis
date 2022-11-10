@@ -28,6 +28,10 @@
   font-size: 1.25rem;
   color: #2c292b;
 }
+.content address{
+  color: blue;
+  font-weight: 500;
+}
 
 .actions {
   padding: 1.5rem;
@@ -47,4 +51,27 @@
 .actions button:hover,
 .actions button:active {
   background-color: #e2e8ff;
+}
+
+.programmingLanguageContainer{
+  display: flex;
+  flex-wrap: wrap;
+}
+.programmingLanguage{
+  background-color: lightblue;
+  margin-left: 1rem;
+  margin-bottom: 1rem;
+  padding: 0.4rem;
+  border-radius: 4px;
+  border: 1px solid blue;
+}
+.skills{
+  background-color: lightgray;
+  padding: 0px;
+  border-radius: 1rem;
+  font-weight: 500;
+}
+.skills p{
+  font-size: 20px;
+
 }

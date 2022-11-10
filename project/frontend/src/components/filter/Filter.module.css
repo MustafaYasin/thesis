@@ -96,3 +96,8 @@ h2 {
 .featureSlider{
   margin-bottom: 2rem;
 }
+.radarChart{
+  background-color: white;
+  border-radius: 2rem;
+  padding: 1rem;
+}

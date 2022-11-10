@@ -2,6 +2,7 @@ import classes from "./Filter.module.css";
 import { useState } from "react";
 import RangeSlider from "./RangeSlider";
 import Slider from "./Slider";
+import RadarChart from "./RadarChart";
 
 function Filter(props) {
   const [allPressed, setAllPressed] = useState(true);
@@ -31,27 +32,53 @@ function Filter(props) {
         (activityFactor * props.allProfiles[i].feature_1 +
           dataKingFactor * props.allProfiles[i].feature_2 +
           feature3Factor * props.allProfiles[i].feature_3) /
-        (activityFactor * 1.0 + dataKingFactor*1.0 + feature3Factor*1.0);
+        (activityFactor * 1.0 + dataKingFactor * 1.0 + feature3Factor * 1.0);
     }
   }
 
+  function calcRadar(activityFactor, dataKingFactor, feature3Factor) {
+    const len = props.allProfiles.length;
+    for (let i = 0; i < len; i++) {
+      props.allProfiles[i].recommendations =
+        (activityFactor * props.allProfiles[i].feature_1 +
+          dataKingFactor * props.allProfiles[i].feature_2 +
+          feature3Factor * props.allProfiles[i].feature_3) /
+        (activityFactor * 1.0 + dataKingFactor * 1.0 + feature3Factor * 1.0);
+    }
+  }
+  
+  function handleRadar(axis1,axis2,axis3) {
+    console.log(axis1,axis2,axis3)
+    calcRadar(axis1,axis2,axis3);
+    const sorted = [...props.allProfiles].sort(
+      (a, b) => b.recommendations - a.recommendations
+    );
+    props.setFilteredProfiles(sorted);
+  }
+  
   function handleActivitySlider(event) {
+    console.log(event.target.value)
     setActivityFactor(event.target.value);
     calcRecommend();
-    const sorted = [...props.allProfiles].sort((a, b) => b.recommendations - a.recommendations);
+    const sorted = [...props.allProfiles].sort(
+      (a, b) => b.recommendations - a.recommendations
+    );
     props.setFilteredProfiles(sorted);
-
   }
   function handleDataKingSlider(event) {
     setDataKingFactor(event.target.value);
     calcRecommend();
-    const sorted = [...props.allProfiles].sort((a, b) => b.recommendations - a.recommendations);
+    const sorted = [...props.allProfiles].sort(
+      (a, b) => b.recommendations - a.recommendations
+    );
     props.setFilteredProfiles(sorted);
   }
   function handleFeature3Slider(event) {
     setFeature3Factor(event.target.value);
     calcRecommend();
-    const sorted = [...props.allProfiles].sort((a, b) => b.recommendations - a.recommendations);
+    const sorted = [...props.allProfiles].sort(
+      (a, b) => b.recommendations - a.recommendations
+    );
     props.setFilteredProfiles(sorted);
   }
 
@@ -213,6 +240,16 @@ function Filter(props) {
             featureValue={feature3Factor}
             setFeatureValue={setFeature3Factor}
             handleSlider={handleFeature3Slider}
+          />
+        </div>
+        <div className={classes.radarChart}>
+          <RadarChart
+            axis1={activityFactor}
+            axis2={dataKingFactor}
+            axis3={feature3Factor}
+
+            handleAxisChange={handleRadar}
+
           />
         </div>
       </div>

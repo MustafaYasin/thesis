@@ -21,9 +21,9 @@ function ProfileItemMini(props) {
       favoritesCtx.addFavorite({
         email: props.email,
         avatar_url: props.avatar_url,
-        hireable: props.hireable,
+        isHireable: props.isHireable,
         fullName: props.fullName,
-        repo_count: props.repo_count,
+        repository_count: props.repository_count,
         star_time: props.star_time,
         username: props.username,
         recommendations: props.recommendations,
@@ -40,9 +40,9 @@ function ProfileItemMini(props) {
       detailsCtx.addDetails({
         email: props.email,
         avatar_url: props.avatar_url,
-        hireable: props.hireable,
+        isHireable: props.isHireable,
         fullName: props.fullName,
-        repo_count: props.repo_count,
+        repository_count: props.repository_count,
         star_time: props.star_time,
         username: props.username,
         recommendations: props.recommendations,
@@ -51,18 +51,18 @@ function ProfileItemMini(props) {
   }
 
   return (
-    <>
+    <div className={classes.item}>
       <motion.div
         animate={{ opacity: 1 }}
         initial={{ opacity: 0 }}
         exit={{ opacity: 0 }}
         layout
       >
-        <li className={classes.item}>
+        <li>
           <div className={classes.card}>
             <Card>
-              <div className={classes.image} onClick={toggleDetailsStatusHandler}>
-                <img src={props.avatar_url} alt={props.fullName} />
+              <div className={classes.imageContainer} onClick={toggleDetailsStatusHandler}>
+                <img className={classes.image} src={props.avatar_url} alt={props.fullName} />
               </div>
               <div className={classes.content}>
                 <h3>{props.fullName}</h3>
@@ -80,7 +80,7 @@ function ProfileItemMini(props) {
           </div>
         </li>
       </motion.div>
-    </>
+    </div>
   );
 }
 

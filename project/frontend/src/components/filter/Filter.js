@@ -11,13 +11,13 @@ function Filter(props) {
   const [dataKingFactor, setDataKingFactor] = useState(1);
   const [feature3Factor, setFeature3Factor] = useState(1);
 
-  function hireableHandler() {
+  function isHireableHandler() {
     if (hirePressed) {
       props.setFilteredProfiles(props.allProfiles);
       setHirePressed(false);
     } else {
       const filtered = props.allProfiles.filter(
-        (profile) => profile.hireable === true
+        (profile) => profile.isHireable === true
       );
       props.setFilteredProfiles(filtered);
       setAllPressed(false);
@@ -99,12 +99,12 @@ function Filter(props) {
                 <input
                   className={classes.checkbox}
                   type="checkbox"
-                  name="hireable"
-                  id="hireable"
+                  name="isHireable"
+                  id="isHireable"
                   value={hirePressed}
-                  onChange={hireableHandler}
+                  onChange={isHireableHandler}
                 />
-                <label className={classes.label} htmlFor="hireable">
+                <label className={classes.label} htmlFor="isHireable">
                   hireable
                 </label>
               </li>
@@ -242,7 +242,9 @@ function Filter(props) {
             handleSlider={handleFeature3Slider}
           />
         </div>
-        <div className={classes.radarChart}>
+        
+      </div>
+      <div className={classes.radarChart}>
           <RadarChart
             axis1={activityFactor}
             axis2={dataKingFactor}
@@ -252,7 +254,6 @@ function Filter(props) {
 
           />
         </div>
-      </div>
     </>
   );
 }

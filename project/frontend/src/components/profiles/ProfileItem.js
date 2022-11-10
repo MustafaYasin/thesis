@@ -14,9 +14,9 @@ function ProfileItem(props) {
       favoritesCtx.addFavorite({
         email: props.email,
         avatar_url: props.avatar_url,
-        hireable: props.hireable,
+        isHireable: props.isHireable,
         fullName: props.fullName,
-        repo_count: props.repo_count,
+        repository_count: props.repository_count,
         star_time: props.star_time,
         username: props.username,
         recommendations: props.recommendations,
@@ -33,8 +33,8 @@ function ProfileItem(props) {
         <div className={classes.content}>
           <h3>{props.fullName}</h3>
           <address>{props.email}</address>
-          <p>Hireable: {props.hireable?"yes":"no"}</p>
-          <p>Repos: {props.repo_count}</p>
+          <p>Hireable: {props.isHireable?"yes":"no"}</p>
+          <p>Repos: {props.repository_count}</p>
           <p>starredTime: {props.star_time}</p>
           <p>username: {props.username}</p>
           <p>recommendations: {props.recommendations}</p>

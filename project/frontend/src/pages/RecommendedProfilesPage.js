@@ -20,50 +20,59 @@ function RecommendedProfilesPage() {
 
   const [isLoading, setIsLoading] = useState(true);
 
-  // useEffect(() => {
-  //   setIsLoading(true);
-  //   fetch("http://localhost:5001/recommend?username=deshraj")
-  //     .then((response) => {
-  //       return response.json();
-  //     })
-  //     .then((data) => {
-  //       const allUsers = [];
-  //       const individualUser = data.recommended_users;
-  //       for (const key in individualUser) {
-  //         console.log(individualUser[key]);
-  //         const individualUser2 = {
-  //           id: key,
-  //           ...individualUser[key],
-  //         };
-  //         allUsers.push(individualUser2);
-  //       }
-  //       setIsLoading(false);
-  //       setRecommendedProfiles(allUsers);
-  //     });
-  // }, []);
+  useEffect(() => {
+    setIsLoading(true);
+    fetch("http://localhost:5001/recommend?username=deshraj")
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => {
+        const allUsers = [];
+        const individualUser = data.recommended_users;
+        for (const key in individualUser) {
+          console.log(individualUser[key]);
+          const individualUser2 = {
+            id: key,
+            ...individualUser[key],
+          };
+          allUsers.push(individualUser2);
+        }
+        setIsLoading(false);
+        setRecommendedProfiles(allUsers);
+      });
+  }, []);
 
-  // if (isLoading) {
-  //   return (
-  //     <section>
-  //       <p>loading...</p>
-  //     </section>
-  //   );
-  // }
+  if (isLoading) {
+    return (
+      <section>
+        <p>loading...</p>
+      </section>
+    );
+  }
 
   return (
-    <div className={classes.basic}>
+    <div className={classes.recommendedProfilesPage}>
       <div className={classes.filter}>
-          <Filter
-            setFilteredProfiles={setFilteredProfiles}
-            allProfiles={DUMMY_DATA}
-          />
+        <Filter
+          setFilteredProfiles={setFilteredProfiles}
+          allProfiles={recommendedProfiles}
+        />
       </div>
-      <div className={classes.profiles}>
-        <h1>Recommended Profiles for you</h1>
+      <div className={classes.profilesContainer}>
+        <div className={classes.profilesHeading}>
+          <h1>Recommended Profiles for you</h1>
+        </div>
         <motion.div layout>
-          <Card>
-            <ProfileListMini profiles={filteredProfiles} />
-          </Card>
+          <div className={classes.profilesCard}>
+            <Card>
+              <div className={classes.profilesListHeading}>
+                <p>people you may want to hire?</p>
+              </div>
+              <div className={classes.profilesList}>
+                <ProfileListMini profiles={filteredProfiles} />
+              </div>
+            </Card>
+          </div>
         </motion.div>
       </div>
       {detailsCtx.totalDetails && (

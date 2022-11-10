@@ -20,10 +20,8 @@ ChartJS.register(
   Tooltip,
   Legend
 );
-
 function RadarChart(props) {
   const [shouldRedraw] = useState(false);
-  const [isLoaded, setIsLoaded] = useState(false);
   const [axis1, setAxis1] = useState(1);
   const [axis2, setAxis2] = useState(1);
   const [axis3, setAxis3] = useState(1);
@@ -40,10 +38,10 @@ function RadarChart(props) {
         labels: labels,
         datasets: [
           {
-            label: "Radar Chart",
+            label: "Feature Weights",
             data: [axis1, axis2, axis3],
-            backgroundColor: "rgba(255, 99, 132, 0.2)",
-            borderColor: "rgba(255, 99, 132, 1)",
+            backgroundColor: "rgba(	45, 62, 255, 0.2)",
+            borderColor: "rgba(	45, 62, 2552, 1)",
             borderWidth: 1,
           },
         ],
@@ -54,6 +52,11 @@ function RadarChart(props) {
             max: 2,
             min: 0,
             stepSize: 0.1,
+            pointLabels: {
+              font: {
+                size: 14
+              }
+            }
           },
         },
         onHover: function (e) {
@@ -110,6 +113,14 @@ function RadarChart(props) {
               //   }
 
               //   props.onHandleChange(data);
+            },
+          },
+          legend: {
+            labels: {
+              // This more specific font property overrides the global property
+              font: {
+                size: 24,
+              },
             },
           },
         },

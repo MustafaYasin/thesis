@@ -1,11 +1,19 @@
 .basic {
-  display: flex;
+  /* display: flex;
   align-items: flex-start;
-  justify-content: space-around;
+  justify-content: space-around; */
 }
 
 
 
-.profiles {
-  max-width: 400rem;
+.profilesContainer {
+  max-width: 50rem;
+  margin-left: 50%;
+}
+.profilesListHeading{
+  text-align: left;
+  padding-bottom: 0rem;
+  padding-top: 0.5rem;
+  margin-left: 1rem;
+  margin-bottom: 0em;
 }

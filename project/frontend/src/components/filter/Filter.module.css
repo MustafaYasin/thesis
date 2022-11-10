@@ -100,4 +100,8 @@ h2 {
   background-color: white;
   border-radius: 2rem;
   padding: 1rem;
+  position: fixed;
+  left: 14rem;
+  bottom: 5rem;
+  width: 30rem;
 }

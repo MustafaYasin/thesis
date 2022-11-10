@@ -20,6 +20,10 @@ function ProfileItem(props) {
         star_time: props.star_time,
         username: props.username,
         recommendations: props.recommendations,
+        bio: props.bio,
+        company: props.company,
+        primary_language: props.primary_language,
+        yearsofExperience: props.yearsofExperience,
       });
     }
   }

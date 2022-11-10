@@ -9,7 +9,6 @@ import Gauge from "../ui/Gauge";
 
 import { motion } from "framer-motion";
 
-
 function ProfileItemMini(props) {
   const favoritesCtx = useContext(FavoritesContext);
   const itemIsFavorite = favoritesCtx.itemIsFavorite(props.id);
@@ -27,6 +26,10 @@ function ProfileItemMini(props) {
         star_time: props.star_time,
         username: props.username,
         recommendations: props.recommendations,
+        bio: props.bio,
+        company: props.company,
+        primary_language: props.primary_language,
+        yearsofExperience: props.yearsofExperience,
       });
     }
   }
@@ -46,6 +49,10 @@ function ProfileItemMini(props) {
         star_time: props.star_time,
         username: props.username,
         recommendations: props.recommendations,
+        bio: props.bio,
+        company: props.company,
+        primary_language: props.primary_language,
+        yearsofExperience: props.yearsofExperience,
       });
     }
   }
@@ -61,8 +68,15 @@ function ProfileItemMini(props) {
         <li>
           <div className={classes.card}>
             <Card>
-              <div className={classes.imageContainer} onClick={toggleDetailsStatusHandler}>
-                <img className={classes.image} src={props.avatar_url} alt={props.fullName} />
+              <div
+                className={classes.imageContainer}
+                onClick={toggleDetailsStatusHandler}
+              >
+                <img
+                  className={classes.image}
+                  src={props.avatar_url}
+                  alt={props.fullName}
+                />
               </div>
               <div className={classes.content}>
                 <h3>{props.fullName}</h3>

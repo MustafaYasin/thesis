@@ -57,5 +57,5 @@ with open(user_filename, 'w') as stars:
     stars_writer.writerow(fields)
     while hasNextPage:
         hasNextPage, endCursor = retrieve_current_cursor(owner, repo, token, endCursor)     
-        count = count + 100
+        count = count + 50
         print(str(count) + " users processed.")

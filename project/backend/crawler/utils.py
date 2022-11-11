@@ -2,7 +2,8 @@ from collections import Counter
 import datetime
 from random import randrange
 from graphql_query import domain
-import random
+from random import randint
+import random 
 
 
 
@@ -18,16 +19,20 @@ def retrieve_fields(item, domain):
     primary_language = dict(Counter(primary_language))
     
     result = {
-        'username': node['login'],
+          'username': node['login'],
         'fullName': node['name'],
         'bio': node['bio'],
         'email': node['email'],
         'location': node['location'],
         'isHireable': node['isHireable'],
         'company': node['company'],
-        'yearsofExperience': randrange(0, 1, 0.1),      # Generate random number between 1 and 10
-        'activity': randrange(0, 1, 0.2),                # Generate random number between 1 and 5 to represent the activity of the user
+        'yearsofExperience': randint(1, 10), # Generate random number between 1 and 10
         'domainofExpertise': random.choice(domain),
+        'activity': randint(1, 100), 
+        'feature_1': randint(1, 100)/100,
+        'feature_2': randint(1, 100)/100,
+        'feature_3': randint(1, 100)/100,
+        'totalOfFeatures': 0,
         'isEmployee': node['isEmployee'],
         'avatar_url': node['avatarUrl'],
         'createdAt': node['createdAt'],

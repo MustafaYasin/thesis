@@ -40,8 +40,9 @@
 
 .content address {
   padding: auto;
-  font-size: smaller;
-  text-align: center;
+  text-align: smaller;
+  font-weight: 500;
+  color: #2d3eff;
 }
 
 .content h3 {

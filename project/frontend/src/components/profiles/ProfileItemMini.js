@@ -30,6 +30,9 @@ function ProfileItemMini(props) {
         company: props.company,
         primary_language: props.primary_language,
         yearsofExperience: props.yearsofExperience,
+        feature_1: props.feature_1,
+        feature_2: props.feature_2,
+        feature_3: props.feature_3,
       });
     }
   }
@@ -53,6 +56,9 @@ function ProfileItemMini(props) {
         company: props.company,
         primary_language: props.primary_language,
         yearsofExperience: props.yearsofExperience,
+        feature_1: props.feature_1,
+        feature_2: props.feature_2,
+        feature_3: props.feature_3,
       });
     }
   }

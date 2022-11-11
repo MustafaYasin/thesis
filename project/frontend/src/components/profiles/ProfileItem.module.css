@@ -4,7 +4,7 @@
 
 .image {
   width: 100%;
-  height: 20rem;
+  height: 15rem;
   overflow: hidden;
   border-top-right-radius: 6px;
   border-top-left-radius: 6px;
@@ -22,15 +22,22 @@
 .content {
   text-align: center;
   padding: 1rem;
+  width: auto;
 }
 
-.content h3 {
-  font-size: 1.25rem;
+.contentHeader {
+  font-size: 1.6rem;
   color: #2c292b;
+  margin-bottom: 0.5rem;
 }
-.content address{
+.contentHeader h3 {
+  margin: 0;
+  padding: 0;
+}
+.contentAddress {
   color: blue;
   font-weight: 500;
+  font-size: 1.2rem;
 }
 
 .actions {
@@ -43,21 +50,72 @@
   cursor: pointer;
   color: #2d3eff;
   border: 1px solid #2d3eff;
-  background-color: transparent;
+  background-color: #e2e8ff;
   padding: 0.5rem 1.5rem;
   border-radius: 4px;
+  font-weight: 500;
 }
 
 .actions button:hover,
 .actions button:active {
-  background-color: #e2e8ff;
+  background-color: #b6bfe2;
 }
 
-.programmingLanguageContainer{
+.contentInfoGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.totalScoreContainer{
+  padding-top: 0.3rem;
+  margin-right: 5rem;
+  border-radius: 0.5rem;
+  border: 1px solid gray;
+}
+.totalScore{
+  margin: 0;
+  margin-top: 0.3rem;
+  font-weight: 500;
+  color: #2d3eff;
+}
+.aboutContainer h2 {
+  margin: 0;
+}
+.bioContainer {
+  background-color: lightblue;
+  border-radius: 0.3rem;
+  border: 1px solid blue;
+  margin-top: 0.5rem;
+  margin-bottom: 0rem;
+  padding: 0.2rem;
+}
+.workingContainer {
+  background-color: lightgray;
+  padding: 0px;
+  border-radius: 0.3rem;
+  padding: 0.2rem;
+  border: 0.5px solid gray;
+  margin-bottom: 1rem;
+  margin-top: 0.3rem;
+}
+.company {
+  background-color: lightblue;
+  border-radius: 0.3rem;
+  padding: 0.2rem;
+  font-weight: 500;
+}
+.yearsofExperience {
+  background-color: lightblue;
+  border-radius: 0.3rem;
+  padding: 0.2rem;
+  font-weight: 500;
+}
+.programmingLanguageContainer {
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
 }
-.programmingLanguage{
+.programmingLanguage {
   background-color: lightblue;
   margin-left: 1rem;
   margin-bottom: 1rem;
@@ -65,13 +123,14 @@
   border-radius: 4px;
   border: 1px solid blue;
 }
-.skills{
+.skills {
   background-color: lightgray;
-  padding: 0px;
+  padding-top: 0.5rem;
   border-radius: 1rem;
   font-weight: 500;
+  margin-top: 0.5rem;
+  border: 0.5px solid gray;
 }
-.skills p{
+.skills h2 {
   font-size: 20px;
-
 }

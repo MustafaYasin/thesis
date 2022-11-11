@@ -2,7 +2,8 @@ from collections import Counter
 import datetime
 from random import randrange
 from graphql_query import domain
-import random
+from random import randint
+import random 
 
 
 
@@ -25,8 +26,13 @@ def retrieve_fields(item, domain):
         'location': node['location'],
         'isHireable': node['isHireable'],
         'company': node['company'],
-        'yearsofExperience': randrange(1, 10), # Generate random number between 1 and 10
+        'yearsofExperience': randint(1, 10), # Generate random number between 1 and 10
         'domainofExpertise': random.choice(domain),
+        'activity': randint(1, 100), 
+        'feature_1': randint(1, 100)/100,
+        'feature_2': randint(1, 100)/100,
+        'feature_3': randint(1, 100)/100,
+        'totalOfFeatures': 0,
         'isEmployee': node['isEmployee'],
         'avatar_url': node['avatarUrl'],
         'createdAt': node['createdAt'],
@@ -67,6 +73,7 @@ def store_to_csv(writer, node):
                     node['avatar_url'], node['isHireable'], node['star_time'], node['followers'], node['following'], node['organizations'],
                     node['createdAt'], node['updatedAt'], node['twitterUsername'], node['isGitHubStar'], node['isCampusExpert'], 
                     node['isDeveloperProgramMember'], node['isSiteAdmin'], node['isViewer'], node['anyPinnableItems'], node['viewerIsFollowing'], 
-                    node['sponsors'], node['primary_language'], node['yearsofExperience'], node['location'], node['domainofExpertise']])
+                    node['sponsors'], node['primary_language'], node['yearsofExperience'], node['location'], node['domainofExpertise'], node['activity'],
+                    node['feature_1'], node['feature_2'], node['feature_3'], node['totalOfFeatures']])
 
 

@@ -8,8 +8,6 @@ db = client['profile']
 db_connection = db['real_user']
 
 def run_query(token, query):
-    #print(query)
-    #print("--------------------------------------------------")
     headers = {"Authorization": "token "+ token}
     request = requests.post('https://api.github.com/graphql',
                             json={'query': query}, headers=headers)

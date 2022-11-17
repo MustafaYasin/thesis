@@ -1,0 +1,34 @@
+.dropdown{
+    position: absolute;
+    top: 0rem;
+    right: 0;
+    width: 300px;
+    background-color: gray;
+    border: 1px solid black;
+    border-radius: 2rem;
+    padding: 1rem;
+    overflow: hidden;
+}
+
+.menuItem{
+    font-weight: 500;
+    margin: 0;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    border-radius: 1rem;
+    transition: background-color 200ms;
+    padding: 0.5rem;
+}
+.menuItem:hover{
+    background-color: lightgray;
+    cursor: pointer;
+}
+.iconRight{
+    margin-left: auto;
+}
+.iconRight svg{
+    width: 28px;
+    height: 28px;
+    fill: white;
+}

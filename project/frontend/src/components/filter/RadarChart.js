@@ -30,12 +30,11 @@ function RadarChart(props) {
   var z = 1;
   //  Build Data Set for the Bar Chart
   const buildDataSet = (data) => {
-    let labels = ["Activity", "DataKing", "feature 3"];
 
     let options = {
       type: "radar",
       data: {
-        labels: labels,
+        labels: props.labels,
         datasets: [
           {
             label: "Feature Weights",

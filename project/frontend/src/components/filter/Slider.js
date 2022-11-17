@@ -11,7 +11,7 @@ function Slider(props) {
     <div className={classes.sliderElement}>
       <div className={classes.wrapper}>
         <header>
-          <h2>{props.feature} Slider</h2>
+          <h2>{props.feature} Score</h2>
           <p>This feature's weight is currently</p>
         </header>
         <div className={classes.priceInput}>

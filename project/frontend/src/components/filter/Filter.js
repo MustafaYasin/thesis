@@ -1,8 +1,12 @@
 import classes from "./Filter.module.css";
 import { useState } from "react";
-import RangeSlider from "./RangeSlider";
 import Slider from "./Slider";
 import RadarChart from "./RadarChart";
+import NavItem from "../layout/NavItem";
+import { ReactComponent as ArrowDownIcon } from "../../icons/arrow-down2.svg";
+import { ReactComponent as ArrowUpIcon } from "../../icons/arrow-up.svg";
+import jobs from "../layout/JobCategories"
+import DropdownMenu from "../layout/DropdownMenu";
 
 function Filter(props) {
   const [allPressed, setAllPressed] = useState(true);
@@ -10,6 +14,8 @@ function Filter(props) {
   const [activityFactor, setActivityFactor] = useState(1);
   const [dataKingFactor, setDataKingFactor] = useState(1);
   const [feature3Factor, setFeature3Factor] = useState(1);
+  const [jobCategory, setJobCategory]= useState(jobs.dataScience);
+  const [openDropdown, setOpenDropdown]= useState(false);
 
   function isHireableHandler() {
     if (hirePressed) {
@@ -46,18 +52,18 @@ function Filter(props) {
         (activityFactor * 1.0 + dataKingFactor * 1.0 + feature3Factor * 1.0);
     }
   }
-  
-  function handleRadar(axis1,axis2,axis3) {
-    console.log(axis1,axis2,axis3)
-    calcRadar(axis1,axis2,axis3);
+
+  function handleRadar(axis1, axis2, axis3) {
+    console.log(axis1, axis2, axis3);
+    calcRadar(axis1, axis2, axis3);
     const sorted = [...props.allProfiles].sort(
       (a, b) => b.recommendations - a.recommendations
     );
     props.setFilteredProfiles(sorted);
   }
-  
+
   function handleActivitySlider(event) {
-    console.log(event.target.value)
+    console.log(event.target.value);
     setActivityFactor(event.target.value);
     calcRecommend();
     const sorted = [...props.allProfiles].sort(
@@ -81,12 +87,19 @@ function Filter(props) {
     );
     props.setFilteredProfiles(sorted);
   }
+  function dropDownClickHandler(category){
+    setJobCategory(category)
+  }
 
   return (
     <>
       <div className={classes.filter}>
         <div className={classes.headerContainer}>
-          <h1>Filter</h1>
+        <NavItem open={openDropdown} setOpen={setOpenDropdown} iconOpen={<ArrowDownIcon />} iconClose={<ArrowUpIcon />}>
+            <DropdownMenu setOpen={setOpenDropdown} selectJobCategory={dropDownClickHandler}></DropdownMenu>
+          </NavItem>
+          <h1>{jobCategory}</h1>
+          
         </div>
 
         <div className={classes.generalContainer}>
@@ -220,7 +233,7 @@ function Filter(props) {
       <div className={classes.sliderBox}>
         <div className={classes.featureSlider}>
           <Slider
-            featureName="Activity"
+            feature={jobCategory}
             featureValue={activityFactor}
             setFeatureValue={setActivityFactor}
             handleSlider={handleActivitySlider}
@@ -242,18 +255,16 @@ function Filter(props) {
             handleSlider={handleFeature3Slider}
           />
         </div>
-        
       </div>
       <div className={classes.radarChart}>
-          <RadarChart
-            axis1={activityFactor}
-            axis2={dataKingFactor}
-            axis3={feature3Factor}
-
-            handleAxisChange={handleRadar}
-
-          />
-        </div>
+        <RadarChart
+          axis1={activityFactor}
+          axis2={dataKingFactor}
+          axis3={feature3Factor}
+          handleAxisChange={handleRadar}
+          labels={[jobCategory,"Feature 2","Feature 3"]}
+        />
+      </div>
     </>
   );
 }

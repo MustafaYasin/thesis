@@ -5,17 +5,26 @@ import RadarChart from "./RadarChart";
 import NavItem from "../layout/NavItem";
 import { ReactComponent as ArrowDownIcon } from "../../icons/arrow-down2.svg";
 import { ReactComponent as ArrowUpIcon } from "../../icons/arrow-up.svg";
-import jobs from "../layout/JobCategories"
+import jobs from "../layout/JobCategories";
 import DropdownMenu from "../layout/DropdownMenu";
 
 function Filter(props) {
   const [allPressed, setAllPressed] = useState(true);
   const [hirePressed, setHirePressed] = useState(false);
-  const [activityFactor, setActivityFactor] = useState(1);
-  const [dataKingFactor, setDataKingFactor] = useState(1);
-  const [feature3Factor, setFeature3Factor] = useState(1);
-  const [jobCategory, setJobCategory]= useState(jobs.dataScience);
-  const [openDropdown, setOpenDropdown]= useState(false);
+  const [activityFactor, setActivityFactor] = [
+    props.slider1Factor,
+    props.setSlider1Factor,
+  ];
+  const [dataKingFactor, setDataKingFactor] = [
+    props.slider2Factor,
+    props.setSlider2Factor,
+  ];
+  const [feature3Factor, setFeature3Factor] = [
+    props.slider3Factor,
+    props.setSlider3Factor,
+  ];
+  const [jobCategory, setJobCategory] = useState(jobs.dataScience);
+  const [openDropdown, setOpenDropdown] = useState(false);
 
   function isHireableHandler() {
     if (hirePressed) {
@@ -87,19 +96,26 @@ function Filter(props) {
     );
     props.setFilteredProfiles(sorted);
   }
-  function dropDownClickHandler(category){
-    setJobCategory(category)
+  function dropDownClickHandler(category) {
+    setJobCategory(category);
   }
 
   return (
     <>
       <div className={classes.filter}>
         <div className={classes.headerContainer}>
-        <NavItem open={openDropdown} setOpen={setOpenDropdown} iconOpen={<ArrowDownIcon />} iconClose={<ArrowUpIcon />}>
-            <DropdownMenu setOpen={setOpenDropdown} selectJobCategory={dropDownClickHandler}></DropdownMenu>
+          <NavItem
+            open={openDropdown}
+            setOpen={setOpenDropdown}
+            iconOpen={<ArrowDownIcon />}
+            iconClose={<ArrowUpIcon />}
+          >
+            <DropdownMenu
+              setOpen={setOpenDropdown}
+              selectJobCategory={dropDownClickHandler}
+            ></DropdownMenu>
           </NavItem>
           <h1>{jobCategory}</h1>
-          
         </div>
 
         <div className={classes.generalContainer}>
@@ -237,6 +253,7 @@ function Filter(props) {
             featureValue={activityFactor}
             setFeatureValue={setActivityFactor}
             handleSlider={handleActivitySlider}
+            color="darkgreen"
           />
         </div>
         <div className={classes.featureSlider}>
@@ -245,6 +262,7 @@ function Filter(props) {
             featureValue={dataKingFactor}
             setFeatureValue={setDataKingFactor}
             handleSlider={handleDataKingSlider}
+            color="darkgoldenrod"
           />
         </div>
         <div className={classes.featureSlider}>
@@ -253,6 +271,7 @@ function Filter(props) {
             featureValue={feature3Factor}
             setFeatureValue={setFeature3Factor}
             handleSlider={handleFeature3Slider}
+            color="darkslateblue"
           />
         </div>
       </div>
@@ -262,7 +281,7 @@ function Filter(props) {
           axis2={dataKingFactor}
           axis3={feature3Factor}
           handleAxisChange={handleRadar}
-          labels={[jobCategory,"Feature 2","Feature 3"]}
+          labels={[jobCategory, "Feature 2", "Feature 3"]}
         />
       </div>
     </>

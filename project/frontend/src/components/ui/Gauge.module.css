@@ -1,0 +1,6 @@
+.gaugeContainer{
+    position: relative;
+}
+.gauge{
+    position: absolute;
+}

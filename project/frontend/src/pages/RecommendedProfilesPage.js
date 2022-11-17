@@ -17,7 +17,9 @@ function RecommendedProfilesPage() {
   const detailsCtx = useContext(DetailsContext);
   const [recommendedProfiles, setRecommendedProfiles] = useState([]);
   const [filteredProfiles, setFilteredProfiles] = useState([]);
-
+  const [slider1Factor, setSlider1Factor] = useState(1);
+  const [slider2Factor, setSlider2Factor] = useState(1);
+  const [slider3Factor, setSlider3Factor] = useState(1);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -56,6 +58,12 @@ function RecommendedProfilesPage() {
         <Filter
           setFilteredProfiles={setFilteredProfiles}
           allProfiles={recommendedProfiles}
+          slider1Factor={slider1Factor}
+          slider2Factor={slider2Factor}
+          slider3Factor={slider3Factor}
+          setSlider1Factor={setSlider1Factor}
+          setSlider2Factor={setSlider2Factor}
+          setSlider3Factor={setSlider3Factor}
         />
       </div>
       <div className={classes.profilesContainer}>
@@ -69,7 +77,12 @@ function RecommendedProfilesPage() {
                 <p>people you may want to hire?</p>
               </div>
               <div className={classes.profilesList}>
-                <ProfileListMini profiles={filteredProfiles} />
+                <ProfileListMini
+                  profiles={filteredProfiles}
+                  slider1Factor={slider1Factor}
+                  slider2Factor={slider2Factor}
+                  slider3Factor={slider3Factor}
+                />
               </div>
             </Card>
           </div>

@@ -88,7 +88,15 @@ function ProfileItemMini(props) {
                 <h3>{props.fullName}</h3>
                 <address>{props.email}</address>
                 <div className={classes.gauge}>
-                  <Gauge recommendations={props.recommendations} />
+                  <Gauge
+                    recommendations={props.recommendations}
+                    feature_1={props.feature_1}
+                    feature_2={props.feature_2}
+                    feature_3={props.feature_3}
+                    slider1Factor={props.slider1Factor}
+                    slider2Factor={props.slider2Factor}
+                    slider3Factor={props.slider3Factor}
+                  />
                 </div>
               </div>
               <div className={classes.actions}>

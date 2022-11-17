@@ -20,8 +20,8 @@ function Slider(props) {
             <span className={classes.faktor}>{sliderValue} x</span> Fold
           </div>
         </div>
-        <div className={classes.slider}>
-          <div className={classes.progress}></div>
+        <div className={classes.slider} style={{backgroundColor: props.color}}>
+          <div className={classes.progress} style={{backgroundColor: props.color}}></div>
         </div>
         <div className={classes.rangeInput}>
           <input

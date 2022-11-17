@@ -2,6 +2,7 @@ import Card from "../components/ui/Card";
 import { Link } from "react-router-dom";
 import classes from "./HomePage.module.css";
 import Slider from "../components/filter/Slider";
+import HorizontalBarChart from "../components/ui/HorizontalBarChart";
 
 function CompareFavoritesPage() {
   return (
@@ -25,6 +26,7 @@ function CompareFavoritesPage() {
           </div>
         </Card>
       </div>
+      <HorizontalBarChart />
     </>
   );
 }

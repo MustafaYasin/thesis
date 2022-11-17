@@ -27,6 +27,9 @@ function ProfileListMini(props) {
                 feature_1={profile.feature_1}
                 feature_2={profile.feature_2}
                 feature_3={profile.feature_3}
+                slider1Factor={props.slider1Factor}
+                slider2Factor={props.slider2Factor}
+                slider3Factor={props.slider3Factor}
               />
             ))}
           </div>

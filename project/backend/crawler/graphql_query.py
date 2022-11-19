@@ -26,7 +26,7 @@ query = """
           updatedAt
           twitterUsername
           websiteUrl
-          isGitHubStar
+          isGitHubStarcle
           isCampusExpert
           isDeveloperProgramMember
           isSiteAdmin

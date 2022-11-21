@@ -11,21 +11,9 @@ BRANCH = "main"
 
 def get_readme():
     url = URL +'/' + OWNER + '/' + REPO + '/' + BRANCH + '/' + "README.md"
-    readme = wget.download(url, out="../user_data_csv/README.text", )
+    readme = wget.download(url, out="../user_data_csv/README.md", )
+    # html = markdown('../user_data_csv/README.md')
+    # text = ''.join(BeautifulSoup(html, features="lxml").findAll(text=True))
+    # print (text)
     return readme
-
-def markdown_to_text():
-    readme = get_readme()
-    html = markdown(readme)
-    text = ''.join(BeautifulSoup(html, features="lxml").findAll(text=True))
-    return text
-
-
-print(markdown_to_text())
-
-
-
-
-
-
 

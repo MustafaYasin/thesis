@@ -2,6 +2,9 @@ import wget
 from markdown import markdown
 from bs4 import BeautifulSoup
 import re
+import os
+
+
 
 # # wget https://raw.githubusercontent.com/{owner}/{repo}/{branch}/README.md
 URL = "https://raw.githubusercontent.com"
@@ -18,11 +21,24 @@ def get_readme():
     # After that, convert the Markdown to HTML
     with open(readme, 'r') as f:
         text = f.read()
-        print(text)
         html = markdown(text)
         text = ''.join(BeautifulSoup(html, features="lxml").findAll(text=True))
-        print (text)
-    return text
+        new_dict = {}
+        new_dict[text] = text.count(text)
+        os.remove(readme)
 
-text = get_readme()
+
+    return new_dict
+
+
+print(get_readme())
+
+
+
+# text, new_dict = get_readme()
+# from pprint import pprint
+# pprint("nthis is a dicitonary", new_dict)
+
+
+
 

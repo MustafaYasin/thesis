@@ -1,6 +1,3 @@
-#############
-# Libraries #
-#############
 import json
 import wget
 import time
@@ -10,10 +7,7 @@ import math
 
 
 
-#############
-# Constants #
-#############
-
+# Global variables used across the script
 URL = "https://api.github.com/search/repositories?q="  # The basic URL to use the GitHub API
 QUERY = "user:MustafaYasin"  # The personalized query (for instance, to get repositories from user 'MustafaYasin')
 SUB_QUERIES = ["+created%3A<%3D2021-03-31",
@@ -23,19 +17,14 @@ DELAY_BETWEEN_QUERIES = 10  # The time to wait between different queries to GitH
 OUTPUT_FOLDER = "../user_data_csv/"  # Folder where ZIP files will be stored
 OUTPUT_CSV_FILE = "../user_data_csv/repositories.csv"  # Path to the CSV file generated as output
 
-#############
-# Functions #
-#############
 
+# Getting a response from the URL and save it in a JSON file
 def getUrl(url):
     """ Given a URL it returns its body """
     response = requests.get(url)
+    print("Response getting from the requset: ", response)
     return response.json()
 
-
-########
-# MAIN #
-########
 
 # Function to download the saved data in zip file
 def download_zip(download_url, out_file_path, user, repository, clone_url):
@@ -46,6 +35,7 @@ def download_zip(download_url, out_file_path, user, repository, clone_url):
         print("Could not download file {}".format(download_url))
         print(e)
         repositories.writerow([user, repository, clone_url, "error when downloading"])
+
 
 # Function to get the number of pages to collect and save them in zip file
 def make_zip(item):
@@ -58,12 +48,14 @@ def make_zip(item):
     fileName = item['full_name'].replace("/", "#") + ".zip"
     return fileToDownload, fileName, user, repository, clone_url
 
+
 # Function to obtain the number of pages for the current subquery
 def results_in_different_pages(currentPage, numberOfPages, URL, QUERY, SUB_QUERIES, PARAMETERS):
     print("Processing page " + str(currentPage) + " of " + str(numberOfPages) + " ...")
     url = URL + QUERY + str(SUB_QUERIES[subquery - 1]) + PARAMETERS + "&page=" + str(currentPage)
     data = json.loads(json.dumps(getUrl(url)))
     return data, url
+
 
 # Function to 
 def obtain_number_of_pages(subquery, URL, QUERY, SUB_QUERIES, PARAMETERS):

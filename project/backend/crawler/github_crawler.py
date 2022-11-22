@@ -10,8 +10,6 @@ from graphql_query import domain
 
 
 
-
-
 # Github API token authentication
 parser = argparse.ArgumentParser()
 parser.add_argument('-t', '--token', required=True, help="The GitHub Token.")

@@ -7,7 +7,9 @@ import random
 
 
 
+
 def retrieve_fields(item, domain):
+
     node = item['node']
     nodes = node['repositories']["nodes"]
     star_time = datetime.datetime.strptime(
@@ -22,6 +24,7 @@ def retrieve_fields(item, domain):
         'username': node['login'],
         'fullName': node['name'],
         'bio': node['bio'],
+        'readme': get_readme(item, domain),
         'email': node['email'],
         'location': node['location'],
         'isHireable': node['isHireable'],

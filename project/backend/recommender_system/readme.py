@@ -20,24 +20,16 @@ def get_readme():
     # Open the downloaded Markdown file and read it into a variable
     # After that, convert the Markdown to HTML
     with open(readme, 'r') as f:
-        text = f.read()
-        html = markdown(text)
+        markdownText = f.read()
+        html = markdown(markdownText)
         text = ''.join(BeautifulSoup(html, features="lxml").findAll(text=True))
         new_dict = {}
         new_dict[text] = text.count(text)
         os.remove(readme)
-
-
-    return new_dict
+    return text
 
 
 print(get_readme())
-
-
-
-# text, new_dict = get_readme()
-# from pprint import pprint
-# pprint("nthis is a dicitonary", new_dict)
 
 
 

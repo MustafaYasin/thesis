@@ -18,47 +18,42 @@ HOST = "https://raw.githubusercontent.com"
 BRANCH = 'master'
 
 # Function to download the README.md file from each repository
-def get_readme(item, domain):
-
-    node = item['node']
-    nodes = node['repositories']["nodes"]
-    pprint(nodes)
+def get_readme(node):
     owner = node['login']
-    repo = nodes[0]['name']
-    print(repo)
-    print("this is a repo", repo)
-    print("this is an owner", owner)
-   
-    url = f"{HOST}/{owner}/{repo}/{BRANCH}/README.md"
-    print("this is a url", url)
-    try:
-        readme = wget.download(url, out="../user_data_csv/README.md")
-    except:
-        return {}
+    repo_info = node['repositories']["nodes"]
+    repo_list = [repo["name"] for repo in repo_info]
+    print(f"This is a list of repo names for user: {owner}", repo_list)
 
-    # Create a dictionary to store the the readme files from each repository of the user
-    readme_dict = {}
+    readme_list = []
 
-    # Open the downloaded Markdown file and read it into a variable
-    # After that, convert the Markdown to HTML
-    with open(readme, 'r') as f:
-    
-        markdown_text = f.read()
+    for repo in repo_list:
+        url = f"{HOST}/{owner}/{repo}/{BRANCH}/README.md"
+        try:
+            readme = wget.download(url, out="../user_data_csv/README.md")
+        except:
+            continue
 
-        # Convert the Markdown to HTML
-        html = markdown(markdown_text)
+        # Create a dictionary to store the the readme files from each repository of the user
 
-        # Extract the text from the HTML
-        text = ''.join(BeautifulSoup(html, features="lxml").findAll(text=True))
+        # Open the downloaded Markdown file and read it into a variable
+        # After that, convert the Markdown to HTML
+        with open(readme, 'r') as f:
+        
+            markdown_text = f.read()
 
-        # Add the README text to the dictionary
-        readme_dict = readme_dict.setdefault(owner, []).append(text)
-        pprint(readme_dict)
+            # Convert the Markdown to HTML
+            html = markdown(markdown_text)
 
-        # Remove the downloaded README.md file
-        os.remove(readme)
+            # Extract the text from the HTML
+            text = ' '.join(BeautifulSoup(html, features="lxml").findAll(text=True))
 
-    return readme_dict
+            # Add the README text to the dictionary
+            readme_list.append(text)
+
+            # Remove the downloaded README.md file
+            os.remove(readme)
+    print(readme_list)
+    return readme_list
 
 
 def retrieve_fields(item, domain):
@@ -77,7 +72,7 @@ def retrieve_fields(item, domain):
         'fullName': node['name'],
         'bio': node['bio'],
         'email': node['email'],
-        'readme': get_readme(item, domain),
+        'readme': get_readme(node),
         'location': node['location'],
         'isHireable': node['isHireable'],
         'company': node['company'],

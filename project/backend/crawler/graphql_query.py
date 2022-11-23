@@ -40,6 +40,7 @@ query = """
               primaryLanguage {{
                 name
               }}
+              name
             }}
           }}
           

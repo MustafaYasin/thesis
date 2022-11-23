@@ -4,7 +4,61 @@ from random import randrange
 from graphql_query import domain
 from random import randint
 import random 
+import wget
+from markdown import markdown
+from bs4 import BeautifulSoup
+import urllib.request as urllib2
+import os
+from pprint import pprint
 
+
+
+# wget https://raw.githubusercontent.com/{owner}/{repo}/{branch}/README.md
+HOST = "https://raw.githubusercontent.com"
+BRANCH = 'master'
+
+# Function to download the README.md file from each repository
+def get_readme(item, domain):
+
+    node = item['node']
+    nodes = node['repositories']["nodes"]
+    pprint(nodes)
+    owner = node['login']
+    repo = nodes[0]['name']
+    print(repo)
+    print("this is a repo", repo)
+    print("this is an owner", owner)
+   
+    url = f"{HOST}/{owner}/{repo}/{BRANCH}/README.md"
+    print("this is a url", url)
+    try:
+        readme = wget.download(url, out="../user_data_csv/README.md")
+    except:
+        return {}
+
+    # Create a dictionary to store the the readme files from each repository of the user
+    readme_dict = {}
+
+    # Open the downloaded Markdown file and read it into a variable
+    # After that, convert the Markdown to HTML
+    with open(readme, 'r') as f:
+    
+        markdown_text = f.read()
+
+        # Convert the Markdown to HTML
+        html = markdown(markdown_text)
+
+        # Extract the text from the HTML
+        text = ''.join(BeautifulSoup(html, features="lxml").findAll(text=True))
+
+        # Add the README text to the dictionary
+        readme_dict = readme_dict.setdefault(owner, []).append(text)
+        pprint(readme_dict)
+
+        # Remove the downloaded README.md file
+        os.remove(readme)
+
+    return readme_dict
 
 
 def retrieve_fields(item, domain):
@@ -23,6 +77,7 @@ def retrieve_fields(item, domain):
         'fullName': node['name'],
         'bio': node['bio'],
         'email': node['email'],
+        'readme': get_readme(item, domain),
         'location': node['location'],
         'isHireable': node['isHireable'],
         'company': node['company'],
@@ -69,7 +124,7 @@ def store_to_mongodb(db, data):
 
 
 def store_to_csv(writer, node):
-    writer.writerow([node['username'], node['fullName'], node['bio'], node['email'], node['repository_count'], node['company'], 
+    writer.writerow([node['username'], node['fullName'], node['bio'], node['email'], node['readme'], ['repository_count'], node['company'], 
                     node['avatar_url'], node['isHireable'], node['star_time'], node['followers'], node['following'], node['organizations'],
                     node['createdAt'], node['updatedAt'], node['twitterUsername'], node['isGitHubStar'], node['isCampusExpert'], 
                     node['isDeveloperProgramMember'], node['isSiteAdmin'], node['isViewer'], node['anyPinnableItems'], node['viewerIsFollowing'], 

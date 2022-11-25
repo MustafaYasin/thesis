@@ -1,6 +1,6 @@
 import classes from "./Filter.module.css";
 import { useState } from "react";
-import Slider from "./Slider";
+import RadarChart from "./RadarChart";
 import jobs from "../layout/JobCategories";
 import GeneralFilter from "./GeneralFilter";
 import ProgrammingLanguageFilter from "./ProgrammingLanguageFilter";
@@ -22,7 +22,7 @@ function Filter(props) {
 
   const [jobCategory, setJobCategory] = useState(jobs.dataScience);
 
-  function calcRecommend() {
+  function calcRadar(activityFactor, dataKingFactor, feature3Factor) {
     const len = props.allProfiles.length;
     for (let i = 0; i < len; i++) {
       props.allProfiles[i].recommendations =
@@ -33,31 +33,15 @@ function Filter(props) {
     }
   }
 
-  function handleActivitySlider(event) {
-    //console.log(event.target.value);
-    setActivityFactor(event.target.value);
-    calcRecommend();
+  function handleRadar(axis1, axis2, axis3) {
+    //console.log(axis1, axis2, axis3);
+    calcRadar(axis1, axis2, axis3);
     const sorted = [...props.allProfiles].sort(
       (a, b) => b.recommendations - a.recommendations
     );
     props.setFilteredProfiles(sorted);
   }
-  function handleDataKingSlider(event) {
-    setDataKingFactor(event.target.value);
-    calcRecommend();
-    const sorted = [...props.allProfiles].sort(
-      (a, b) => b.recommendations - a.recommendations
-    );
-    props.setFilteredProfiles(sorted);
-  }
-  function handleFeature3Slider(event) {
-    setFeature3Factor(event.target.value);
-    calcRecommend();
-    const sorted = [...props.allProfiles].sort(
-      (a, b) => b.recommendations - a.recommendations
-    );
-    props.setFilteredProfiles(sorted);
-  }
+
   function dropDownClickHandler(category) {
     setJobCategory(category);
   }
@@ -73,34 +57,15 @@ function Filter(props) {
         <GeneralFilter />
         <ProgrammingLanguageFilter />
       </div>
-      <div className={classes.sliderBox}>
-        <div className={classes.featureSlider}>
-          <Slider
-            feature={jobCategory}
-            featureValue={activityFactor}
-            setFeatureValue={setActivityFactor}
-            handleSlider={handleActivitySlider}
-            color="darkgreen"
-          />
-        </div>
-        <div className={classes.featureSlider}>
-          <Slider
-            feature="DataKing"
-            featureValue={dataKingFactor}
-            setFeatureValue={setDataKingFactor}
-            handleSlider={handleDataKingSlider}
-            color="darkgoldenrod"
-          />
-        </div>
-        <div className={classes.featureSlider}>
-          <Slider
-            feature="Feature 3"
-            featureValue={feature3Factor}
-            setFeatureValue={setFeature3Factor}
-            handleSlider={handleFeature3Slider}
-            color="darkslateblue"
-          />
-        </div>
+
+      <div className={classes.radarChart}>
+        <RadarChart
+          axis1={activityFactor}
+          axis2={dataKingFactor}
+          axis3={feature3Factor}
+          handleAxisChange={handleRadar}
+          labels={[jobCategory, "Feature 2", "Feature 3"]}
+        />
       </div>
     </>
   );

@@ -28,7 +28,7 @@ function Slider(props) {
             type="range"
             className={classes.rangeMin}
             min={0}
-            max={2}
+            max={1}
             step={0.1}
             value={sliderValue}
             onChange={props.handleSlider}

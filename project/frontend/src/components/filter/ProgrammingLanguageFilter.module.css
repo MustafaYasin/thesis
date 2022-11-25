@@ -1,0 +1,17 @@
+.programmingLanguageContainer {
+    border-top: 0;
+    border-left: 0;
+    border-right: 0;
+    border-bottom: 1px;
+    border-style: solid;
+    border-color: lightgray;
+    padding-bottom: 2rem;
+  }
+  
+  .programmingLanguageHeaderContainer {
+    margin-top: 0.5rem;
+    margin-left: 1rem;
+  }
+  .programmingLanguageList ul {
+    padding-left: 1.5rem;
+  }

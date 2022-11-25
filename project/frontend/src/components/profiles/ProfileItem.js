@@ -70,15 +70,15 @@ function ProfileItem(props) {
                 </div>
                 <div className={classes.aboutContainer}>
                   <h2>About</h2>
-                  <div className={classes.bioContainer}>{props.bio}</div>
-                  <div className={classes.workingContainer}>
-                    currently working at{" "}
+                  {props.bio &&<div className={classes.bioContainer}>{props.bio}</div>}
+                  <div className={classes.workingContainer}> {props.company &&<div> currently working at{" "}
                     <span className={classes.company}>{props.company}</span>{" "}
-                    with{" "}
+                    with{" "}</div>}
+                   {props.yearsofExperience && <div>
                     <span className={classes.yearsofExperience}>
                       {props.yearsofExperience} years
                     </span>{" "}
-                    of Experience.
+                    of Experience.</div>}
                   </div>
                 </div>
               </div>

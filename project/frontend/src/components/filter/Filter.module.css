@@ -116,7 +116,19 @@ h2 {
   border-radius: 2rem;
   padding: 1rem;
   position: fixed;
-  left: 14rem;
-  bottom: 5rem;
+  left: 28rem;
+  width: 40rem;
+  z-index: 1;
+  opacity: 0.4;
+}
+.pieChartContainer{
   width: 30rem;
+  height: 30rem;
+  position: fixed;
+  bottom: 47rem;
+  background-color: white;
+  border-radius: 2rem;
+  left: 33rem;
+  opacity: 1;
+  z-index: 0;
 }

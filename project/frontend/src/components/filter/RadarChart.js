@@ -37,10 +37,10 @@ function RadarChart(props) {
         labels: props.labels,
         datasets: [
           {
-            label: "Feature Weights",
+            label:'test',
             data: [axis1, axis2, axis3],
-            backgroundColor: "rgba(	45, 62, 255, 0.2)",
-            borderColor: "rgba(	45, 62, 2552, 1)",
+            backgroundColor: "rgba(	45, 45, 45, 0.2)",
+            borderColor: "rgba(	45, 45, 45, 1)",
             borderWidth: 1,
           },
         ],
@@ -53,7 +53,7 @@ function RadarChart(props) {
             stepSize: 0.1,
             pointLabels: {
               font: {
-                size: 14
+                size: 18
               }
             }
           },

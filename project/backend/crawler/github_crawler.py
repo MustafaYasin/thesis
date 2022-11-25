@@ -5,8 +5,9 @@ from flask_restful import Resource, reqparse
 import pandas as pd
 from graphql_query import query, fields
 from database import db_connection, run_query
-from utils import retrieve_fields, store_to_mongodb, store_to_csv, domain
+from utils import retrieve_fields, store_to_mongodb, store_to_csv, domain, get_readme
 from graphql_query import domain
+
 
 
 
@@ -63,3 +64,18 @@ with open(user_filename, 'w') as stars:
         print("endCursor", endCursor)   
         count = count + 100
         print(str(count) + " users processed.")
+
+print("##################################################################################################")
+# Creating a CSV file to the readme of each user from the database
+user_readme = "../user_data_csv/recommendation.csv"
+def store_readme_to_csv(user_readme, entry):
+    for user_info in entry:
+        print("##################################################################################################")
+        username = user_info["username"]
+        print("This is user info: ", user_info)
+        readme_list = user_info["readme"]
+        print("This is readme: ", readme_list)
+
+        for readme in readme_list:
+            with open(user_readme, "w") as f:
+                f.write(username, readme, '\n')

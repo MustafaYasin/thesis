@@ -22,7 +22,7 @@ def get_readme(node):
     owner = node['login']
     repo_info = node['repositories']["nodes"]
     repo_list = [repo["name"] for repo in repo_info]
-    print(f"This is a list of repo names for user: {owner}", repo_list)
+    #print(f"This is a list of repo names for user: {owner}", repo_list)
 
     readme_list = []
 
@@ -52,7 +52,7 @@ def get_readme(node):
 
             # Remove the downloaded README.md file
             os.remove(readme)
-    print(readme_list)
+    #print("This is readme list \n ", readme_list)
     return readme_list
 
 
@@ -76,7 +76,7 @@ def retrieve_fields(item, domain):
         'location': node['location'],
         'isHireable': node['isHireable'],
         'company': node['company'],
-        'yearsofExperience': randint(1, 10), # Generate random number between 1 and 10
+        'yearsofExperience': randint(1, 10),
         'domainofExpertise': random.choice(domain),
         'activity': randint(1, 100), 
         'feature_1': randint(1, 100)/100,
@@ -103,7 +103,41 @@ def retrieve_fields(item, domain):
         'star_time': star_time,
         'primary_language': primary_language
     }
+
+
+    user_readme = "../user_data_csv/recommendation.csv"
+    for user_info in result.keys():
+
+        username = result["username"]
+        print("These are the usernames: ", username)
+        readme_list = result["readme"]
+        print("These are the readme files: ", readme_list)
+
+        for readme in readme_list:
+            print("This is readme: ", readme)
+            with open(user_readme, "w") as f:
+                f.write(username + readme + '\n')
+
+
     return result
+
+"""
+user_readme = "../user_data_csv/recommendation.csv"
+def store_readme_to_csv(result):
+    for user_info in result:
+        print("##################################################################################################")
+        username = user_info["username"]
+        print("This is user info: ", user_info)
+        readme_list = user_info["readme"]
+        print("This is readme: ", readme_list)
+
+        for readme in readme_list:
+            print("This is readme: ", readme)
+            with open(user_readme, "w") as f:
+                f.write(username, readme, '\n')
+                f.close()
+"""    
+
 
 def store_to_mongodb(db, data):
     email = data.pop('email')

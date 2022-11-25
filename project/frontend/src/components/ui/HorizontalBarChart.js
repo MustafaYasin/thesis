@@ -30,7 +30,7 @@ function HorizontalBarChart(props) {
     responsive: true,
     plugins: {
       legend: {
-        position: "right",
+        display: false,
       },
       title: {
         display: true,
@@ -45,10 +45,18 @@ function HorizontalBarChart(props) {
     labels,
     datasets: [
       {
-        label: "%",
+        label: "",
         data: [props.feature_1, props.feature_2, props.feature_3],
-        backgroundColor: "rgba(	45, 62, 255, 0.2)",
-        borderColor: "rgba(	45, 62, 2552, 1)",
+        backgroundColor: [
+          "rgba(0,100,0, 1)",
+          "rgba(184,134,11, 1)",
+          "rgba(72,61,139, 1)",
+        ],
+        borderColor: [
+          "rgba(0,100,0, 1)",
+          "rgba(184,134, 1)",
+          "rgba(72,61,139, 1)",
+        ],
       },
     ],
   };

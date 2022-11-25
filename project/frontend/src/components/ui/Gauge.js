@@ -42,6 +42,8 @@ function Gauge(props) {
               transform: "rotate(-126deg)",
               // -126 for 1/3 rd alignment
               transformOrigin: "center center",
+              stroke: "darkgreen",
+              opacity: 0.5
             },
             path: {
               strokeLinecap: "butt",
@@ -67,6 +69,8 @@ function Gauge(props) {
               strokeLinecap: "butt",
               transform: calcTransform(),
               transformOrigin: "center center",
+              stroke: "darkgoldenrod",
+              opacity: 0.5
             },
             path: {
               strokeLinecap: "butt",
@@ -90,6 +94,9 @@ function Gauge(props) {
               strokeLinecap: "butt",
               transform: calcTransform2(),
               transformOrigin: "center center",
+              stroke: "darkslateblue",
+              opacity: 0.5
+
             },
             path: {
               strokeLinecap: "butt",

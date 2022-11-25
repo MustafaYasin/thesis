@@ -10,6 +10,7 @@ from bs4 import BeautifulSoup
 import urllib.request as urllib2
 import os
 from pprint import pprint
+import csv
 
 
 
@@ -109,13 +110,12 @@ def retrieve_fields(item, domain):
     for user_info in result.keys():
 
         username = result["username"]
-        print("These are the usernames: ", username)
         readme_list = result["readme"]
-        print("These are the readme files: ", readme_list)
 
-        for readme in readme_list:
-            print("This is readme: ", readme)
-            with open(user_readme, "w") as f:
+        with open(user_readme, "a") as f:
+            writer = csv.writer(f)
+            writer.writerow([username, readme_list])
+            for readme in readme_list:
                 f.write(username + readme + '\n')
 
 

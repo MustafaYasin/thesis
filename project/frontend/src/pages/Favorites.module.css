@@ -4,12 +4,13 @@
     justify-content: space-around;
   }
   
-  .filter {
+  /* .filter {
       max-width: 30rem;
-  }
+  } */
   
   .profiles{
-      max-width: 40rem;
+    display: flex;
+      max-width: 80rem;
       width: 100%;
       justify-content: right;
   }

@@ -15,13 +15,13 @@ function FavoritesPage() {
   } else {
     content = (
       <div className={classes.basic}>
-        <div className={classes.filter}>
+        {/* <div className={classes.filter}>
           <h1>Filter</h1>
           <Card>
             <Filter />
           </Card>
-        </div>
-        <div className={classes.profiles}>favorites
+        </div> */}
+        <div className={classes.profiles}>
           <ProfileList profiles={favoriteCtx.favorites} />
         </div>
       </div>

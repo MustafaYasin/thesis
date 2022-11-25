@@ -14,7 +14,10 @@ function MainNavigation() {
       <nav>
         <ul>
           <li>
-            <Link to="/recommend">Recommended Profiles</Link>
+            <Link to="/recommend">Slider Profiles</Link>
+          </li>
+          <li>
+            <Link to="/recommend2">Radar Profiles</Link>
           </li>
           <li>
             <Link to="/favorites" className={classes.link}>

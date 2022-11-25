@@ -4,6 +4,7 @@ import FavoritesPage from "./pages/Favorites";
 import Layout from "./components/layout/Layout";
 import CompareFavoritesPage from "./pages/CompareFavorites";
 import HomePage from "./pages/HomePage";
+import RecommendedProfilesPage2 from "./pages/RecommendedProfilesPage2";
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
       <Routes>
         <Route path="/" element={<HomePage />}></Route>
         <Route path="/recommend" element={<RecommendedProfilesPage />}></Route>
+        <Route path="/recommend2" element={<RecommendedProfilesPage2 />}></Route>
         <Route path="/compare" element={<CompareFavoritesPage />}></Route>
         <Route path="/favorites" element={<FavoritesPage />}></Route>
       </Routes>

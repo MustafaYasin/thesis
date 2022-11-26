@@ -7,7 +7,7 @@
     border: 1px solid black;
     border-radius: 2rem;
     padding: 1rem;
-    overflow: hidden;
+    z-index: 100;
 }
 
 .menuItem{

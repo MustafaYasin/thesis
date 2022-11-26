@@ -1,16 +1,31 @@
 import { Link } from "react-router-dom";
 import classes from "./MainNavigation.module.css";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import FavoritesContext from "../store/favorites-context";
+import FilterHeader from "../filter/FilterHeader";
+import jobs from "../layout/JobCategories";
 
 function MainNavigation() {
   const favoriteCtx = useContext(FavoritesContext);
+  const [jobCategory, setJobCategory] = useState(jobs.dataScience);
 
+  function dropDownClickHandler(category) {
+    setJobCategory(category);
+  }
   return (
     <header className={classes.header}>
-      <Link to="/">
-        <div className={classes.logo}>Profile Recommender</div>
-      </Link>
+      <div className={classes.leftContainer}>
+        <Link to="/">
+          <div className={classes.logo}>Home</div>
+        </Link>
+      </div>
+      <div className={classes.categoryDropdownContainer}>
+        <FilterHeader
+          jobCategory={jobCategory}
+          setJobCategory={setJobCategory}
+          Handler={dropDownClickHandler}
+        />
+      </div>
       <nav>
         <ul>
           <li>

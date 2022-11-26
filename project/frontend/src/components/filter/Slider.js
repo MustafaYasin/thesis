@@ -12,7 +12,9 @@ function Slider(props) {
       <div className={classes.wrapper}>
         <header>
           <h2>{props.feature} Score</h2>
-          <p>This feature's weight is currently</p>
+          <p>Use the Slider to adjust the weight of this Feature</p>
+
+          {props.text?<p>{props.text}</p>:<p>This feature's weight is currently</p>}
         </header>
         <div className={classes.priceInput}>
           <div className={classes.field}>

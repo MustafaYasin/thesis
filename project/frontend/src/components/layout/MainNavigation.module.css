@@ -6,8 +6,8 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: rgb(245,245,245);
-  padding: 0 10%;
+  background-color: rgb(245, 245, 245);
+  padding: 0;
   border-style: solid;
   border-width: 1px;
   border-color: #c6c6c6;
@@ -18,12 +18,22 @@
 
 .logo {
   font-size: 2rem;
-  margin-left: 5.5rem;
+  margin-left: 2rem;
   color: rgb(30, 29, 29);
   font-weight: bold;
 }
 .logo:hover {
   text-decoration: underline;
+}
+.categoryDropdownContainer {
+  position: relative;
+  padding-bottom: 0;
+  overflow: visible;
+
+  z-index: 100;
+}
+.categoryDropdownContainer h1 {
+  margin: 0;
 }
 .header ul {
   list-style: none;

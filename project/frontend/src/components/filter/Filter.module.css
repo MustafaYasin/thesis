@@ -108,9 +108,10 @@ h2 {
   display: flex;
   flex-direction: column;
 }
-.featureSlider{
+.featureSlider1,.featureSlider2,.featureSlider3{
   margin-bottom: 2rem;
 }
+
 .radarChart{
   background-color: white;
   border-radius: 2rem;

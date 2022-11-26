@@ -1,18 +1,50 @@
-.dataScientist{
+.homePageHeaderContainer{
+    margin-left: 4rem;
+    margin-top: 2rem;
+}
+
+.homePageHeaderContainer h1{
+    font-size: 5rem;
+}
+
+.cardContentContainer{
+    width: 28rem;
+}
+
+.cardContentHeader{
+    text-align: center;
+    padding-top: 1rem;
+}
+
+.cardContentHeader h2{
+    margin-bottom: 0;
+}
+
+.cardContainer{
+    position: absolute;
     width: fit-content;
+    left: 30%;
+    top: 30%;
 }
 
 .dataScientist h3{
     padding: 1rem;
 }
-.image{
-    margin-left: 4rem;
+.imageContainer{
+    margin-top:1rem;
+    margin-left:3rem;
+    margin-right:3rem;
+    margin-bottom:2rem;
 }
-.dataScientist img{
-    height: 120px;
-    width: 120px;
+.image{
+    height: 100%;
+    width: 100%;
 }
 .link{
+    display: flex;
+    justify-content: center;
+    align-items: center;    
+    margin-top: 1.5rem;
     padding-bottom: 1rem;
     padding-top: 0.5rem;
 }

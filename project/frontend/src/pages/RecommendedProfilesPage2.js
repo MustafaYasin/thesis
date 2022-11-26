@@ -17,9 +17,9 @@ function RecommendedProfilesPage2() {
   const detailsCtx = useContext(DetailsContext);
   const [recommendedProfiles, setRecommendedProfiles] = useState([]);
   const [filteredProfiles, setFilteredProfiles] = useState([]);
-  const [slider1Factor, setSlider1Factor] = useState(1);
-  const [slider2Factor, setSlider2Factor] = useState(1);
-  const [slider3Factor, setSlider3Factor] = useState(1);
+  const [feature1Factor, setFeature1Factor] = useState(1);
+  const [feature2Factor, setFeature2Factor] = useState(1);
+  const [feature3Factor, setFeature3Factor] = useState(1);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -58,12 +58,12 @@ function RecommendedProfilesPage2() {
         <Filter2
           setFilteredProfiles={setFilteredProfiles}
           allProfiles={recommendedProfiles}
-          slider1Factor={slider1Factor}
-          slider2Factor={slider2Factor}
-          slider3Factor={slider3Factor}
-          setSlider1Factor={setSlider1Factor}
-          setSlider2Factor={setSlider2Factor}
-          setSlider3Factor={setSlider3Factor}
+          feature1Factor={feature1Factor}
+          feature2Factor={feature2Factor}
+          feature3Factor={feature3Factor}
+          setFeature1Factor={setFeature1Factor}
+          setFeature2Factor={setFeature2Factor}
+          setFeature3Factor={setFeature3Factor}
         />
       </div>
       <div className={classes.profilesContainer}>
@@ -79,9 +79,9 @@ function RecommendedProfilesPage2() {
               <div className={classes.profilesList}>
                 <ProfileListMini
                   profiles={filteredProfiles}
-                  slider1Factor={slider1Factor}
-                  slider2Factor={slider2Factor}
-                  slider3Factor={slider3Factor}
+                  feature1Factor={feature1Factor}
+                  feature2Factor={feature2Factor}
+                  feature3Factor={feature3Factor}
                 />
               </div>
             </Card>

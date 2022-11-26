@@ -7,13 +7,18 @@ import HorizontalBarChart from "../components/ui/HorizontalBarChart";
 function CompareFavoritesPage() {
   return (
     <>
-      <h1>HomePage</h1>
-      <div className={classes.dataScientist}>
+      <div className={classes.homePageHeaderContainer}>
+        <h1>HomePage</h1>
+      </div>
+      <div className={classes.cardContainer}>
         <Card>
-          <div>
-            <h3>Looking for Data Scientist?</h3>
-            <div className={classes.image}>
+          <div className={classes.cardContentContainer}>
+            <div className={classes.cardContentHeader}>
+              <h2>Looking for Data Scientist?</h2>
+            </div>
+            <div className={classes.imageContainer}>
               <img
+                className={classes.image}
                 src="https://www.sudeep.co/images/post_images/2018-02-09-Understanding-the-Data-Science-Lifecycle/chart.png"
                 alt=""
               />
@@ -26,7 +31,6 @@ function CompareFavoritesPage() {
           </div>
         </Card>
       </div>
-      <HorizontalBarChart />
     </>
   );
 }

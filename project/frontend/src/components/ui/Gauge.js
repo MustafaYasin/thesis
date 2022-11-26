@@ -7,25 +7,25 @@ function Gauge(props) {
   const value = (score * 100).toFixed(1);
   const gaugeRatio = 0.7;
   var sliderSum =
-    parseFloat(props.slider1Factor) +
-    parseFloat(props.slider2Factor) +
-    parseFloat(props.slider3Factor);
+    parseFloat(props.feature1Factor) +
+    parseFloat(props.feature2Factor) +
+    parseFloat(props.feature3Factor);
   var featureSum = (
-    parseFloat(props.slider1Factor) * props.feature_1 +
-    parseFloat(props.slider2Factor) * props.feature_2 +
-    parseFloat(props.slider3Factor) * props.feature_3
+    parseFloat(props.feature1Factor) * props.feature_1 +
+    parseFloat(props.feature2Factor) * props.feature_2 +
+    parseFloat(props.feature3Factor) * props.feature_3
   ).toFixed(2);
 
   function calcTransform() {
     const rotation =
-      -126 + gaugeRatio * (props.slider1Factor / sliderSum) *  360;
+      -126 + gaugeRatio * (props.feature1Factor / sliderSum) *  360;
     return "rotate(" + rotation + "deg)";
   }
   function calcTransform2() {
     const rotation =
       -126 +
-      gaugeRatio * (props.slider1Factor / sliderSum) *  360 +
-      gaugeRatio * (props.slider2Factor / sliderSum) *  360;
+      gaugeRatio * (props.feature1Factor / sliderSum) *  360 +
+      gaugeRatio * (props.feature2Factor / sliderSum) *  360;
     return "rotate(" + rotation + "deg)";
   }
 
@@ -35,7 +35,7 @@ function Gauge(props) {
         <CircularProgressbar
           value={(props.recommendations * 100).toFixed(1)}
           text={`${value}%`}
-          circleRatio={gaugeRatio * (props.slider1Factor / sliderSum)}
+          circleRatio={gaugeRatio * (props.feature1Factor / sliderSum)}
           styles={{
             trail: {
               strokeLinecap: "butt",
@@ -63,7 +63,7 @@ function Gauge(props) {
       <div className={classes.gauge}>
         <CircularProgressbar
           value={(props.recommendations * 100).toFixed(1)}
-          circleRatio={gaugeRatio * (props.slider2Factor / sliderSum)}
+          circleRatio={gaugeRatio * (props.feature2Factor / sliderSum)}
           styles={{
             trail: {
               strokeLinecap: "butt",
@@ -88,7 +88,7 @@ function Gauge(props) {
       <div className={classes.gauge}>
         <CircularProgressbar
           value={(props.recommendations * 100).toFixed(1)}
-          circleRatio={gaugeRatio * (props.slider3Factor / sliderSum)}
+          circleRatio={gaugeRatio * (props.feature3Factor / sliderSum)}
           styles={{
             trail: {
               strokeLinecap: "butt",

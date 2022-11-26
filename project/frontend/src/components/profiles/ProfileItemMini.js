@@ -93,9 +93,9 @@ function ProfileItemMini(props) {
                     feature_1={props.feature_1}
                     feature_2={props.feature_2}
                     feature_3={props.feature_3}
-                    slider1Factor={props.slider1Factor}
-                    slider2Factor={props.slider2Factor}
-                    slider3Factor={props.slider3Factor}
+                    feature1Factor={props.feature1Factor}
+                    feature2Factor={props.feature2Factor}
+                    feature3Factor={props.feature3Factor}
                   />
                 </div>
               </div>

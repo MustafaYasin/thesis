@@ -6,13 +6,13 @@ ChartJS.register(ArcElement, Tooltip, Legend);
 
 
 function PieChart(props) {
-    var sliderSum=props.slider1Factor+props.slider2Factor+props.slider3Factor
+    var sliderSum=props.feature1Factor+props.feature2Factor+props.feature3Factor
     const data = {
         labels: ['Feature 1', 'Feature 2', 'Feature 3'],
         datasets: [
           {
             label: 'Features',
-            data: [props.slider1Factor,props.slider2Factor,props.slider3Factor],
+            data: [props.feature1Factor,props.feature2Factor,props.feature3Factor],
             backgroundColor: [
                 "rgba(0,100,0, 1)",
                 "rgba(72,61,139, 1)",
@@ -30,7 +30,7 @@ function PieChart(props) {
         ],
       };
       const options ={
-        rotation: -(props.slider1Factor/sliderSum*180),
+        rotation: -(props.feature1Factor/sliderSum*180),
         plugins: {
             legend: {
               display: false,

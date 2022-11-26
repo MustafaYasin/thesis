@@ -12,7 +12,7 @@ function GeneralFilterCheckboxes() {
             id="isHireable"
           />
           <label className={classes.label} htmlFor="isHireable">
-            hireable
+            Hireable
           </label>
         </li>
         <li className={classes.generalListItem}>
@@ -23,7 +23,7 @@ function GeneralFilterCheckboxes() {
             id="githubStar"
           />
           <label className={classes.label} htmlFor="githubStar">
-            githubStar
+            Github Star
           </label>
         </li>
         <li className={classes.generalListItem}>
@@ -34,7 +34,7 @@ function GeneralFilterCheckboxes() {
             id="campusExpert"
           />
           <label className={classes.label} htmlFor="campusExpert">
-            campusExpert
+            Campus Expert
           </label>
         </li>
         <li className={classes.generalListItem}>
@@ -45,7 +45,7 @@ function GeneralFilterCheckboxes() {
             id="developerProgramMember"
           />
           <label className={classes.label} htmlFor="developerProgramMember">
-            developerProgramMember
+            Developer Program Member
           </label>
         </li>
       </ul>

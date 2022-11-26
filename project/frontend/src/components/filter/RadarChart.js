@@ -37,7 +37,7 @@ function RadarChart(props) {
         labels: props.labels,
         datasets: [
           {
-            label:'test',
+            label:'',
             data: [axis1, axis2, axis3],
             backgroundColor: "rgba(	45, 45, 45, 0.2)",
             borderColor: "rgba(	45, 45, 45, 1)",
@@ -46,6 +46,9 @@ function RadarChart(props) {
         ],
       },
       options: {
+        pointRadius: 5,
+        pointHoverRadius: 10,
+        pointHitRadius:3,
         scales: {
           r: {
             max: 2,
@@ -53,8 +56,8 @@ function RadarChart(props) {
             stepSize: 0.1,
             pointLabels: {
               font: {
-                size: 18
-              }
+                size: 18,
+              },
             }
           },
         },

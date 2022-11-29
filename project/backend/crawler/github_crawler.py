@@ -7,7 +7,10 @@ from graphql_query import query, fields
 from database import db_connection, run_query
 from utils import retrieve_fields, store_to_mongodb, store_repo_to_csv, domain, get_readme, store_readme_to_csv
 from graphql_query import domain
- 
+import sys
+import os
+sys.path.insert(1, 'project/backend/crawler')
+from ..recommender_system.term_frequency import store_readme_to_csv
 
 
 
@@ -50,7 +53,7 @@ def retrieve_current_cursor(owner, repo, token, endCursor):
         
         dataframe_readme = store_readme_to_csv(entry)
         print(dataframe_readme)
-        
+
         # write all users from main repository to csv file
         store_repo_to_csv(stars_writer, entry)
         # write to MongoDB

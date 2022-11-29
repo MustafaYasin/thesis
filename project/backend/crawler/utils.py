@@ -148,6 +148,8 @@ def store_readme_to_csv(result):
         for user_info, user_value in result.items():      
             if user_info == 'readme':
                 df_username_readme['USERNAME'] = user_value[0]
+                print("This is user value 0: ", user_value[0])
+                #print("This is user value 0: ",user_value[1])
                 df_username_readme['README'] = user_value[1]
 
             print(df_username_readme)

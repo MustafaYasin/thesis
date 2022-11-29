@@ -147,10 +147,31 @@ def store_readme_to_csv(result):
 
         for user_info, user_value in result.items():      
             if user_info == 'readme':
+                df_username_readme['USERNAME'] = user_value[0]
+                df_username_readme['README'] = user_value[1]
+
+            print(df_username_readme)
+    return df_username_readme
+
+    
+'''
+def store_readme_to_csv(result):
+    
+    # open the recommendation.csv file and write the readme and username to it
+    user_readme = "../user_data_csv/recommendation_readme.csv"
+    COLUMN_NAMES=['USERNAME','README']
+    df_username_readme = pd.DataFrame(columns=COLUMN_NAMES)
+    with open(user_readme, 'a', newline='') as outcsv:
+        writer = csv.writer(outcsv)
+
+
+        for user_info, user_value in result.items():      
+            if user_info == 'readme':
                 username = user_value[0]
                 readme = user_value[1]
                 outcsv.write(f"{username},{readme}\n")
-
+'''
     
+
 
 

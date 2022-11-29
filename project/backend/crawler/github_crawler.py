@@ -48,7 +48,9 @@ def retrieve_current_cursor(owner, repo, token, endCursor):
     for item in data:
         entry = retrieve_fields(item, domain)
         
-        store_readme_to_csv(entry)
+        dataframe_readme = store_readme_to_csv(entry)
+        print(dataframe_readme)
+        
         # write all users from main repository to csv file
         store_repo_to_csv(stars_writer, entry)
         # write to MongoDB

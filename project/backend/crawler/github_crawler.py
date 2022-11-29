@@ -5,8 +5,9 @@ from flask_restful import Resource, reqparse
 import pandas as pd
 from graphql_query import query, fields
 from database import db_connection, run_query
-from utils import retrieve_fields, store_to_mongodb, store_to_csv, domain, get_readme
+from utils import retrieve_fields, store_to_mongodb, store_repo_to_csv, domain, get_readme, store_readme_to_csv
 from graphql_query import domain
+ 
 
 
 
@@ -46,8 +47,10 @@ def retrieve_current_cursor(owner, repo, token, endCursor):
     # Looping through retrieved data and storing it in CSV and MongoDB
     for item in data:
         entry = retrieve_fields(item, domain)
-        # write to csv file
-        store_to_csv(stars_writer, entry)
+        
+        store_readme_to_csv(entry)
+        # write all users from main repository to csv file
+        store_repo_to_csv(stars_writer, entry)
         # write to MongoDB
         store_to_mongodb(db_connection, entry)
     return hasNextPage, endCursor 
@@ -65,17 +68,4 @@ with open(user_filename, 'w') as stars:
         count = count + 100
         print(str(count) + " users processed.")
 
-print("##################################################################################################")
-# Creating a CSV file to the readme of each user from the database
-user_readme = "../user_data_csv/recommendation.csv"
-def store_readme_to_csv(user_readme, entry):
-    for user_info in entry:
-        print("##################################################################################################")
-        username = user_info["username"]
-        print("This is user info: ", user_info)
-        readme_list = user_info["readme"]
-        print("This is readme: ", readme_list)
 
-        for readme in readme_list:
-            with open(user_readme, "w") as f:
-                f.write(username, readme, '\n')

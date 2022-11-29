@@ -11,6 +11,8 @@ import urllib.request as urllib2
 import os
 from pprint import pprint
 import csv
+import pandas as pd
+# import pdb; pdb.set_trace()
 
 
 
@@ -53,8 +55,8 @@ def get_readme(node):
 
             # Remove the downloaded README.md file
             os.remove(readme)
-    #print("This is readme list \n ", readme_list)
-    return readme_list
+
+    return owner, readme_list
 
 
 def retrieve_fields(item, domain):
@@ -106,37 +108,7 @@ def retrieve_fields(item, domain):
     }
 
 
-    user_readme = "../user_data_csv/recommendation.csv"
-    for user_info in result.keys():
-
-        username = result["username"]
-        readme_list = result["readme"]
-
-        with open(user_readme, "a") as f:
-            writer = csv.writer(f)
-            writer.writerow([username, readme_list])
-            for readme in readme_list:
-                f.write(username + readme + '\n')
-
-
     return result
-
-"""
-user_readme = "../user_data_csv/recommendation.csv"
-def store_readme_to_csv(result):
-    for user_info in result:
-        print("##################################################################################################")
-        username = user_info["username"]
-        print("This is user info: ", user_info)
-        readme_list = user_info["readme"]
-        print("This is readme: ", readme_list)
-
-        for readme in readme_list:
-            print("This is readme: ", readme)
-            with open(user_readme, "w") as f:
-                f.write(username, readme, '\n')
-                f.close()
-"""    
 
 
 def store_to_mongodb(db, data):
@@ -145,6 +117,7 @@ def store_to_mongodb(db, data):
         {
             "email": email
         },
+
         {
             '$set': data
         },
@@ -152,12 +125,32 @@ def store_to_mongodb(db, data):
     )
 
 
-def store_to_csv(writer, node):
+def store_repo_to_csv(writer, node):
     writer.writerow([node['username'], node['fullName'], node['bio'], node['email'], node['readme'], ['repository_count'], node['company'], 
                     node['avatar_url'], node['isHireable'], node['star_time'], node['followers'], node['following'], node['organizations'],
                     node['createdAt'], node['updatedAt'], node['twitterUsername'], node['isGitHubStar'], node['isCampusExpert'], 
                     node['isDeveloperProgramMember'], node['isSiteAdmin'], node['isViewer'], node['anyPinnableItems'], node['viewerIsFollowing'], 
                     node['sponsors'], node['primary_language'], node['yearsofExperience'], node['location'], node['domainofExpertise'], node['activity'],
                     node['feature_1'], node['feature_2'], node['feature_3'], node['totalOfFeatures']])
+
+
+
+def store_readme_to_csv(result):
+    
+    # open the recommendation.csv file and write the readme and username to it
+    user_readme = "../user_data_csv/recommendation_readme.csv"
+    COLUMN_NAMES=['USERNAME','README']
+    df_username_readme = pd.DataFrame(columns=COLUMN_NAMES)
+    with open(user_readme, 'a', newline='') as outcsv:
+        writer = csv.writer(outcsv)
+
+
+        for user_info, user_value in result.items():      
+            if user_info == 'readme':
+                username = user_value[0]
+                readme = user_value[1]
+                outcsv.write(f"{username},{readme}\n")
+
+    
 
 

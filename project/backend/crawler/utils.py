@@ -12,7 +12,8 @@ import os
 from pprint import pprint
 import csv
 import pandas as pd
-# import pdb; pdb.set_trace()
+import json
+
 
 
 
@@ -56,7 +57,8 @@ def get_readme(node):
             # Remove the downloaded README.md file
             os.remove(readme)
 
-    return owner, readme_list
+    return readme_list
+
 
 
 def retrieve_fields(item, domain):
@@ -107,6 +109,10 @@ def retrieve_fields(item, domain):
         'primary_language': primary_language
     }
 
+    # Save the dictionary in a JSON object
+    # jsonStr = 'project/backend/user_data_csv/data.json'
+    # jsonStr = json.dumps(result, indent=3)
+
 
     return result
 
@@ -134,7 +140,7 @@ def store_repo_to_csv(writer, node):
                     node['feature_1'], node['feature_2'], node['feature_3'], node['totalOfFeatures']])
 
 
-
+'''
 def store_readme_to_csv(result):
     
     # open the recommendation.csv file and write the readme and username to it
@@ -155,8 +161,8 @@ def store_readme_to_csv(result):
             print(df_username_readme)
     return df_username_readme
 
-    
-'''
+
+
 def store_readme_to_csv(result):
     
     # open the recommendation.csv file and write the readme and username to it

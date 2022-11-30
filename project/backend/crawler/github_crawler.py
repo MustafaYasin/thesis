@@ -5,14 +5,11 @@ from flask_restful import Resource, reqparse
 import pandas as pd
 from graphql_query import query, fields
 from database import db_connection, run_query
-from utils import retrieve_fields, store_to_mongodb, store_repo_to_csv, domain, get_readme, store_readme_to_csv
+from utils import retrieve_fields, store_to_mongodb, store_repo_to_csv, domain, get_readme
 from graphql_query import domain
-import sys
+from term_frequency import store_readme_to_csv
+from sys import getsizeof
 import os
-sys.path.insert(1, 'project/backend/crawler')
-from ..recommender_system.term_frequency import store_readme_to_csv
-
-
 
 
 
@@ -47,18 +44,29 @@ def retrieve_current_cursor(owner, repo, token, endCursor):
     #print("endcorsor", endCursor)
     data = result['data']['repository']['stargazers']['edges']
 
-    # Looping through retrieved data and storing it in CSV and MongoDB
-    for item in data:
-        entry = retrieve_fields(item, domain)
-        
-        dataframe_readme = store_readme_to_csv(entry)
-        print(dataframe_readme)
+    with open('../user_data_csv/csv_readme_per_user.csv', 'a+', newline='') as csvfile:
+        readmewriter = csv.writer(csvfile, delimiter=",",
+                            quotechar='"', quoting=csv.QUOTE_MINIMAL)
+        readmewriter.writerow(['USERNAME', 'README'])
 
-        # write all users from main repository to csv file
-        store_repo_to_csv(stars_writer, entry)
-        # write to MongoDB
-        store_to_mongodb(db_connection, entry)
-    return hasNextPage, endCursor 
+        # Looping through retrieved data and storing it in CSV and MongoDB
+        for item in data:
+            result = retrieve_fields(item, domain)
+            
+            readme = " ".join(result["readme"])
+            username = result["username"]
+            
+            readmewriter.writerow([username, readme])
+
+            
+            # dataframe = store_readme_to_csv(result)
+
+            # # write all users from main repository to csv file
+            # store_repo_to_csv(stars_writer, result)
+            # # write to MongoDB
+            # store_to_mongodb(db_connection, result)
+        exit()
+        return hasNextPage, endCursor 
 
 
 # Creating a CSV file to store the data
@@ -74,3 +82,9 @@ with open(user_filename, 'w') as stars:
         print(str(count) + " users processed.")
 
 
+
+with open('eggs.csv', 'w', newline='\n') as csvfile:
+    spamwriter = csv.writer(csvfile, delimiter=",",
+                            quotechar='|', quoting=csv.QUOTE_MINIMAL)
+    spamwriter.writerow(['Spam', 'Lovely Spam', 'Wonderful Spam'])    
+    spamwriter.writerow(['Spam', 'Lovely Spam', 'Wonderful Spam'])

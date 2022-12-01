@@ -13,7 +13,7 @@ function App() {
         <Route path="/" element={<HomePage />}></Route>
         <Route path="/recommend" element={<RecommendedProfilesPage />}></Route>
         <Route path="/recommend2" element={<RecommendedProfilesPage2 />}></Route>
-        <Route path="/compare" element={<CompareFavoritesPage />}></Route>
+        {/* <Route path="/compare" element={<CompareFavoritesPage />}></Route> */}
         <Route path="/favorites" element={<FavoritesPage />}></Route>
       </Routes>
     </Layout>

@@ -30,7 +30,6 @@ function RadarChart(props) {
   var z = 1;
   //  Build Data Set for the Bar Chart
   const buildDataSet = (data) => {
-
     let options = {
       type: "radar",
       data: {
@@ -39,26 +38,37 @@ function RadarChart(props) {
           {
             label:'',
             data: [axis1, axis2, axis3],
-            backgroundColor: "rgba(	45, 45, 45, 0.2)",
-            borderColor: "rgba(	45, 45, 45, 1)",
+            backgroundColor: "rgba(	255, 255, 255, 0.2)",
+            borderColor: "rgba(	255, 255, 255, 1)",
             borderWidth: 1,
           },
         ],
       },
       options: {
-        pointRadius: 5,
-        pointHoverRadius: 10,
-        pointHitRadius:3,
+        pointRadius: 8,
+        pointHoverRadius: 12,
+        pointHitRadius: 8,
         scales: {
           r: {
             max: 2,
             min: 0,
             stepSize: 0.1,
             pointLabels: {
+              color: 'white',
               font: {
                 size: 18,
               },
-            }
+            },
+            grid: {
+              color: "rgba(255,255,255,0.3)",
+            },
+            angleLines: {
+              color: "rgba(255,255,255,0.3)",
+            },
+            ticks: {
+              backdropColor: "transparent",
+              color: "white",
+            },
           },
         },
         onHover: function (e) {

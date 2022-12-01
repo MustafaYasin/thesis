@@ -2,9 +2,6 @@ import classes from "./Filter.module.css";
 import { useState } from "react";
 import Slider from "./Slider";
 import jobs from "../layout/JobCategories";
-import GeneralFilter from "./GeneralFilter";
-import ProgrammingLanguageFilter from "./ProgrammingLanguageFilter";
-import FilterHeader from "./FilterHeader";
 import { useEffect } from "react";
 
 function Filter(props) {
@@ -67,9 +64,9 @@ function Filter(props) {
     );
     props.setFilteredProfiles(sorted);
   }
-  function dropDownClickHandler(category) {
-    setJobCategory(category);
-  }
+  // function dropDownClickHandler(category) {
+  //   setJobCategory(category);
+  // }
 
   return (
     <>
@@ -90,7 +87,6 @@ function Filter(props) {
           <div className={classes.featureSlider1}>
             <Slider
               feature={jobCategory}
-              text="This feature represents the Data Science Score. It is calculated by the Datascience Project of the User"
               featureValue={feature1Factor}
               setFeatureValue={setFeature1Factor}
               handleSlider={handleFeature1Slider}

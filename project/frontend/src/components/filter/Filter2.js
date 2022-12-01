@@ -1,4 +1,4 @@
-import classes from "./Filter.module.css";
+import classes from "./Filter2.module.css";
 import { useState } from "react";
 import RadarChart from "./RadarChart";
 import jobs from "../layout/JobCategories";
@@ -7,7 +7,6 @@ import ProgrammingLanguageFilter from "./ProgrammingLanguageFilter";
 import FilterHeader from "./FilterHeader";
 import PieChart from "../ui/PieChart";
 import { useEffect } from "react";
-
 
 function Filter(props) {
   const [feature1Factor, setFeature1Factor] = [
@@ -26,7 +25,7 @@ function Filter(props) {
   const [jobCategory, setJobCategory] = useState(jobs.dataScience);
 
   useEffect(() => {
-    calcRadar(1,1,1);
+    calcRadar(1, 1, 1);
     const sorted = [...props.allProfiles].sort(
       (a, b) => b.recommendations - a.recommendations
     );
@@ -61,8 +60,11 @@ function Filter(props) {
   }
 
   return (
-    <>
-      <div className={classes.filter}>
+    <div className={classes.filterContainer}>
+      <div className={classes.radarHeader}>
+        <h1>Use RadarChart to adjust Results</h1>
+      </div>
+      {/* <div className={classes.filter}>
         <FilterHeader
           jobCategory={jobCategory}
           setJobCategory={setJobCategory}
@@ -70,25 +72,28 @@ function Filter(props) {
         />
         <GeneralFilter />
         <ProgrammingLanguageFilter />
+      </div> */}
+      <div className={classes.mixedChartContainerBackground}>
+        <div className={classes.mixedChartContainer}>
+          <div className={classes.radarChart}>
+            <RadarChart
+              axis1={feature1Factor}
+              axis2={feature2Factor}
+              axis3={feature3Factor}
+              handleAxisChange={handleRadar}
+              labels={[jobCategory, "Feature 2", "Feature 3"]}
+            />
+          </div>
+          <div className={classes.pieChartContainer}>
+            <PieChart
+              feature1Factor={feature1Factor}
+              feature2Factor={feature3Factor}
+              feature3Factor={feature2Factor}
+            />
+          </div>
+        </div>
       </div>
-
-      <div className={classes.radarChart}>
-        <RadarChart
-          axis1={feature1Factor}
-          axis2={feature2Factor}
-          axis3={feature3Factor}
-          handleAxisChange={handleRadar}
-          labels={[jobCategory, "Feature 2", "Feature 3"]}
-        />
-      </div>
-      <div className={classes.pieChartContainer}>
-        <PieChart
-          feature1Factor={feature1Factor}
-          feature2Factor={feature3Factor}
-          feature3Factor={feature2Factor}
-        />
-      </div>
-    </>
+    </div>
   );
 }
 

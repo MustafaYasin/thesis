@@ -5,7 +5,7 @@
 
 .wrapper {
   
-  width: 24rem;
+  max-width: 24rem;
   background-color:white;
   border-radius: 10px;
   padding: 20px 25px 40px;

@@ -20,10 +20,10 @@ function MainNavigation() {
         </Link>
       </div>
       <div className={classes.categoryDropdownContainer}>
-        <FilterHeader
+        <FilterHeader className={classes.categoryDropdown}
           jobCategory={jobCategory}
           setJobCategory={setJobCategory}
-          Handler={dropDownClickHandler}
+          dropDownClickHandler={dropDownClickHandler}
         />
       </div>
       <nav>

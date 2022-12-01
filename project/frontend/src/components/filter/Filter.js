@@ -73,7 +73,7 @@ function Filter(props) {
 
   return (
     <>
-      <div className={classes.filter}>
+      {/* <div className={classes.filter}>
         <FilterHeader
           jobCategory={jobCategory}
           setJobCategory={setJobCategory}
@@ -81,35 +81,40 @@ function Filter(props) {
         />
         <GeneralFilter />
         <ProgrammingLanguageFilter />
-      </div>
-      <div className={classes.sliderBox}>
-        <div className={classes.featureSlider1}>
-          <Slider
-            feature={jobCategory}
-            text="This feature represents the Data Science Score. It is calculated by the Datascience Project of the User"
-            featureValue={feature1Factor}
-            setFeatureValue={setFeature1Factor}
-            handleSlider={handleFeature1Slider}
-            color="darkgreen"
-          />
+      </div> */}
+      <div className={classes.sliderFilterBox}>
+        <div className={classes.sliderHeader}>
+          <h1>Use Sliders to adjust Results</h1>
         </div>
-        <div className={classes.featureSlider2}>
-          <Slider
-            feature="Feature 2"
-            featureValue={feature2Factor}
-            setFeatureValue={setFeature2Factor}
-            handleSlider={handleFeature2Slider}
-            color="darkgoldenrod"
-          />
-        </div>
-        <div className={classes.featureSlider3}>
-          <Slider
-            feature="Feature 3"
-            featureValue={feature3Factor}
-            setFeatureValue={setFeature3Factor}
-            handleSlider={handleFeature3Slider}
-            color="darkslateblue"
-          />
+        <div className={classes.sliderBox}>
+          <div className={classes.featureSlider1}>
+            <Slider
+              feature={jobCategory}
+              text="This feature represents the Data Science Score. It is calculated by the Datascience Project of the User"
+              featureValue={feature1Factor}
+              setFeatureValue={setFeature1Factor}
+              handleSlider={handleFeature1Slider}
+              color="darkgreen"
+            />
+          </div>
+          <div className={classes.featureSlider2}>
+            <Slider
+              feature="Feature 2"
+              featureValue={feature2Factor}
+              setFeatureValue={setFeature2Factor}
+              handleSlider={handleFeature2Slider}
+              color="darkgoldenrod"
+            />
+          </div>
+          <div className={classes.featureSlider3}>
+            <Slider
+              feature="Feature 3"
+              featureValue={feature3Factor}
+              setFeatureValue={setFeature3Factor}
+              handleSlider={handleFeature3Slider}
+              color="darkslateblue"
+            />
+          </div>
         </div>
       </div>
     </>

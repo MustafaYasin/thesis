@@ -14,6 +14,7 @@
   border-bottom-left-radius: 0rem;
   border-bottom-right-radius: 1rem;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  z-index: 10;
 }
 
 .logo {
@@ -29,12 +30,11 @@
   position: relative;
   padding-bottom: 0;
   overflow: visible;
-
-  z-index: 100;
 }
 .categoryDropdownContainer h1 {
   margin: 0;
 }
+
 .header ul {
   list-style: none;
   margin: 0;

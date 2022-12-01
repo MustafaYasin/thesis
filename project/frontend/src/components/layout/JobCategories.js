@@ -1,6 +1,6 @@
 const JobCategories={
     dataScience: "Data Scientist",
-    medicalAi: "Medical AI",
+    medicalAi: "AI in Medicine",
     computerVision: "Computer Vision"
 
 }

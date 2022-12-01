@@ -1,13 +1,12 @@
 .dropdown{
     position: absolute;
-    top: 0rem;
+    top: 4rem;
     right: 0;
     width: 300px;
-    background-color: gray;
+    background-color: white;
     border: 1px solid black;
     border-radius: 2rem;
     padding: 1rem;
-    z-index: 100;
 }
 
 .menuItem{
@@ -30,5 +29,5 @@
 .iconRight svg{
     width: 28px;
     height: 28px;
-    fill: white;
+    fill: black;
 }

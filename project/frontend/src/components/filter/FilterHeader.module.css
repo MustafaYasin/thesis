@@ -6,4 +6,5 @@
   }
   .headerContainer h1{
     padding-left: 2rem;
+    cursor: help;
   }

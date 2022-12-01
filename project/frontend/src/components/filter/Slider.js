@@ -1,20 +1,35 @@
 import classes from "./Slider.module.css";
+import Tippy from "@tippyjs/react";
+import DataScientistScoreTooltip from "../ui/tooltips/DataScientistScoreTooltip";
 
 function Slider(props) {
-  const [sliderValue, setSliderValue] = [props.featureValue,props.setFeatureValue];
+  const [sliderValue, setSliderValue] = [
+    props.featureValue,
+    props.setFeatureValue,
+  ];
 
-//   function handleSlider(event) {
-//     setSliderValue(event.target.value);
-//   }
+  //   function handleSlider(event) {
+  //     setSliderValue(event.target.value);
+  //   }
 
   return (
     <div className={classes.sliderElement}>
       <div className={classes.wrapper}>
         <header>
-          <h2>{props.feature} Score</h2>
+          <Tippy className={classes.tooltip}
+            content={<DataScientistScoreTooltip color={props.color} feature={props.feature}></DataScientistScoreTooltip>}
+            delay={100}
+            placement="right"
+          >
+            <h2>{props.feature} Score</h2>
+          </Tippy>
           <p>Use the Slider to adjust the weight of this Feature</p>
 
-          {props.text?<p>{props.text}</p>:<p>This feature's weight is currently</p>}
+          {props.text ? (
+            <p>{props.text}</p>
+          ) : (
+            <p>This feature's weight is currently</p>
+          )}
         </header>
         <div className={classes.priceInput}>
           <div className={classes.field}>
@@ -22,8 +37,14 @@ function Slider(props) {
             <span className={classes.faktor}>{sliderValue} x</span> Fold
           </div>
         </div>
-        <div className={classes.slider} style={{backgroundColor: props.color}}>
-          <div className={classes.progress} style={{backgroundColor: props.color}}></div>
+        <div
+          className={classes.slider}
+          style={{ backgroundColor: props.color }}
+        >
+          <div
+            className={classes.progress}
+            style={{ backgroundColor: props.color }}
+          ></div>
         </div>
         <div className={classes.rangeInput}>
           <input

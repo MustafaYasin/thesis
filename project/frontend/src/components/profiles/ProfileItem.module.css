@@ -1,5 +1,7 @@
 .item {
   margin: 1rem 0;
+  max-width: 40rem;
+  flex: 1 0 34%;
 }
 
 .image {

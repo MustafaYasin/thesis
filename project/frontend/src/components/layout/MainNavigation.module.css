@@ -41,6 +41,7 @@
   padding: 0;
   display: flex;
   align-items: baseline;
+  margin-right: 10rem;
 }
 
 .header li {

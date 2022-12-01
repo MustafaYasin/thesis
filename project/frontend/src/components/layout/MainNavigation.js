@@ -42,9 +42,9 @@ function MainNavigation() {
               </span>
             </Link>
           </li>
-          <li>
+          {/* <li>
             <Link to="/compare">Compare Favorites</Link>
-          </li>
+          </li> */}
         </ul>
       </nav>
     </header>

@@ -4,6 +4,7 @@ import { ReactComponent as ArrowUpIcon } from "../../icons/arrow-up.svg";
 import DropdownMenu from "../layout/DropdownMenu";
 import { useState } from "react";
 import classes from "./FilterHeader.module.css"
+import Tippy from "@tippyjs/react";
 
 function FilterHeader(props) {
   const [jobCategory, setJobCategory] = [props.jobCategory, props.setJobCategory];
@@ -23,7 +24,9 @@ function FilterHeader(props) {
           selectJobCategory={props.dropDownClickHandler}
         ></DropdownMenu>
       </NavItem>
+      <Tippy content='Use the Dropdown Arrow to choose from different Data Science Categories'>
       <h1>{jobCategory}</h1>
+      </Tippy>
     </div>
   );
 }

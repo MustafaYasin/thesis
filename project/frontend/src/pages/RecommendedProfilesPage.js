@@ -11,6 +11,10 @@ import Backdrop from "../components/ui/Backdrop";
 import ProfileList from "../components/profiles/ProfileList";
 import Modal from "../components/ui/Modal";
 import { useEffect } from "react";
+import Tippy from "@tippyjs/react";
+import "tippy.js/dist/tippy.css"; // optional
+import RecommendedProfilesTooltip from "../components/ui/tooltips/RecommendedProfilesTooltip";
+
 import { DUMMY_DATA } from "../data";
 
 function RecommendedProfilesPage() {
@@ -53,6 +57,7 @@ function RecommendedProfilesPage() {
   }
 
   return (
+    
     <div className={classes.recommendedProfilesPage}>
       <div className={classes.filter}>
         <Filter
@@ -68,7 +73,12 @@ function RecommendedProfilesPage() {
       </div>
       <div className={classes.profilesContainer}>
         <div className={classes.profilesHeading}>
-          <h1>Recommended Profiles for you</h1>
+          <h1>
+            <Tippy className={classes.tooltip} content={<RecommendedProfilesTooltip></RecommendedProfilesTooltip>} delay={100} placement='right'>
+              <span style={{cursor:'help'}}>Recommended Profiles</span>
+            </Tippy>{" "}
+            for you
+          </h1>
         </div>
         <motion.div layout>
           <div className={classes.profilesCard}>

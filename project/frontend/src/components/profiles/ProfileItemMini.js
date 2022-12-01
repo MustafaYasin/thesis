@@ -8,6 +8,7 @@ import "react-circular-progressbar/dist/styles.css";
 import Gauge from "../ui/Gauge";
 
 import { motion } from "framer-motion";
+import Tippy from "@tippyjs/react";
 
 function ProfileItemMini(props) {
   const favoritesCtx = useContext(FavoritesContext);
@@ -87,6 +88,7 @@ function ProfileItemMini(props) {
               <div className={classes.content}>
                 <h3>{props.fullName}</h3>
                 <address>{props.email}</address>
+                <Tippy content='The total score is given as a percentage. The proportional score of the individual features is shown in colour. E.g. the dark coloured part is the value of the feature and the light coloured part is the maximum possible value of the feature.'>
                 <div className={classes.gauge}>
                   <Gauge
                     recommendations={props.recommendations}
@@ -98,6 +100,7 @@ function ProfileItemMini(props) {
                     feature3Factor={props.feature3Factor}
                   />
                 </div>
+                </Tippy>
               </div>
               <div className={classes.actions}>
                 <button onClick={toggleFavoriteStatusHandler}>

@@ -3,6 +3,8 @@ import { useState } from "react";
 import Slider from "./Slider";
 import jobs from "../layout/JobCategories";
 import { useEffect } from "react";
+import Tippy from "@tippyjs/react";
+import DataScientistScoreTooltip from "../ui/tooltips/DataScientistScoreTooltip";
 
 function Filter(props) {
   const [feature1Factor, setFeature1Factor] = [
@@ -91,8 +93,8 @@ function Filter(props) {
               setFeatureValue={setFeature1Factor}
               handleSlider={handleFeature1Slider}
               color="darkgreen"
-            />
-          </div>
+            />{" "}
+          </div>{" "}
           <div className={classes.featureSlider2}>
             <Slider
               feature="Feature 2"

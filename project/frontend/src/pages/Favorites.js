@@ -2,8 +2,6 @@ import ProfileList from "../components/profiles/ProfileList";
 import FavoritesContext from "../components/store/favorites-context";
 import { useContext } from "react";
 import classes from "./Favorites.module.css";
-import Card from "../components/ui/Card";
-import Filter from "../components/filter/Filter";
 
 
 function FavoritesPage() {
@@ -15,12 +13,6 @@ function FavoritesPage() {
   } else {
     content = (
       <div className={classes.basic}>
-        {/* <div className={classes.filter}>
-          <h1>Filter</h1>
-          <Card>
-            <Filter />
-          </Card>
-        </div> */}
         <div className={classes.profiles}>
           <ProfileList profiles={favoriteCtx.favorites} />
         </div>

@@ -33,7 +33,7 @@ function ProfileItem(props) {
   }
 
   return (
-    <li className={classes.item}>
+    <div className={classes.item}>
       <Card>
         <div className={classes.detailsViewContainer}>
           <div className={classes.image}>
@@ -101,7 +101,7 @@ function ProfileItem(props) {
           </div>
         </div>
       </Card>
-    </li>
+    </div>
   );
 }
 

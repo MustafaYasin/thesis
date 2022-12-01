@@ -7,9 +7,9 @@ from graphql_query import query, fields
 from database import db_connection, run_query
 from utils import retrieve_fields, store_to_mongodb, store_repo_to_csv, domain, get_readme
 from graphql_query import domain
-from term_frequency import store_readme_to_csv
 from sys import getsizeof
 import os
+import re
 
 
 
@@ -37,7 +37,7 @@ count = 0
 def retrieve_current_cursor(owner, repo, token, endCursor):
     formatted_query = query.format(owner, repo, endCursor)
     result = run_query(token, formatted_query)
-    #print("these are the results", result)
+
     hasNextPage = result['data']['repository']['stargazers']['pageInfo']['hasNextPage']
     endCursor = result['data']['repository']['stargazers']['pageInfo']['endCursor']
     endCursor = ', after: "' + endCursor + '"'
@@ -47,7 +47,7 @@ def retrieve_current_cursor(owner, repo, token, endCursor):
     with open('../user_data_csv/csv_readme_per_user.csv', 'a+', newline='') as csvfile:
         readmewriter = csv.writer(csvfile, delimiter=",",
                             quotechar='"', quoting=csv.QUOTE_MINIMAL)
-        readmewriter.writerow(['USERNAME', 'README'])
+        readmewriter.writerow(['USERNAMES', 'READMES'])
 
         # Looping through retrieved data and storing it in CSV and MongoDB
         for item in data:
@@ -58,14 +58,10 @@ def retrieve_current_cursor(owner, repo, token, endCursor):
             
             readmewriter.writerow([username, readme])
 
-            
-            # dataframe = store_readme_to_csv(result)
 
-            # # write all users from main repository to csv file
-            # store_repo_to_csv(stars_writer, result)
-            # # write to MongoDB
-            # store_to_mongodb(db_connection, result)
-        exit()
+            # write to MongoDB
+            store_to_mongodb(db_connection, result)
+
         return hasNextPage, endCursor 
 
 

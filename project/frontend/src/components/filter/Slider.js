@@ -1,5 +1,7 @@
 import classes from "./Slider.module.css";
 import Tippy from "@tippyjs/react";
+import "tippy.js/dist/tippy.css"; // optional
+
 import DataScientistScoreTooltip from "../ui/tooltips/DataScientistScoreTooltip";
 
 function Slider(props) {
@@ -23,7 +25,7 @@ function Slider(props) {
           >
             <h2>{props.feature} Score</h2>
           </Tippy>
-          <p>Use the Slider to adjust the weight of this Feature</p>
+          <p>Use the Slider to adjust the Featureweight</p>
 
           {props.text ? (
             <p>{props.text}</p>

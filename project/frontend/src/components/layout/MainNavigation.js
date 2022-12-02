@@ -9,9 +9,7 @@ function MainNavigation() {
   const favoriteCtx = useContext(FavoritesContext);
   const [jobCategory, setJobCategory] = useState(jobs.dataScience);
 
-  function dropDownClickHandler(category) {
-    setJobCategory(category);
-  }
+
   return (
     <header className={classes.header}>
       <div className={classes.leftContainer}>
@@ -19,13 +17,13 @@ function MainNavigation() {
           <div className={classes.logo}>Home</div>
         </Link>
       </div>
-      <div className={classes.categoryDropdownContainer}>
+      {/* <div className={classes.categoryDropdownContainer}>
         <FilterHeader className={classes.categoryDropdown}
           jobCategory={jobCategory}
           setJobCategory={setJobCategory}
           dropDownClickHandler={dropDownClickHandler}
         />
-      </div>
+      </div> */}
       <nav>
         <ul>
           <li>

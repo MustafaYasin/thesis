@@ -3,8 +3,7 @@ import { useState } from "react";
 import Slider from "./Slider";
 import jobs from "../layout/JobCategories";
 import { useEffect } from "react";
-import Tippy from "@tippyjs/react";
-import DataScientistScoreTooltip from "../ui/tooltips/DataScientistScoreTooltip";
+import FilterHeader from "./FilterHeader";
 
 function Filter(props) {
   const [feature1Factor, setFeature1Factor] = [
@@ -29,7 +28,9 @@ function Filter(props) {
     );
     props.setFilteredProfiles(sorted);
   }, []);
-
+  function dropDownClickHandler(category) {
+    setJobCategory(category);
+  }
   function calcRecommend() {
     const len = props.allProfiles.length;
     for (let i = 0; i < len; i++) {
@@ -72,15 +73,10 @@ function Filter(props) {
 
   return (
     <>
-      {/* <div className={classes.filter}>
-        <FilterHeader
-          jobCategory={jobCategory}
-          setJobCategory={setJobCategory}
-          dropDownClickHandler={dropDownClickHandler}
-        />
-        <GeneralFilter />
-        <ProgrammingLanguageFilter />
-      </div> */}
+      <div className={classes.filter}>
+        {/* <GeneralFilter />
+        <ProgrammingLanguageFilter /> */}
+      </div>
       <div className={classes.sliderFilterBox}>
         <div className={classes.sliderHeader}>
           <h1>Use Sliders to adjust Results</h1>
@@ -95,6 +91,14 @@ function Filter(props) {
               color="darkgreen"
             />{" "}
           </div>{" "}
+          <div className={classes.categorySelector}>
+            Select prefered Category
+            <FilterHeader
+              jobCategory={jobCategory}
+              setJobCategory={setJobCategory}
+              dropDownClickHandler={dropDownClickHandler}
+            />
+          </div>
           <div className={classes.featureSlider2}>
             <Slider
               feature="Feature 2"

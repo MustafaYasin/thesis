@@ -9,7 +9,7 @@ function FavoritesPage() {
 
   let content;
   if (favoriteCtx.totalFavorites === 0) {
-    content = <p>You got no favorites yet. Start adding some?</p>;
+    content = <p className={classes.heading}>You got no favorites yet. Maybe start adding some?</p>;
   } else {
     content = (
       <div className={classes.basic}>
@@ -22,7 +22,7 @@ function FavoritesPage() {
 
   return (
     <section>
-      <h1>My Favorites</h1>
+      <h1 className={classes.heading}>My Favorites</h1>
       {content}
     </section>
   );

@@ -1,7 +1,7 @@
 import classes from "./Filter2.module.css";
 import { useState } from "react";
 import RadarChart from "./RadarChart";
-import jobs from "../layout/JobCategories";
+import jobs from "../store/JobCategories";
 import GeneralFilter from "./GeneralFilter";
 import ProgrammingLanguageFilter from "./ProgrammingLanguageFilter";
 import FilterHeader from "./FilterHeader";

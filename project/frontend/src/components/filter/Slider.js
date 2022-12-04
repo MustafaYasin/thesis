@@ -19,7 +19,7 @@ function Slider(props) {
       <div className={classes.wrapper}>
         <header>
           <Tippy className={classes.tooltip}
-            content={<DataScientistScoreTooltip color={props.color} feature={props.feature}></DataScientistScoreTooltip>}
+            content={<DataScientistScoreTooltip color={props.color} feature={props.feature} featureTooltipText={props.featureTooltipText}></DataScientistScoreTooltip>}
             delay={100}
             placement="right"
           >

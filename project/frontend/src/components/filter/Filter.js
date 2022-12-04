@@ -1,7 +1,8 @@
 import classes from "./Filter.module.css";
 import { useState } from "react";
 import Slider from "./Slider";
-import jobs from "../layout/JobCategories";
+import jobs from "../store/JobCategories";
+import features from "../store/FeatureTexts";
 import { useEffect } from "react";
 import FilterHeader from "./FilterHeader";
 
@@ -89,6 +90,13 @@ function Filter(props) {
               setFeatureValue={setFeature1Factor}
               handleSlider={handleFeature1Slider}
               color="darkgreen"
+              featureTooltipText={
+                jobCategory === "Data Scientist"
+                  ? features.dataScience.description
+                  : jobCategory === "AI in Medicine"
+                  ? features.medicalAi.description
+                  : features.computerVision.description
+              }
             />{" "}
           </div>{" "}
           <div className={classes.categorySelector}>
@@ -101,20 +109,22 @@ function Filter(props) {
           </div>
           <div className={classes.featureSlider2}>
             <Slider
-              feature="Feature 2"
+              feature={features.activity.title}
               featureValue={feature2Factor}
               setFeatureValue={setFeature2Factor}
               handleSlider={handleFeature2Slider}
               color="darkgoldenrod"
+              featureTooltipText={features.activity.description}
             />
           </div>
           <div className={classes.featureSlider3}>
             <Slider
-              feature="Feature 3"
+              feature={features.experience.title}
               featureValue={feature3Factor}
               setFeatureValue={setFeature3Factor}
               handleSlider={handleFeature3Slider}
               color="darkslateblue"
+              featureTooltipText={features.experience.description}
             />
           </div>
         </div>

@@ -2,7 +2,7 @@ import classes from "./DropdownMenu.module.css";
 import { ReactComponent as ComputerVisionIcon } from "../../icons/computer-vision.svg";
 import { ReactComponent as HealthAiIcon } from "../../icons/health-ai.svg";
 import { ReactComponent as DataScienceIcon } from "../../icons/data-science.svg";
-import job from "./JobCategories.js";
+import job from "../store/JobCategories.js";
 
 function DropdownMenu(props) {
   function onDataScience() {

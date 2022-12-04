@@ -7,10 +7,7 @@ function DataScientistScoreTooltip(props) {
         What is the {props.feature} Score?
       </div>
       <div className={classes.tooltipBody} style={{ color: props.color }}>
-        The score is calculated by looking at the different repositories of the
-        Github user. The readmes are fed into an intelligent recommender system
-        that checks how many projects the user has contributed to in the field
-        of data science.
+        {props.featureTooltipText}
       </div>
     </div>
   );

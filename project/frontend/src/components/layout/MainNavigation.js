@@ -3,7 +3,7 @@ import classes from "./MainNavigation.module.css";
 import { useContext, useState } from "react";
 import FavoritesContext from "../store/favorites-context";
 import FilterHeader from "../filter/FilterHeader";
-import jobs from "../layout/JobCategories";
+import jobs from "../store/JobCategories";
 
 function MainNavigation() {
   const favoriteCtx = useContext(FavoritesContext);

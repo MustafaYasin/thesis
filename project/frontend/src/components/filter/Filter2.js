@@ -123,8 +123,12 @@ function Filter(props) {
               content={
                 <DataScientistScoreTooltip
                   color="darkgreen"
-                  feature={features.dataScience.title}
-                  featureTooltipText={features.dataScience.description}
+                  feature={jobCategory}
+                  featureTooltipText={jobCategory === "Data Scientist"
+                  ? features.dataScience.description
+                  : jobCategory === "AI in Medicine"
+                  ? features.medicalAi.description
+                  : features.computerVision.description}
                 ></DataScientistScoreTooltip>
               }
               delay={100}

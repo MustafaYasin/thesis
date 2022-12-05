@@ -23,8 +23,8 @@
   }
 .mixedChartContainer{
     position: relative;
-    width: 40rem;
-    height: 40rem;
+    width: 36rem;
+    height: 36rem;
 }
 
 .radarChart{
@@ -55,4 +55,29 @@
     left: 33rem;
     opacity: 1;
     z-index: 0; */
+  }
+
+  .info{
+    display: inline-block;
+    align-items: center;
+    vertical-align: center;
+    cursor: help;
+    padding-left: 6px;
+    padding-right: 6px;
+    margin-left: 6px;
+    border-radius: 0.5rem;
+    color: black;
+  }
+  .info:hover{
+    filter: brightness(1.2);
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 1);
+  }
+
+  .categorySelector{
+    background-color:white;
+    display: inline-block;
+    border-radius: 10px;
+    font-size: 20px;
+    font-weight: 400;
+  
   }

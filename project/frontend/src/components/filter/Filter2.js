@@ -7,6 +7,9 @@ import ProgrammingLanguageFilter from "./ProgrammingLanguageFilter";
 import FilterHeader from "./FilterHeader";
 import PieChart from "../ui/PieChart";
 import { useEffect } from "react";
+import Tippy from "@tippyjs/react";
+import RecommendedProfilesTooltip from "../ui/tooltips/RecommendedProfilesTooltip";
+import { Tooltip } from "../store/FeatureTexts";
 
 function Filter(props) {
   const [feature1Factor, setFeature1Factor] = [
@@ -74,6 +77,25 @@ function Filter(props) {
         <ProgrammingLanguageFilter />
       </div> */}
       <div className={classes.mixedChartContainerBackground}>
+        <div className={classes.categorySelector}>
+          Select prefered Category
+          <Tippy
+            placement="right"
+            content={
+              <RecommendedProfilesTooltip
+                header={Tooltip.selectCategory.header}
+                text={Tooltip.selectCategory.text}
+              ></RecommendedProfilesTooltip>
+            }
+          >
+            <span className={classes.info}>&#9432; </span>
+          </Tippy>
+          <FilterHeader
+            jobCategory={jobCategory}
+            setJobCategory={setJobCategory}
+            dropDownClickHandler={dropDownClickHandler}
+          />
+        </div>
         <div className={classes.mixedChartContainer}>
           <div className={classes.radarChart}>
             <RadarChart

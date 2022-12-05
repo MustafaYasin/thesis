@@ -11,6 +11,10 @@ import Backdrop from "../components/ui/Backdrop";
 import ProfileList from "../components/profiles/ProfileList";
 import Modal from "../components/ui/Modal";
 import { useEffect } from "react";
+import Tippy from "@tippyjs/react";
+import "tippy.js/dist/tippy.css"; // optional
+import RecommendedProfilesTooltip from "../components/ui/tooltips/RecommendedProfilesTooltip";
+import {Tooltip} from "../components/store/FeatureTexts"
 import { DUMMY_DATA } from "../data";
 
 function RecommendedProfilesPage2() {
@@ -68,7 +72,10 @@ function RecommendedProfilesPage2() {
       </div>
       <div className={classes.profilesContainer}>
         <div className={classes.profilesHeading}>
-          <h1>Recommended Profiles for you</h1>
+        
+          <h1><Tippy className={classes.tooltip} content={<RecommendedProfilesTooltip header={Tooltip.recommendProfiles.header} text={Tooltip.recommendProfiles.text}></RecommendedProfilesTooltip>} delay={100} placement='right'>
+              <span className={classes.info}>&#9432; </span>
+            </Tippy>{" "}Recommended Profiles for you</h1>
         </div>
         <motion.div layout>
           <div className={classes.profilesCard}>

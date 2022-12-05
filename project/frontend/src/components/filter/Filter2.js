@@ -2,14 +2,14 @@ import classes from "./Filter2.module.css";
 import { useState } from "react";
 import RadarChart from "./RadarChart";
 import jobs from "../store/JobCategories";
-import GeneralFilter from "./GeneralFilter";
-import ProgrammingLanguageFilter from "./ProgrammingLanguageFilter";
+import features from "../store/FeatureTexts";
 import FilterHeader from "./FilterHeader";
 import PieChart from "../ui/PieChart";
 import { useEffect } from "react";
 import Tippy from "@tippyjs/react";
 import RecommendedProfilesTooltip from "../ui/tooltips/RecommendedProfilesTooltip";
 import { Tooltip } from "../store/FeatureTexts";
+import DataScientistScoreTooltip from "../ui/tooltips/DataScientistScoreTooltip";
 
 function Filter(props) {
   const [feature1Factor, setFeature1Factor] = [
@@ -103,7 +103,11 @@ function Filter(props) {
               axis2={feature2Factor}
               axis3={feature3Factor}
               handleAxisChange={handleRadar}
-              labels={[jobCategory, "Feature 2", "Feature 3"]}
+              labels={[
+                jobCategory,
+                features.experience.title,
+                features.activity.title,
+              ]}
             />
           </div>
           <div className={classes.pieChartContainer}>
@@ -113,6 +117,55 @@ function Filter(props) {
               feature3Factor={feature2Factor}
             />
           </div>
+          <div className={classes.categoryInfo}>
+            <Tippy
+              className={classes.tooltip}
+              content={
+                <DataScientistScoreTooltip
+                  color="darkgreen"
+                  feature={features.dataScience.title}
+                  featureTooltipText={features.dataScience.description}
+                ></DataScientistScoreTooltip>
+              }
+              delay={100}
+              placement="right"
+            >
+              <span className={classes.info}>&#9432; </span>
+            </Tippy>
+          </div>
+          <div className={classes.experienceInfo}>
+            <Tippy
+              className={classes.tooltip}
+              content={
+                <DataScientistScoreTooltip
+                  color="darkslateblue"
+                  feature={features.dataScience.title}
+                  featureTooltipText={features.experience.description}
+                ></DataScientistScoreTooltip>
+              }
+              delay={100}
+              placement="right"
+            >
+              <span className={classes.info}>&#9432; </span>
+            </Tippy>
+          </div>
+          <div className={classes.activityInfo}>
+            <Tippy
+              className={classes.tooltip}
+              content={
+                <DataScientistScoreTooltip
+                  color="darkgoldenrod"
+                  feature={features.activity.title}
+                  featureTooltipText={features.activity.description}
+                ></DataScientistScoreTooltip>
+              }
+              delay={100}
+              placement="right"
+            >
+              <span className={classes.info}>&#9432; </span>
+            </Tippy>
+          </div>
+          <div className={classes.hideLegend}></div>
         </div>
       </div>
     </div>

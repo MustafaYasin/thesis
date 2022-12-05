@@ -1,52 +1,52 @@
 .filter {
-    position: fixed;
-    left: 0rem;
-    top: 5rem;
-    background-color: rgb(245, 245, 245);
-    border-bottom-right-radius: 1rem;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    padding-right: 0.3rem;
-    padding-top: 5rem;
-    width: 25rem;
-  }
-
-  .filterContainer{
-    position: fixed;
-    left: 2rem;
-    top: 5rem;
-  }
-  .mixedChartContainerBackground{
-    background-color: white;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    border-radius: 1rem;
-    padding: 1rem;
-  }
-.mixedChartContainer{
-    position: relative;
-    width: 36rem;
-    height: 36rem;
+  position: fixed;
+  left: 0rem;
+  top: 5rem;
+  background-color: rgb(245, 245, 245);
+  border-bottom-right-radius: 1rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  padding-right: 0.3rem;
+  padding-top: 5rem;
+  width: 25rem;
 }
 
-.radarChart{
-    position: absolute;
-    width: 80%;
-    height: 80%;
-    left: 10%;
-    top:4%;
-    z-index: 1;
-    /* background-color: none;
+.filterContainer {
+  position: fixed;
+  left: 2rem;
+  top: 5rem;
+}
+.mixedChartContainerBackground {
+  background-color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 1rem;
+  padding: 1rem;
+}
+.mixedChartContainer {
+  position: relative;
+  width: 36rem;
+  height: 36rem;
+}
+
+.radarChart {
+  position: absolute;
+  width: 90%;
+  height: 90%;
+  left: 8.5%;
+  top: -1%;
+  z-index: 1;
+  /* background-color: none;
     border-radius: 2rem;
     padding: 1rem;
     position: fixed;
     left: 28rem;
     width: 40rem;
     z-index: 1; */
-  }
-  .pieChartContainer{
-    position: absolute;
-    width: 100%;
-    
-    /* width: 30rem;
+}
+.pieChartContainer {
+  position: absolute;
+  width: 100%;
+
+  /* width: 30rem;
     height: 30rem;
     position: fixed;
     bottom: 47rem;
@@ -55,29 +55,58 @@
     left: 33rem;
     opacity: 1;
     z-index: 0; */
-  }
+}
 
-  .info{
-    display: inline-block;
-    align-items: center;
-    vertical-align: center;
-    cursor: help;
-    padding-left: 6px;
-    padding-right: 6px;
-    margin-left: 6px;
-    border-radius: 0.5rem;
-    color: black;
-  }
-  .info:hover{
-    filter: brightness(1.2);
-    box-shadow: 0 3px 6px rgba(0, 0, 0, 1);
-  }
+.info {
+  display: inline-block;
+  align-items: center;
+  vertical-align: center;
+  cursor: help;
+  padding-left: 6px;
+  padding-right: 6px;
+  margin-left: 6px;
+  border-radius: 0.5rem;
+  color: white;
+  font-size: 20px;
+}
+.info:hover {
+  filter: brightness(1.2);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 1);
+}
 
-  .categorySelector{
-    background-color:white;
-    display: inline-block;
-    border-radius: 10px;
-    font-size: 20px;
-    font-weight: 400;
-  
-  }
+.categorySelector {
+  background-color: white;
+  display: inline-block;
+  border-radius: 10px;
+  font-size: 20px;
+  font-weight: 400;
+}
+.categoryInfo {
+  position: absolute;
+  left: 59%;
+  top: 11%;
+  z-index: 2;
+}
+
+.experienceInfo {
+  position: absolute;
+  left: 77%;
+  top: 70%;
+  z-index: 2;
+}
+
+.activityInfo {
+  position: absolute;
+  left: 15%;
+  top: 70%;
+  z-index: 2;
+}
+.hideLegend{
+  position: absolute;
+  background-color: darkgreen;
+  z-index: 2;
+  height: 2rem;
+  width: 3rem;
+  left: 48%;
+  top: 0.5%;
+}

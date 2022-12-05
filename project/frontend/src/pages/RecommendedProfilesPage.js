@@ -14,6 +14,7 @@ import { useEffect } from "react";
 import Tippy from "@tippyjs/react";
 import "tippy.js/dist/tippy.css"; // optional
 import RecommendedProfilesTooltip from "../components/ui/tooltips/RecommendedProfilesTooltip";
+import {Tooltip} from "../components/store/FeatureTexts"
 
 import { DUMMY_DATA } from "../data";
 
@@ -74,8 +75,8 @@ function RecommendedProfilesPage() {
       <div className={classes.profilesContainer}>
         <div className={classes.profilesHeading}>
           <h1>
-            <Tippy className={classes.tooltip} content={<RecommendedProfilesTooltip></RecommendedProfilesTooltip>} delay={100} placement='right'>
-              <span style={{cursor:'help'}}>Recommended Profiles</span>
+            <Tippy className={classes.tooltip} content={<RecommendedProfilesTooltip header={Tooltip.recommendProfiles.header} text={Tooltip.recommendProfiles.text}></RecommendedProfilesTooltip>} delay={100} placement='right'>
+              <span style={{cursor:'help'}}>Recommended Profiles &#9432; </span>
             </Tippy>{" "}
             for you
           </h1>

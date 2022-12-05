@@ -5,6 +5,8 @@ import DropdownMenu from "../layout/DropdownMenu";
 import { useState } from "react";
 import classes from "./FilterHeader.module.css"
 import Tippy from "@tippyjs/react";
+import RecommendedProfilesTooltip from "../ui/tooltips/RecommendedProfilesTooltip";
+import {Tooltip} from "../store/FeatureTexts"
 
 function FilterHeader(props) {
   const [jobCategory, setJobCategory] = [props.jobCategory, props.setJobCategory];
@@ -24,7 +26,7 @@ function FilterHeader(props) {
           selectJobCategory={props.dropDownClickHandler}
         ></DropdownMenu>
       </NavItem>
-      <Tippy content='Use the Dropdown Arrow to choose from different Data Science Categories'>
+      <Tippy content={<RecommendedProfilesTooltip header={Tooltip.selectCategory.header} text={Tooltip.selectCategory.text}></RecommendedProfilesTooltip>}>
       <h1>{jobCategory}</h1>
       </Tippy>
     </div>

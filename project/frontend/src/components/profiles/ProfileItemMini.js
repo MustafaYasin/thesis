@@ -9,6 +9,8 @@ import Gauge from "../ui/Gauge";
 
 import { motion } from "framer-motion";
 import Tippy from "@tippyjs/react";
+import RecommendedProfilesTooltip from "../ui/tooltips/RecommendedProfilesTooltip";
+import {Tooltip} from "../store/FeatureTexts"
 
 function ProfileItemMini(props) {
   const favoritesCtx = useContext(FavoritesContext);
@@ -88,7 +90,7 @@ function ProfileItemMini(props) {
               <div className={classes.content}>
                 <h3>{props.fullName}</h3>
                 <address>{props.email}</address>
-                <Tippy content='The total score is given as a percentage. The proportional score of the individual features is shown in colour. E.g. the dark coloured part is the value of the feature and the light coloured part is the maximum possible value of the feature.'>
+                <Tippy placement="left" content={<RecommendedProfilesTooltip header={Tooltip.gaugeInfo.header} text={Tooltip.gaugeInfo.text}></RecommendedProfilesTooltip>}>
                 <div className={classes.gauge}>
                   <Gauge
                     recommendations={props.recommendations}

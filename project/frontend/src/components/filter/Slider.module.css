@@ -96,3 +96,19 @@
     font-weight: bold;
     font-size: 24px;
 }
+
+.info{
+  display: inline-block;
+  align-items: center;
+  vertical-align: center;
+  cursor: help;
+  padding-left: 6px;
+  padding-right: 6px;
+  margin-left: 6px;
+  border-radius: 0.5rem;
+  color: black;
+}
+.info:hover{
+  filter: brightness(1.2);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 1);
+}

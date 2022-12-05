@@ -76,9 +76,9 @@ function RecommendedProfilesPage() {
         <div className={classes.profilesHeading}>
           <h1>
             <Tippy className={classes.tooltip} content={<RecommendedProfilesTooltip header={Tooltip.recommendProfiles.header} text={Tooltip.recommendProfiles.text}></RecommendedProfilesTooltip>} delay={100} placement='right'>
-              <span style={{cursor:'help'}}>Recommended Profiles &#9432; </span>
+              <span className={classes.info}>&#9432; </span>
             </Tippy>{" "}
-            for you
+            Recommended Profiles for you
           </h1>
         </div>
         <motion.div layout>

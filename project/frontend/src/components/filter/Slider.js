@@ -18,13 +18,21 @@ function Slider(props) {
     <div className={classes.sliderElement}>
       <div className={classes.wrapper}>
         <header>
-          <Tippy className={classes.tooltip}
-            content={<DataScientistScoreTooltip color={props.color} feature={props.feature} featureTooltipText={props.featureTooltipText}></DataScientistScoreTooltip>}
+          <h2>{props.feature} Score 
+          <Tippy
+            className={classes.tooltip}
+            content={
+              <DataScientistScoreTooltip
+                color={props.color}
+                feature={props.feature}
+                featureTooltipText={props.featureTooltipText}
+              ></DataScientistScoreTooltip>
+            }
             delay={100}
             placement="right"
           >
-            <h2>{props.feature} Score</h2>
-          </Tippy>
+            <span className={classes.info}>&#9432; </span>
+          </Tippy></h2>
           <p>Use the Slider to adjust the Featureweight</p>
 
           {props.text ? (

@@ -5,6 +5,9 @@ import jobs from "../store/JobCategories";
 import features from "../store/FeatureTexts";
 import { useEffect } from "react";
 import FilterHeader from "./FilterHeader";
+import Tippy from "@tippyjs/react";
+import RecommendedProfilesTooltip from "../ui/tooltips/RecommendedProfilesTooltip";
+import {Tooltip} from "../store/FeatureTexts"
 
 function Filter(props) {
   const [feature1Factor, setFeature1Factor] = [
@@ -101,6 +104,16 @@ function Filter(props) {
           </div>{" "}
           <div className={classes.categorySelector}>
             Select prefered Category
+            <Tippy placement="right"
+              content={
+                <RecommendedProfilesTooltip
+                  header={Tooltip.selectCategory.header}
+                  text={Tooltip.selectCategory.text}
+                ></RecommendedProfilesTooltip>
+              }
+            >
+              <span className={classes.info}>&#9432; </span>
+            </Tippy>
             <FilterHeader
               jobCategory={jobCategory}
               setJobCategory={setJobCategory}

@@ -35,9 +35,21 @@ class RecommendCoFounder(Resource):
         recommended_users = list(recommended_users)
         return {'recommended_users': recommended_users}, 200
 
+class RetrieveStatFromDate(Resource):
+    xml_generator = reqparse.RequestParser()
+    xml_generator.add_argument('keyword', help='This field cannot be blank', required=True)
+   
+    def post(self):
+        data = self.xml_generator.parse_args()
+        job_domain = data['keyword']
+
 
 api.add_resource(RecommendCoFounder, '/recommend')
-        
+api.add_resource(RetrieveStatFromDate, '/jobtitle')      
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5001, debug=True)
+
+
+
+

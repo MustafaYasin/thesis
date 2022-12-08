@@ -28,7 +28,7 @@ token = args.token
 
 
 
-# star_list = []
+
 hasNextPage = True
 endCursor = ""  
 count = 0
@@ -79,8 +79,3 @@ with open(user_filename, 'w') as stars:
 
 
 
-with open('eggs.csv', 'w', newline='\n') as csvfile:
-    spamwriter = csv.writer(csvfile, delimiter=",",
-                            quotechar='|', quoting=csv.QUOTE_MINIMAL)
-    spamwriter.writerow(['Spam', 'Lovely Spam', 'Wonderful Spam'])    
-    spamwriter.writerow(['Spam', 'Lovely Spam', 'Wonderful Spam'])

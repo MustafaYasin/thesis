@@ -1,6 +1,8 @@
 import pandas as pd
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import linear_kernel
+from sklearn.feature_extraction.text import CountVectorizer
+from sklearn.metrics.pairwise import cosine_similarity
 import numpy as np
 import sys
 import os
@@ -38,9 +40,12 @@ def clean_df(df):
     df['READMES'] = df['READMES'].str.replace('\d+', '') 
     df['READMES'] = df['READMES'].str.lower()
     df = df.dropna(how='all')
-    df.to_csv("cleaned_df.csv", index=False)
     return df
 
+# Remove punctiation
+def remove_punctuation(df):
+    df["READMES"] = df['READMES'].str.replace('[^\w\s]','')
+    return df
 
 # Remvoe all stopwords from the READMES column
 def remove_stop_words(df):
@@ -48,6 +53,7 @@ def remove_stop_words(df):
     stop_words = stopwords.words('english')
     df["READMES"] = df["READMES"].apply(lambda x: ' '.join([word for word in x.split() if word not in (stop_words)]))
     return df
+
 
 # Remove punctiation
 def remove_punctuation(df):
@@ -59,18 +65,60 @@ def remove_single_characters(df):
     df['READMES'] = df['READMES'].str.replace(r'\b\w\b', '').str.replace(r'\s+', ' ')
     return df
 
-# Stemming the READMES form the dataframe column
-def stemming(df):
-    stemmer= PorterStemmer()
-    df['READMES'] = df['READMES'].apply(lambda x: [stemmer.stem(y) for y in x])
-    return df
 
 
+# count the word frequency of each user
+def word_frequency(df):
+    word_frequency_dict = {}
+    for username,readme in zip(df["USERNAMES"], df["READMES"].str.lower()):
+        word_frequency_dict[username] = {}
+        for word in readme.split():
+            if word not in word_frequency_dict[username].keys():
+                word_frequency_dict[username][word] = 1
+            else:
+                word_frequency_dict[username][word] += 1
+        word_frequency_dict[username] = (sorted(word_frequency_dict[username].items(), key=lambda x: -x[1]))
+    return word_frequency_dict
 
 # Call all function to clean and preprosses the READMES
 def preprocess(df):
     df = clean_df(df)
     df = remove_stop_words(df)
-    df = remove_punctuation(df)
+    df = remove_punctuation(df) 
     df = remove_single_characters(df)
-    df = stemming(df)
+    df = df[df['READMES'].notna()]
+    df.to_csv("cleaned_df.csv", index=False)
+    return df
+
+
+## Starting applying the TF-IDF algorithm in sklearn to find out the most occuring job titles in READMES
+vectorizer = TfidfVectorizer(analyzer='word', ngram_range=(1, 3), min_df=0.01, stop_words='english')
+vectors = vectorizer.fit_transform(df["READMES"])
+
+## Getting the feature names which are the words in the READMES
+feature_names = vectorizer.get_feature_names()
+
+# convert the feature names to dataframe columns 
+dense = vectors.todense()
+denselist = dense.tolist()
+
+# calculate the cosine similarity between the vectors
+cosine_sim = linear_kernel(vectors, vectors)
+
+
+
+
+'''
+count the word frequency of each user
+def word_frequency(df):
+    word_frequency_dict = {}
+    for username,readme in zip(df["USERNAMES"], df["READMES"].str.lower()):
+        word_frequency_dict[username] = {}
+        for word in readme.split():
+            if word not in word_frequency_dict[username].keys():
+                word_frequency_dict[username][word] = 1
+            else:
+                word_frequency_dict[username][word] += 1
+        word_frequency_dict[username] = (sorted(word_frequency_dict[username].items(), key=lambda x: -x[1]))
+    return word_frequency_dict
+'''

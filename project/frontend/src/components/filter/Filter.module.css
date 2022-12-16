@@ -1,5 +1,6 @@
 .sliderFilterBox {
   position: fixed;
+  overflow-y:auto;
   left: 4rem;
   top: 5rem;
   bottom: 10%;

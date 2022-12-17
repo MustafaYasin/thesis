@@ -34,7 +34,7 @@ def get_readme(node):
         url = f"{HOST}/{owner}/{repo}/{BRANCH}/README.md"
         try:
             readme = wget.download(url, out="../user_data_csv/README.md")
-        except:
+        except urllib2.HTTPError:
             continue
 
         # Create a dictionary to store the the readme files from each repository of the user
@@ -110,9 +110,6 @@ def retrieve_fields(item, domain):
         'primary_language': primary_language
     }
 
-    # Save the dictionary in a JSON object
-    # jsonStr = 'project/backend/user_data_csv/data.json'
-    # jsonStr = json.dumps(result, indent=3)
 
 
     return result
@@ -131,6 +128,23 @@ def store_to_mongodb(db, data):
         upsert=True
     )
 
+def store_match_to_mongodb(db, username, matches):
+    result = db.update_one(
+        {
+            "username": username
+        },
+
+        {
+            '$set': {
+                "computer_vision": matches.get('computer_vision'),
+                "data_science": matches.get('data_science'),
+                "ai_for_health": matches.get('ai_for_health')
+            }
+        },
+        upsert=False
+    )
+    print(result.modified_count)
+
 
 def store_repo_to_csv(writer, node):
     writer.writerow([node['username'], node['fullName'], node['bio'], node['email'], node['readme'], ['repository_count'], node['company'], 
@@ -139,3 +153,6 @@ def store_repo_to_csv(writer, node):
                     node['isDeveloperProgramMember'], node['isSiteAdmin'], node['isViewer'], node['anyPinnableItems'], node['viewerIsFollowing'], 
                     node['sponsors'], node['primary_language'], node['yearsofExperience'], node['location'], node['domainofExpertise'], node['activity'],
                     node['feature_1'], node['feature_2'], node['feature_3'], node['totalOfFeatures']])
+
+
+# create a function to find out how many lines of code each user has written

@@ -95,30 +95,17 @@ def preprocess(df):
 vectorizer = TfidfVectorizer(analyzer='word', ngram_range=(1, 3), min_df=0.01, stop_words='english')
 vectors = vectorizer.fit_transform(df["READMES"])
 
-## Getting the feature names which are the words in the READMES
-feature_names = vectorizer.get_feature_names()
 
-# convert the feature names to dataframe columns 
-dense = vectors.todense()
-denselist = dense.tolist()
-
-# calculate the cosine similarity between the vectors
-cosine_sim = linear_kernel(vectors, vectors)
+query = "Computer vison"
 
 
 
+def get_recommendations(vectors, query):
+    query_vec = vectorizer.transform([query])
+    results = cosine_similarity(vectors,query_vec).reshape((-1,))
+    for name in results.argsort()[-10:][::-1]:
+        print(df.iloc[name,0])
+    return results.argsort()[-10:][::-1]
 
-'''
-count the word frequency of each user
-def word_frequency(df):
-    word_frequency_dict = {}
-    for username,readme in zip(df["USERNAMES"], df["READMES"].str.lower()):
-        word_frequency_dict[username] = {}
-        for word in readme.split():
-            if word not in word_frequency_dict[username].keys():
-                word_frequency_dict[username][word] = 1
-            else:
-                word_frequency_dict[username][word] += 1
-        word_frequency_dict[username] = (sorted(word_frequency_dict[username].items(), key=lambda x: -x[1]))
-    return word_frequency_dict
-'''
+
+

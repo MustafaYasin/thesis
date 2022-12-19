@@ -14,7 +14,7 @@ import { useEffect } from "react";
 import Tippy from "@tippyjs/react";
 import "tippy.js/dist/tippy.css"; // optional
 import RecommendedProfilesTooltip from "../components/ui/tooltips/RecommendedProfilesTooltip";
-import {Tooltip} from "../components/store/FeatureTexts"
+import { Tooltip } from "../components/store/FeatureTexts";
 import { DUMMY_DATA } from "../data";
 
 function RecommendedProfilesPage2() {
@@ -25,6 +25,34 @@ function RecommendedProfilesPage2() {
   const [feature2Factor, setFeature2Factor] = useState(1);
   const [feature3Factor, setFeature3Factor] = useState(1);
   const [isLoading, setIsLoading] = useState(true);
+  const [jobCategory, setJobCategory] = useState("Data Science");
+
+  function apiRequest(domain) {
+    setIsLoading(true);
+    console.log(domain);
+    fetch("http://localhost:5001/recommend?domain=" + domain)
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => {
+        const allUsers = [];
+        const individualUser = data.recommended_users;
+        for (const key in individualUser) {
+          // console.log(individualUser[key]);
+          const individualUser2 = {
+            id: key,
+            ...individualUser[key],
+          };
+          allUsers.push(individualUser2);
+        }
+        for (let i = 0; i < allUsers.length; i++) {
+          allUsers[i].feature_1 = allUsers[i][domain];
+        }
+        setRecommendedProfiles(allUsers);
+        setIsLoading(false);
+        console.log(allUsers);
+      });
+  }
 
   useEffect(() => {
     setIsLoading(true);
@@ -36,7 +64,7 @@ function RecommendedProfilesPage2() {
         const allUsers = [];
         const individualUser = data.recommended_users;
         for (const key in individualUser) {
-          console.log(individualUser[key]);
+          // console.log(individualUser[key]);
           const individualUser2 = {
             id: key,
             ...individualUser[key],
@@ -44,6 +72,9 @@ function RecommendedProfilesPage2() {
           allUsers.push(individualUser2);
         }
         setIsLoading(false);
+        for (let i = 0; i < allUsers.length; i++) {
+          allUsers[i].feature_1 = allUsers[i].data_science;
+        }
         setRecommendedProfiles(allUsers);
       });
   }, []);
@@ -60,6 +91,9 @@ function RecommendedProfilesPage2() {
     <div className={classes.recommendedProfilesPage}>
       <div className={classes.filter}>
         <Filter2
+          jobCategory={jobCategory}
+          setJobCategory={setJobCategory}
+          apiRequest={apiRequest}
           setFilteredProfiles={setFilteredProfiles}
           allProfiles={recommendedProfiles}
           feature1Factor={feature1Factor}
@@ -72,10 +106,22 @@ function RecommendedProfilesPage2() {
       </div>
       <div className={classes.profilesContainer}>
         <div className={classes.profilesHeading}>
-        
-          <h1><Tippy className={classes.tooltip} content={<RecommendedProfilesTooltip header={Tooltip.recommendProfiles.header} text={Tooltip.recommendProfiles.text}></RecommendedProfilesTooltip>} delay={100} placement='right'>
+          <h1>
+            <Tippy
+              className={classes.tooltip}
+              content={
+                <RecommendedProfilesTooltip
+                  header={Tooltip.recommendProfiles.header}
+                  text={Tooltip.recommendProfiles.text}
+                ></RecommendedProfilesTooltip>
+              }
+              delay={100}
+              placement="right"
+            >
               <span className={classes.info}>&#9432; </span>
-            </Tippy>{" "}Recommended Profiles for you</h1>
+            </Tippy>{" "}
+            Recommended Profiles for you
+          </h1>
         </div>
         <motion.div layout>
           <div className={classes.profilesCard}>

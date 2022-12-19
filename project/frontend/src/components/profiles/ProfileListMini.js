@@ -24,6 +24,9 @@ function ProfileListMini(props) {
                 company={profile.company}
                 primary_language={profile.primary_language}
                 yearsofExperience={profile.yearsofExperience}
+                data_science={profile.data_science}
+                ai_for_health={profile.ai_for_health}
+                computer_vision={profile.computer_vision}
                 feature_1={profile.feature_1}
                 feature_2={profile.feature_2}
                 feature_3={profile.feature_3}

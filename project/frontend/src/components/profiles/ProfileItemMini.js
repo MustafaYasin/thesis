@@ -10,7 +10,7 @@ import Gauge from "../ui/Gauge";
 import { motion } from "framer-motion";
 import Tippy from "@tippyjs/react";
 import RecommendedProfilesTooltip from "../ui/tooltips/RecommendedProfilesTooltip";
-import {Tooltip} from "../store/FeatureTexts"
+import { Tooltip } from "../store/FeatureTexts";
 
 function ProfileItemMini(props) {
   const favoritesCtx = useContext(FavoritesContext);
@@ -59,6 +59,9 @@ function ProfileItemMini(props) {
         company: props.company,
         primary_language: props.primary_language,
         yearsofExperience: props.yearsofExperience,
+        data_science: props.data_science,
+        ai_for_health: props.ai_for_health,
+        computer_vision: props.computer_vision,
         feature_1: props.feature_1,
         feature_2: props.feature_2,
         feature_3: props.feature_3,
@@ -90,18 +93,26 @@ function ProfileItemMini(props) {
               <div className={classes.content}>
                 <h3>{props.fullName}</h3>
                 <address>{props.email}</address>
-                <Tippy placement="left" content={<RecommendedProfilesTooltip header={Tooltip.gaugeInfo.header} text={Tooltip.gaugeInfo.text}></RecommendedProfilesTooltip>}>
-                <div className={classes.gauge}>
-                  <Gauge
-                    recommendations={props.recommendations}
-                    feature_1={props.feature_1}
-                    feature_2={props.feature_2}
-                    feature_3={props.feature_3}
-                    feature1Factor={props.feature1Factor}
-                    feature2Factor={props.feature2Factor}
-                    feature3Factor={props.feature3Factor}
-                  />
-                </div>
+                <Tippy
+                  placement="left"
+                  content={
+                    <RecommendedProfilesTooltip
+                      header={Tooltip.gaugeInfo.header}
+                      text={Tooltip.gaugeInfo.text}
+                    ></RecommendedProfilesTooltip>
+                  }
+                >
+                  <div className={classes.gauge}>
+                    <Gauge
+                      recommendations={props.recommendations}
+                      feature_1={props.feature_1}
+                      feature_2={props.feature_2}
+                      feature_3={props.feature_3}
+                      feature1Factor={props.feature1Factor}
+                      feature2Factor={props.feature2Factor}
+                      feature3Factor={props.feature3Factor}
+                    />
+                  </div>
                 </Tippy>
               </div>
               <div className={classes.actions}>

@@ -29,7 +29,7 @@ function RecommendedProfilesPage() {
 
   useEffect(() => {
     setIsLoading(true);
-    fetch("http://localhost:5001/recommend?username=deshraj")
+    fetch("http://localhost:5001/recommend?domain=data_science")
       .then((response) => {
         return response.json();
       })

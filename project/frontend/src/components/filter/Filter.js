@@ -7,7 +7,7 @@ import { useEffect } from "react";
 import FilterHeader from "./FilterHeader";
 import Tippy from "@tippyjs/react";
 import RecommendedProfilesTooltip from "../ui/tooltips/RecommendedProfilesTooltip";
-import {Tooltip} from "../store/FeatureTexts"
+import { Tooltip } from "../store/FeatureTexts";
 
 function Filter(props) {
   const [feature1Factor, setFeature1Factor] = [
@@ -23,7 +23,7 @@ function Filter(props) {
     props.setFeature3Factor,
   ];
 
-  const [jobCategory, setJobCategory] = useState(jobs.dataScience);
+  const [jobCategory, setJobCategory] = [props.jobCategory, props.setJobCategory];
 
   useEffect(() => {
     calcRecommend();
@@ -32,9 +32,20 @@ function Filter(props) {
     );
     props.setFilteredProfiles(sorted);
   }, []);
+
   function dropDownClickHandler(category) {
+    console.log(jobCategory)
     setJobCategory(category);
+    category === jobs.dataScience
+      ? props.apiRequest("data_science")
+      : category === jobs.medicalAi
+      ? props.apiRequest("ai_for_health")
+      : props.apiRequest("computer_vision");
+
+    setJobCategory(category);
+    console.log(jobCategory) 
   }
+  
   function calcRecommend() {
     const len = props.allProfiles.length;
     for (let i = 0; i < len; i++) {
@@ -104,7 +115,8 @@ function Filter(props) {
           </div>{" "}
           <div className={classes.categorySelector}>
             Select prefered Category
-            <Tippy placement="right"
+            <Tippy
+              placement="right"
               content={
                 <RecommendedProfilesTooltip
                   header={Tooltip.selectCategory.header}

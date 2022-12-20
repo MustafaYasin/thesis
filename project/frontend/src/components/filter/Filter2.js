@@ -59,7 +59,16 @@ function Filter(props) {
   }
 
   function dropDownClickHandler(category) {
+    console.log(jobCategory)
     setJobCategory(category);
+    category === jobs.dataScience
+      ? props.apiRequest("data_science")
+      : category === jobs.medicalAi
+      ? props.apiRequest("ai_for_health")
+      : props.apiRequest("computer_vision");
+
+    setJobCategory(category);
+    console.log(jobCategory) 
   }
 
   return (

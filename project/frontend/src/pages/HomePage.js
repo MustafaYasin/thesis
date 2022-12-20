@@ -9,6 +9,7 @@ function CompareFavoritesPage() {
     <>
       <div className={classes.homePageHeaderContainer}>
         <h1>HomePage</h1>
+        <h2>Feel free to explore the App. If you don't know what to do, try to find a very active Computer Vision expert.</h2>
       </div>
 
       <div className={classes.categoryContainer}>

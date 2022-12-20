@@ -73,9 +73,10 @@ function RecommendedProfilesPage() {
           allUsers.push(individualUser2);
         }
         for (let i = 0; i < allUsers.length; i++) {
-          allUsers[i].feature_1 = allUsers[i].data_science;
+          allUsers[i].feature_1 = +(allUsers[i].data_science.toFixed(2));
         }
         setRecommendedProfiles(allUsers);
+        console.log(allUsers)
         setIsLoading(false);
       });
   }, []);

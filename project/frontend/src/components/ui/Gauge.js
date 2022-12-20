@@ -33,7 +33,7 @@ function Gauge(props) {
     <div className={classes.gaugeContainer}>
       <div className={classes.gauge}>
         <CircularProgressbar
-          value={(props.recommendations * 100).toFixed(1)}
+          value={(props.feature_1 * 100).toFixed(1)}
           text={`${value}%`}
           circleRatio={gaugeRatio * (props.feature1Factor / sliderSum)}
           styles={{
@@ -62,7 +62,7 @@ function Gauge(props) {
       </div>
       <div className={classes.gauge}>
         <CircularProgressbar
-          value={(props.recommendations * 100).toFixed(1)}
+          value={(props.feature_2 * 100).toFixed(1)}
           circleRatio={gaugeRatio * (props.feature2Factor / sliderSum)}
           styles={{
             trail: {
@@ -87,7 +87,7 @@ function Gauge(props) {
       </div>
       <div className={classes.gauge}>
         <CircularProgressbar
-          value={(props.recommendations * 100).toFixed(1)}
+          value={(props.feature_3 * 100).toFixed(1)}
           circleRatio={gaugeRatio * (props.feature3Factor / sliderSum)}
           styles={{
             trail: {

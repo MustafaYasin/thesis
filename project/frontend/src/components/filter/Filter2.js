@@ -25,15 +25,15 @@ function Filter(props) {
     props.setFeature3Factor,
   ];
 
-  const [jobCategory, setJobCategory] = useState(jobs.dataScience);
+  const [jobCategory, setJobCategory] = [props.jobCategory, props.setJobCategory];
 
   useEffect(() => {
-    calcRadar(1, 1, 1);
+    calcRadar(feature1Factor,feature2Factor,feature3Factor)
     const sorted = [...props.allProfiles].sort(
       (a, b) => b.recommendations - a.recommendations
     );
     props.setFilteredProfiles(sorted);
-  }, []);
+  }, [feature1Factor,feature2Factor,feature3Factor]);
 
   function calcRadar(feature1Factor, feature2Factor, feature3Factor) {
     const len = props.allProfiles.length;
@@ -46,16 +46,16 @@ function Filter(props) {
     }
   }
 
-  function handleRadar(axis1, axis2, axis3) {
+  function handleRadar(axis1=1, axis2=1, axis3=1) {
     //console.log(axis1, axis2, axis3);
     setFeature1Factor(axis1);
     setFeature2Factor(axis2);
     setFeature3Factor(axis3);
-    calcRadar(axis1, axis2, axis3);
-    const sorted = [...props.allProfiles].sort(
-      (a, b) => b.recommendations - a.recommendations
-    );
-    props.setFilteredProfiles(sorted);
+    // calcRadar(axis1, axis2, axis3);
+    // const sorted = [...props.allProfiles].sort(
+    //   (a, b) => b.recommendations - a.recommendations
+    // );
+    // props.setFilteredProfiles(sorted);
   }
 
   function dropDownClickHandler(category) {

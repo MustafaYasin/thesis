@@ -12,5 +12,5 @@ RUN pip install -r requirements.txt
 COPY . .
 
 # Expose port and run the application with Gunicorn
-EXPOSE 5000
-CMD ["python", "./api/run.py"]
+EXPOSE 5001
+CMD ["python3", "./api/run.py"]

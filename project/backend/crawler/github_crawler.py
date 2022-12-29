@@ -1,5 +1,4 @@
 import csv
-import requests
 import argparse
 from flask_restful import Resource, reqparse
 import pandas as pd
@@ -7,9 +6,6 @@ from graphql_query import query, fields
 from database import db_connection, run_query
 from utils import retrieve_fields, store_to_mongodb, store_repo_to_csv, domain, get_readme
 from graphql_query import domain
-from sys import getsizeof
-import os
-import re
 
 
 

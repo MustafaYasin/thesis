@@ -1,0 +1,19 @@
+.
+├── Dockerfile
+├── api
+│   ├── run.py
+│   └── storing_data_from_csv.py
+├── crawler
+│   ├── database.py
+│   ├── github_crawler.py
+│   ├── graphql_query.py
+│   ├── preprocess.py
+│   ├── term_frequency.py
+│   └── utils.py
+├── requirements.txt
+├── tree.txt
+└── user_data_csv
+    ├── csv_readme_per_user.csv
+    └── pytorch_pytorch.csv
+
+4 directories, 13 files

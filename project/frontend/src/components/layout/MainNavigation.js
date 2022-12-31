@@ -17,13 +17,6 @@ function MainNavigation() {
           <div className={classes.logo}>Home</div>
         </Link>
       </div>
-      {/* <div className={classes.categoryDropdownContainer}>
-        <FilterHeader className={classes.categoryDropdown}
-          jobCategory={jobCategory}
-          setJobCategory={setJobCategory}
-          dropDownClickHandler={dropDownClickHandler}
-        />
-      </div> */}
       <nav>
         <ul>
           <li>

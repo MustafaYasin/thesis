@@ -1,5 +1,5 @@
 from flask import Flask
-from flask_cors import CORS
+from flask_cors import CORS, cross_origin
 from flask_restful import Api, Resource, reqparse
 from pymongo import MongoClient
 
@@ -9,6 +9,7 @@ CORS(app)
 api = Api(app)
 
 class RecommendCoFounder(Resource):
+    @cross_origin()
     def get(self):
         query_param_parser = reqparse.RequestParser()
         query_param_parser.add_argument('domain', location='args', type=str, required=True)

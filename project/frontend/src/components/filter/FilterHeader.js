@@ -1,7 +1,7 @@
 import NavItem from "../layout/NavItem";
 import { ReactComponent as ArrowDownIcon } from "../../icons/arrow-down2.svg";
 import { ReactComponent as ArrowUpIcon } from "../../icons/arrow-up.svg";
-import DropdownMenu from "../layout/DropdownMenu";
+import DropdownMenu from "./DropdownMenu";
 import { useState } from "react";
 import classes from "./FilterHeader.module.css"
 

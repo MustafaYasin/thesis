@@ -1,5 +1,4 @@
 import classes from "./Filter.module.css";
-import { useState } from "react";
 import Slider from "./Slider";
 import jobs from "../store/JobCategories";
 import features from "../store/FeatureTexts";
@@ -31,8 +30,7 @@ function Filter(props) {
       (a, b) => b.recommendations - a.recommendations
     );
     props.setFilteredProfiles(sorted);
-    //console.log("hooked")
-  }, [feature1Factor,feature2Factor,feature3Factor]);
+  }, [feature1Factor, feature2Factor, feature3Factor]);
 
   function dropDownClickHandler(category) {
     console.log(jobCategory)
@@ -61,33 +59,15 @@ function Filter(props) {
   function handleFeature1Slider(event) {
     console.log(event.target.value);
     setFeature1Factor(event.target.value)
-   
-    // calcRecommend();
-    // const sorted = [...props.allProfiles].sort(
-    //   (a, b) => b.recommendations - a.recommendations
-    // );
-  
-    // props.setFilteredProfiles(sorted);
+
   }
   function handleFeature2Slider(event) {
     setFeature2Factor(event.target.value);
-    // calcRecommend();
-    // const sorted = [...props.allProfiles].sort(
-    //   (a, b) => b.recommendations - a.recommendations
-    // );
-    // props.setFilteredProfiles(sorted);
   }
   function handleFeature3Slider(event) {
     setFeature3Factor(event.target.value);
-    // calcRecommend();
-    // const sorted = [...props.allProfiles].sort(
-    //   (a, b) => b.recommendations - a.recommendations
-    // );
-    // props.setFilteredProfiles(sorted);
+;
   }
-  // function dropDownClickHandler(category) {
-  //   setJobCategory(category);
-  // }
 
   return (
     <>

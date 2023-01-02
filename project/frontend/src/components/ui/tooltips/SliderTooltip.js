@@ -1,6 +1,6 @@
-import classes from "./DataScientistScoreTooltip.module.css";
+import classes from "./SliderTooltip.module.css";
 
-function DataScientistScoreTooltip(props) {
+function SliderTooltip(props) {
   return (
     <div className={classes.tooltipContainer}>
       <div className={classes.tooltipHeader} style={{ color: props.color }}>
@@ -13,4 +13,4 @@ function DataScientistScoreTooltip(props) {
   );
 }
 
-export default DataScientistScoreTooltip;
+export default SliderTooltip;

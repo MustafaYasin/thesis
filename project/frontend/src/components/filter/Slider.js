@@ -2,17 +2,13 @@ import classes from "./Slider.module.css";
 import Tippy from "@tippyjs/react";
 import "tippy.js/dist/tippy.css"; // optional
 
-import DataScientistScoreTooltip from "../ui/tooltips/DataScientistScoreTooltip";
+import SliderTooltip from "../ui/tooltips/SliderTooltip";
 
 function Slider(props) {
   const [sliderValue, setSliderValue] = [
     props.featureValue,
     props.setFeatureValue,
   ];
-
-  //   function handleSlider(event) {
-  //     setSliderValue(event.target.value);
-  //   }
 
   return (
     <div className={classes.sliderElement}>
@@ -22,11 +18,11 @@ function Slider(props) {
           <Tippy
             className={classes.tooltip}
             content={
-              <DataScientistScoreTooltip
+              <SliderTooltip
                 color={props.color}
                 feature={props.feature}
                 featureTooltipText={props.featureTooltipText}
-              ></DataScientistScoreTooltip>
+              ></SliderTooltip>
             }
             delay={100}
             placement="right"

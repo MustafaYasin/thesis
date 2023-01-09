@@ -7,9 +7,6 @@ import jobs from "../store/JobCategories";
 
 function MainNavigation() {
   const favoriteCtx = useContext(FavoritesContext);
-  // const [jobCategory, setJobCategory] = useState(jobs.dataScience);
-
-
   return (
     <header className={classes.header}>
       <div className={classes.leftContainer}>

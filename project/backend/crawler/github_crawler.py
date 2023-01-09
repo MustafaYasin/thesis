@@ -29,7 +29,6 @@ hasNextPage = True
 endCursor = ""  
 count = 0
 
-# This function is used to retrieve the current page of the data
 def retrieve_current_cursor(owner, repo, token, endCursor):
     formatted_query = query.format(owner, repo, endCursor)
     result = run_query(token, formatted_query)
@@ -37,7 +36,6 @@ def retrieve_current_cursor(owner, repo, token, endCursor):
     hasNextPage = result['data']['repository']['stargazers']['pageInfo']['hasNextPage']
     endCursor = result['data']['repository']['stargazers']['pageInfo']['endCursor']
     endCursor = ', after: "' + endCursor + '"'
-    #print("endcorsor", endCursor)
     data = result['data']['repository']['stargazers']['edges']
 
     with open('../user_data_csv/csv_readme_per_user.csv', 'a+', newline='') as csvfile:
@@ -45,7 +43,7 @@ def retrieve_current_cursor(owner, repo, token, endCursor):
                             quotechar='"', quoting=csv.QUOTE_MINIMAL)
         readmewriter.writerow(['USERNAMES', 'READMES'])
 
-        # Looping through retrieved data and storing it in CSV and MongoDB
+
         for item in data:
             result = retrieve_fields(item, domain)
             

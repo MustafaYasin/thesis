@@ -11,9 +11,9 @@
 │   ├── term_frequency.py
 │   └── utils.py
 ├── requirements.txt
-├── tree.txt
 └── user_data_csv
     ├── csv_readme_per_user.csv
-    └── pytorch_pytorch.csv
+    └── 
+    
 
-4 directories, 13 files
+

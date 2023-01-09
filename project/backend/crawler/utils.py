@@ -17,16 +17,13 @@ import json
 
 
 
-# wget https://raw.githubusercontent.com/{owner}/{repo}/{branch}/README.md
 HOST = "https://raw.githubusercontent.com"
 BRANCH = 'master'
 
-# Function to download the README.md file from each repository
 def get_readme(node):
     owner = node['login']
     repo_info = node['repositories']["nodes"]
     repo_list = [repo["name"] for repo in repo_info]
-    #print(f"This is a list of repo names for user: {owner}", repo_list)
 
     readme_list = []
 
@@ -37,24 +34,16 @@ def get_readme(node):
         except urllib2.HTTPError:
             continue
 
-        # Create a dictionary to store the the readme files from each repository of the user
-
-        # Open the downloaded Markdown file and read it into a variable
-        # After that, convert the Markdown to HTML
         with open(readme, 'r') as f:
         
             markdown_text = f.read()
 
-            # Convert the Markdown to HTML
             html = markdown(markdown_text)
 
-            # Extract the text from the HTML
             text = ' '.join(BeautifulSoup(html, features="lxml").findAll(text=True))
 
-            # Add the README text to the dictionary
             readme_list.append(text)
 
-            # Remove the downloaded README.md file
             os.remove(readme)
 
     return readme_list

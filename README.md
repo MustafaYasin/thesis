@@ -1,4 +1,4 @@
-# Muster Thesis
+# Master Thesis
 
 ## Backend
 for local development

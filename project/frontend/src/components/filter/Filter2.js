@@ -9,7 +9,7 @@ import { useEffect } from "react";
 import Tippy from "@tippyjs/react";
 import RecommendedProfilesTooltip from "../ui/tooltips/RecommendedProfilesTooltip";
 import { Tooltip } from "../store/FeatureTexts";
-import DataScientistScoreTooltip from "../ui/tooltips/DataScientistScoreTooltip";
+import SliderTooltip from "../ui/tooltips/SliderTooltip";
 
 function Filter(props) {
   const [feature1Factor, setFeature1Factor] = [
@@ -130,7 +130,7 @@ function Filter(props) {
             <Tippy
               className={classes.tooltip}
               content={
-                <DataScientistScoreTooltip
+                <SliderTooltip
                   color="darkgreen"
                   feature={jobCategory}
                   featureTooltipText={jobCategory === "Data Scientist"
@@ -138,7 +138,7 @@ function Filter(props) {
                   : jobCategory === "AI in Medicine"
                   ? features.medicalAi.description
                   : features.computerVision.description}
-                ></DataScientistScoreTooltip>
+                ></SliderTooltip>
               }
               delay={100}
               placement="right"
@@ -150,11 +150,11 @@ function Filter(props) {
             <Tippy
               className={classes.tooltip}
               content={
-                <DataScientistScoreTooltip
+                <SliderTooltip
                   color="darkslateblue"
                   feature={features.dataScience.title}
                   featureTooltipText={features.experience.description}
-                ></DataScientistScoreTooltip>
+                ></SliderTooltip>
               }
               delay={100}
               placement="right"
@@ -166,11 +166,11 @@ function Filter(props) {
             <Tippy
               className={classes.tooltip}
               content={
-                <DataScientistScoreTooltip
+                <SliderTooltip
                   color="darkgoldenrod"
                   feature={features.activity.title}
                   featureTooltipText={features.activity.description}
-                ></DataScientistScoreTooltip>
+                ></SliderTooltip>
               }
               delay={100}
               placement="right"

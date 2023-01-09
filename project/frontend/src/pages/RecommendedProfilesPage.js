@@ -15,6 +15,7 @@ import Tippy from "@tippyjs/react";
 import "tippy.js/dist/tippy.css"; // optional
 import RecommendedProfilesTooltip from "../components/ui/tooltips/RecommendedProfilesTooltip";
 import { Tooltip } from "../components/store/FeatureTexts";
+import jobs from "../components/store/JobCategories";
 
 import { DUMMY_DATA } from "../data";
 
@@ -26,7 +27,7 @@ function RecommendedProfilesPage() {
   const [feature2Factor, setFeature2Factor] = useState(1);
   const [feature3Factor, setFeature3Factor] = useState(1);
   const [isLoading, setIsLoading] = useState(true);
-  const [jobCategory, setJobCategory] = useState("Data Science");
+  const [jobCategory, setJobCategory] = useState(jobs.dataScience);
 
   function apiRequest(domain) {
     setIsLoading(true);

@@ -34,12 +34,12 @@ function HorizontalBarChart(props) {
       },
       title: {
         display: true,
-        text: "Comparison of Important Features",
+        text: "Comparison of Features",
       },
     },
   };
 
-  const labels = ["Feature 1", "Feature 2", "Feature 3"];
+  const labels = ["Category Score", "Activity", "Experience"];
 
   const data = {
     labels,

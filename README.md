@@ -8,7 +8,7 @@ This project uses Docker Compose to manage and run a frontend and backend servic
 2. Navigate to the project's root directory.
 3. Run the following command to build and start the services:
 
-```docker-compose up --build
+`docker-compose up --build```
 
 4. The frontend service will be available at `http://localhost:3000` and the backend service will be available at `http://localhost:5001`.
 

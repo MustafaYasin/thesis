@@ -42,7 +42,8 @@ COPY . .
 EXPOSE 5001
 
 # Run backend
-CMD ["python3", "./api/run.py"]```
+CMD ["python3", "./api/run.py"]
+```
 
 
 ## Frontend

@@ -76,7 +76,8 @@ RUN npm run build
 EXPOSE 3000
 
 # Run frontend
-CMD ["npm", "start"]```
+CMD ["npm", "start"]
+```
 
 
 Docker Compose File
@@ -98,7 +99,8 @@ services:
       context: ./backend
       dockerfile: Dockerfile
     ports:
-      - "5001:5001"```
+      - "5001:5001"
+ ```
 
 
 

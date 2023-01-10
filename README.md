@@ -8,19 +8,19 @@ This project uses Docker Compose to manage and run a frontend and backend servic
 2. Navigate to the project's root directory.
 3. Run the following command to build and start the services:
 
-`docker-compose up --build```
+```docker-compose up --build```
 
 4. The frontend service will be available at `http://localhost:3000` and the backend service will be available at `http://localhost:5001`.
 
 ## Backend
 - navigate to backend/api 
-- make sure the requirements are installed 
+- make sure the requirements are installed by running the requirements.txt fine in /project/backend
 
-```pip install -r requirements.txt
+```pip install -r requirements.txt```
 
  
 - run the backend with
-python3 run.py
+```python3 run.py```
 
 The backend will now run on Port 5001
 
@@ -42,7 +42,7 @@ COPY . .
 EXPOSE 5001
 
 # Run backend
-CMD ["python3", "./api/run.py"]
+CMD ["python3", "./api/run.py"]```
 
 
 ## Frontend
@@ -76,12 +76,12 @@ RUN npm run build
 EXPOSE 3000
 
 # Run frontend
-CMD ["npm", "start"]
+CMD ["npm", "start"]```
 
 
 Docker Compose File
 
-version: "3"
+```version: "3"
 services:
   frontend:
     image: my-frontend
@@ -98,7 +98,7 @@ services:
       context: ./backend
       dockerfile: Dockerfile
     ports:
-      - "5001:5001"
+      - "5001:5001"```
 
 
 

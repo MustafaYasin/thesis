@@ -1,0 +1,37 @@
+.basic {
+  /* display: flex;
+  align-items: flex-start;
+  justify-content: space-around; */
+}
+
+
+
+.profilesContainer {
+  max-width: 50rem;
+  margin-left: 50%;
+}
+.profilesListHeading{
+  text-align: left;
+  padding-bottom: 0rem;
+  padding-top: 0.5rem;
+  margin-left: 1rem;
+  margin-bottom: 0em;
+}
+
+.tooltip{
+}
+
+.info{
+  display: inline-block;
+  align-items: center;
+  vertical-align: center;
+  cursor: help;
+  padding-left: 6px;
+  padding-right: 6px;
+  border-radius: 0.5rem;
+  color: black;
+}
+.info:hover{
+  filter: brightness(1.2);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 1);
+}

@@ -1,0 +1,94 @@
+.homePageHeaderContainer{
+    margin-left: 4rem;
+    margin-top: 2rem;
+}
+
+.homePageHeaderContainer h1{
+    font-size: 5rem;
+}
+
+.cardContentContainer{
+    width: 28rem;
+}
+
+.cardContentHeader{
+    text-align: center;
+    padding-top: 1rem;
+}
+
+.cardContentHeader h2{
+    margin-bottom: 0;
+}
+
+.categoryContainer{
+    margin-left: 5rem;
+    display: flex;
+    column-gap: 2.5rem;
+    flex-wrap: wrap;
+}
+.comingSoon{
+    z-index: 1;
+    border-radius: 6px;
+    background-color: black;
+    opacity: 0.3;
+}
+.dataScientist h3{
+    padding: 1rem;
+}
+.imageContainer{
+    margin-top:1rem;
+    margin-left:3rem;
+    margin-right:3rem;
+    margin-bottom:2rem;
+}
+.image{
+    height: 100%;
+    width: 100%;
+}
+.link{
+    display: flex;
+    justify-content: center;
+    align-items: center;    
+    margin-top: 1.5rem;
+    padding-bottom: 1rem;
+    padding-top: 0.5rem;
+}
+.link button{
+    font-size:x-large;
+    font-weight: 600;
+    color: rgb(0, 128, 255);
+    background-color: white;
+    border-color: rgb(0, 128, 255);
+    transition: background-color, 0.15s;
+    transition: color, 0.15s;
+}
+.link button:hover{
+    color: white;
+    background-color: rgb(0, 128, 255);
+    border-color: white;
+    cursor: pointer;
+}
+
+.comingSoonButton{
+    display: flex;
+    justify-content: center;
+    align-items: center;    
+    margin-top: 1.5rem;
+    padding-bottom: 1rem;
+    padding-top: 0.5rem;
+}
+.comingSoonButton button{
+    font-size:x-large;
+    font-weight: 600;
+    color: gray;
+    background-color: white;
+    border-color:gray;
+    transition: background-color, 0.15s;
+    transition: color, 0.15s;
+}
+.comingSoonButton button:hover{
+    color: white;
+    background-color: gray;
+    border-color: white;
+    cursor:not-allowed;
+}

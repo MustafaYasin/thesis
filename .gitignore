@@ -2,6 +2,7 @@
 .huskyrc.json
 out
 log.log
+.idea
 **/node_modules
 *.pyc
 *.vsix

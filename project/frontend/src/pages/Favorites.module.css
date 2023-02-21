@@ -1,0 +1,17 @@
+.basic {
+  margin-left: 10%;
+  margin-right:10%;
+  max-width: 100rem;
+}
+
+.profiles {
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 2rem;
+  align-items: center;
+  justify-content: center;
+}
+
+.heading{
+  text-align: center;
+}

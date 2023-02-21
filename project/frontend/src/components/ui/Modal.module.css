@@ -1,0 +1,40 @@
+.outer {
+  position: relative;
+}
+.modal {
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+  border-radius: 6px;
+  background-color: white;
+  padding: 1rem;
+  text-align: center;
+  width: 40rem;
+  z-index: 10;
+  position: fixed;
+  top: calc(50% - 27rem);
+  left: calc(50% - 15rem);
+}
+.close {
+  position: absolute;
+  top: -24px;
+  right: -12px;
+}
+
+.closeButton {
+  opacity: 0.75;
+  width: 34px;
+  height: 34px;
+  border-radius: 17px;
+  font-size: 20px;
+  background-color: lightgray;
+  border: none;
+  padding: 0.4rem;
+  transition: color 0.15s;
+  transition: background-color 0.15s;
+}
+.closeButton:hover {
+  opacity: 1;
+  cursor: pointer;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+  background-color: darkgray;
+  color: white;
+}

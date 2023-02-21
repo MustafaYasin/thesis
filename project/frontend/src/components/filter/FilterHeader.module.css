@@ -1,0 +1,10 @@
+.headerContainer {
+  position: relative;
+    display: flex;
+    padding: 0;
+    border: 0;
+    z-index: 100;
+  }
+  .headerContainer h1{
+    padding-left: 2rem;
+  }

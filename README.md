@@ -1,89 +1,98 @@
-# README.md
 
-## Overview
-This project uses Docker Compose to manage and run a frontend and backend service. The frontend is built with Node.js and the backend is built with Python. 
+# Co-Founder
 
-## Running the Project with Docker-Comppose
-1. Make sure that you have [Docker](https://www.docker.com/) and [Docker Compose](https://docs.docker.com/compose/) installed on your system.
-2. Navigate to the project's root directory.
-3. Run the following command to build and start the services:
+Co-Founder is a web application that matches potential Co-Founders. It consists of a frontend and a backend service. The frontend is implemented using Node.js, and the backend is built with Python. Docker Compose is used to manage and run these services, making it easy to scale and deploy.
 
-```docker-compose up --build```
+## Prerequisites
 
-4. The frontend service will be available at `http://localhost:3000` and the backend service will be available at `http://localhost:5001`.
+Before you begin, please ensure you have installed the following:
 
-## Backend
-- navigate to backend/api 
-- make sure the requirements are installed by running the requirements.txt fine in /project/backend
+- [Docker](https://www.docker.com/) and [Docker Compose](https://docs.docker.com/compose/)
+- [Node.js](https://nodejs.org/en/download/) and [npm](https://www.npmjs.com/get-npm)
+- [Python](https://www.python.org/downloads/) and [pip](https://pip.pypa.io/en/stable/installation/)
 
-```pip install -r requirements.txt```
+## Running the Project
 
- 
-- run the backend with
-```python3 run.py```
+To run the project using Docker Compose, follow these steps:
 
-The backend will now run on Port 5001
+1. Open a terminal and navigate to the project's root directory.
+2. Run the following command to build and start the services:
 
-Dockerfile for Backend
+```shell
+docker-compose up --build
+```
+
+3. The frontend service will be accessible at `http://localhost:3000` and the backend service will be available at `http://localhost:5001`.
+
+## Backend Service
+
+Here are the steps to run the backend service independently:
+
+1. Navigate to the `backend/api` directory.
+2. Install the necessary Python packages by running the following command in the `/project/backend` directory:
+
+```shell
+pip install -r requirements.txt
+```
+
+3. Start the backend service with:
+
+```shell
+python3 run.py
+```
+
+The backend service will now run on port 5001.
+
+The Dockerfile for the backend service is:
+
 ```Dockerfile
 FROM python:3.8-slim-buster
-
-# Create app directory
 WORKDIR /app
-
-# Install app dependencies
 COPY requirements.txt ./
 RUN pip install -r requirements.txt
-
-# Bundle app source
 COPY . .
-
-# Expose port
 EXPOSE 5001
-
-# Run backend
 CMD ["python3", "./api/run.py"]
 ```
 
+## Frontend Service
 
-## Frontend
-- navigate to frontend folder
-- use npm install
+Here are the steps to run the frontend service independently:
 
-to install the required packages
+1. Navigate to the `frontend` folder.
+2. Install the necessary Node.js packages with:
 
-- after install run the frontend with npm start
+```shell
+npm install
+```
 
-The frontend will now run on Port 3000
+3. After the installation, start the frontend service with:
 
-Dockerfile for Frontend
+```shell
+npm start
+```
+
+The frontend service will now run on port 3000.
+
+The Dockerfile for the frontend service is:
+
 ```Dockerfile
 FROM node:14-alpine
-
-# Create app directory
 WORKDIR /app
-
-# Install app dependencies
 COPY package.json ./
 RUN npm install
-
-# Bundle app source
 COPY . .
-
-# Build app
 RUN npm run build
-
-# Expose port
 EXPOSE 3000
-
-# Run frontend
 CMD ["npm", "start"]
 ```
 
+## Docker Compose File
 
-Docker Compose File
+The Docker Compose file defines the services (frontend and backend), their build contexts, Dockerfiles, exposed ports, and dependencies.
 
-```version: "3"
+```yaml
+version: "3"
 services:
   frontend:
     image: my-frontend
@@ -101,12 +110,12 @@ services:
       dockerfile: Dockerfile
     ports:
       - "5001:5001"
- ```
+```
 
+## Contact
 
+For more information or any queries, please contact me at `<hello@mustafayasin.com>`.
 
+## License
 
-
-
-
-
+This project is licensed under `<MIT License>`.

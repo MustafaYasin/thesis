@@ -118,4 +118,4 @@ For more information or any queries, please contact me at `<hello@mustafayasin.c
 
 ## License
 
-This project is licensed under `<MIT License>`.
+This project is licensed under `MIT License`.

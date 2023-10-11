@@ -1,33 +1,25 @@
+# Standard Libraries
 from collections import Counter
 import datetime
-from random import randrange
-from graphql_query import domain
-from random import randint
-import random 
+from random import randint, choice
+import os
+
+# Third-Party Libraries
 import wget
 from markdown import markdown
 from bs4 import BeautifulSoup
 import urllib.request as urllib2
-import os
-from pprint import pprint
 import csv
-import pandas as pd
-import json
 
-
-
-
-# wget https://raw.githubusercontent.com/{owner}/{repo}/{branch}/README.md
+# Constants
 HOST = "https://raw.githubusercontent.com"
 BRANCH = 'master'
 
-# Function to download the README.md file from each repository
+# Download README files from GitHub repositories
 def get_readme(node):
     owner = node['login']
     repo_info = node['repositories']["nodes"]
     repo_list = [repo["name"] for repo in repo_info]
-    #print(f"This is a list of repo names for user: {owner}", repo_list)
-
     readme_list = []
 
     for repo in repo_list:
@@ -37,31 +29,16 @@ def get_readme(node):
         except urllib2.HTTPError:
             continue
 
-        # Create a dictionary to store the the readme files from each repository of the user
-
-        # Open the downloaded Markdown file and read it into a variable
-        # After that, convert the Markdown to HTML
         with open(readme, 'r') as f:
-        
             markdown_text = f.read()
-
-            # Convert the Markdown to HTML
             html = markdown(markdown_text)
-
-            # Extract the text from the HTML
             text = ' '.join(BeautifulSoup(html, features="lxml").findAll(text=True))
-
-            # Add the README text to the dictionary
             readme_list.append(text)
-
-            # Remove the downloaded README.md file
             os.remove(readme)
 
     return readme_list
 
-
-
-
+# Extracts various user-related fields
 def retrieve_fields(item, domain):
     node = item['node']
     nodes = node['repositories']["nodes"]
@@ -83,7 +60,7 @@ def retrieve_fields(item, domain):
         'isHireable': node['isHireable'],
         'company': node['company'],
         'yearsofExperience': randint(1, 10),
-        'domainofExpertise': random.choice(domain),
+        'domainofExpertise': choice(domain),
         'activity': randint(1, 100), 
         'feature_1': randint(1, 100)/100,
         'feature_2': randint(1, 100)/100,
@@ -110,30 +87,27 @@ def retrieve_fields(item, domain):
         'primary_language': primary_language
     }
 
-
-
     return result
 
-
+# Store and update records in MongoDB
 def store_to_mongodb(db, data):
     email = data.pop('email')
     db.update_one(
         {
             "email": email
         },
-
         {
             '$set': data
         },
         upsert=True
     )
 
+# Update specific matches in MongoDB
 def store_match_to_mongodb(db, username, matches):
     result = db.update_one(
         {
             "username": username
         },
-
         {
             '$set': {
                 "computer_vision": matches.get('computer_vision'),
@@ -145,7 +119,7 @@ def store_match_to_mongodb(db, username, matches):
     )
     print(result.modified_count)
 
-
+# Writes GitHub repository information to a CSV file
 def store_repo_to_csv(writer, node):
     writer.writerow([node['username'], node['fullName'], node['bio'], node['email'], node['readme'], ['repository_count'], node['company'], 
                     node['avatar_url'], node['isHireable'], node['star_time'], node['followers'], node['following'], node['organizations'],
@@ -153,6 +127,3 @@ def store_repo_to_csv(writer, node):
                     node['isDeveloperProgramMember'], node['isSiteAdmin'], node['isViewer'], node['anyPinnableItems'], node['viewerIsFollowing'], 
                     node['sponsors'], node['primary_language'], node['yearsofExperience'], node['location'], node['domainofExpertise'], node['activity'],
                     node['feature_1'], node['feature_2'], node['feature_3'], node['totalOfFeatures']])
-
-
-# create a function to find out how many lines of code each user has written

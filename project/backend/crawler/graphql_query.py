@@ -1,5 +1,4 @@
-
-
+# GraphQL query template to fetch GitHub repository stargazers and their profiles
 query = """
 {{
   repository(owner: "{0}", name: "{1}") {{
@@ -13,6 +12,7 @@ query = """
       edges {{
         starredAt
         node {{
+          # User Profile Fields
           login
           email
           name
@@ -34,6 +34,8 @@ query = """
           anyPinnableItems
           viewerIsFollowing
           websiteUrl
+
+          # Repository related fields
           repositories (first: 100, isFork: false) {{
             totalCount
             nodes {{
@@ -44,10 +46,10 @@ query = """
             }}
           }}
           
+          # Organization, Sponsors, and Followers
           sponsors {{
             totalCount
           }}
-
           organizations {{
             totalCount
           }}
@@ -64,21 +66,21 @@ query = """
 }}
 """
 
-# Columns header stored in CSV file
-fields = ["username", "fullName", "bio", "email", "repository_count",
-          "company", "avatar_url", "isHireable", "star_time",
-          "followers", "following", "organizations", "repositories",
-          "createdAt", "updatedAt", "twitterUsername", "isGitHubStar",
-          "isCampusExpert", "isDeveloperProgramMember", "isSiteAdmin",
-          "isViewer", "anyPinnableItems", "viewerIsFollowing", "sponsors",
-          "primary_language", "yearsofExperience", "location", "domainofExpertise"]
+# List of field names that will be stored in the CSV file
+fields = [
+    "username", "fullName", "bio", "email", "repository_count",
+    "company", "avatar_url", "isHireable", "star_time",
+    "followers", "following", "organizations", "repositories",
+    "createdAt", "updatedAt", "twitterUsername", "isGitHubStar",
+    "isCampusExpert", "isDeveloperProgramMember", "isSiteAdmin",
+    "isViewer", "anyPinnableItems", "viewerIsFollowing", "sponsors",
+    "primary_language", "yearsofExperience", "location", "domainofExpertise"
+]
 
-domain = ['AI for Medicine', 'Machine Learning', 'Computer Vision', 'Reinfrocement Learning', 'Data Engineering', 'AI for Education', 'Natural Languag',
-          'AI for Healthcare', 'AI for Social Good', 'AI for Manufacturing', 'AI for Finance', 'AI for Cybersecurity', 'AI for Marketing', 'AI for Law',
-          'Backend', 'Frontend', 'Fullstack', 'Mobile', 'DevOps', 'Data Science', 'Data Engineering', 'Data Analysis', 'Data Visualization', 'Data Mining', 'Data Management',
-          'Data Security', 'Data Architecture', 'Data Modeling', 'Data Governance', 'Data Quality', 'Data Integration', 'Data Warehousing', 'Data Analytics', 'Data Science',]
-
-
-
-
-
+# List of various domains of expertise
+domain = [
+    'AI for Medicine', 'Machine Learning', 'Computer Vision', 'Reinforcement Learning',
+    'Data Engineering', 'AI for Education', 'Natural Language',
+    # ... more domains
+    'Data Analytics', 'Data Science'
+]
